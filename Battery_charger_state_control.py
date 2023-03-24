@@ -5,8 +5,6 @@ import time
 import cherrypy
 import requests
 
-#the last
-
 class Controller:
     def __init__(self,clientID,broker, base_topic, topic_temp, topic_battery, topic_presence, topic_photon,topic_daily):
         self.clientID=clientID
