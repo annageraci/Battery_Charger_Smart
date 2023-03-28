@@ -5,12 +5,8 @@ import time
 import cherrypy
 import requests
 
-
-#commento da Anna
-
-
 class Controller:
-    def __init__(self,clientID,broker, base_topic, topic_temp, topic_battery, topic_presence, topic_photon,topic_daily):
+    def __init__(self,clientID,broker, base_topic, topic_temp, topic_battery, topic_presence, topic_photon,topic_daily, Catalog):
         self.clientID=clientID
         self.broker=broker
         self.base_topic=base_topic
@@ -20,20 +16,20 @@ class Controller:
         self.topic_photon=topic_photon
         self.topic_daily=topic_daily
         # the notifier is the Sensor itself
-        urlToContact='http://127.0.0.1:8080/AllUsers'
-        response= requests.get(urlToContact)
-        self.response_json = response.json()
-        self.NumberofUser=len(self.response_json)
+        self.CatalogUser_json= Catalog['UserList']
+        self.NumberofUser=len(self.CatalogUser_json)
         print(f'the number of the user is {self.NumberofUser}')
         self.client=MyMQTT(self.clientID,self.broker,1883,self)
         
+        # initialize the value of the measurement pick from the sensor
         self.temperature=[-1]*self.NumberofUser
         self.battery_percentage=[-1]*self.NumberofUser
         self.digital_button=[-1]*self.NumberofUser
         self.photon=[-1]*self.NumberofUser
         self.actuator_command=[-1]*self.NumberofUser
         self.daily=[-1]*self.NumberofUser
-        
+
+        # initialize the topic of the message send by the sensor        
         self.topic_temp_completed=[]
         self.topic_photon_completed=[]
         self.topic_presence_completed=[]
@@ -44,7 +40,7 @@ class Controller:
         self.client.start() #connect to the broker and start the loop
         time.sleep(6) # asyncronous so we want exaclty ordered
         for i in range(self.NumberofUser):
-            UserID=int(self.response_json[i]['UserID'])
+            UserID=int(self.CatalogUser_json[i]['UserID'])
             self.topic_temp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_temp)       
             self.client.mySubscribe(self.topic_temp_completed[i])
             self.topic_photon_completed.insert(i,self.base_topic +str(UserID)+ self.topic_photon) 
@@ -58,37 +54,32 @@ class Controller:
 
     def notify(self,topic,msg):
         for i in range(self.NumberofUser):
-            UserID=int(self.response_json[i]['UserID'])
+            UserID=int(self.CatalogUser_json[i]['UserID'])
             if topic==self.topic_temp_completed[i]:
                 payload=json.loads(msg)
                 self.temperature[i]=payload['e'][0]['v']
-                #how to do when the message is received
                 print(f'the value of the temperature sensor of the UserID {UserID} is {self.temperature[i]}')
             elif topic==self.topic_battery_completed[i]:
                 payload=json.loads(msg)
                 self.battery_percentage[i]=payload['e'][0]['v']
-                #how to do when the message is received
                 print(f'the value of the percentage of the battery of the UserID {UserID} is {self.battery_percentage[i]}')
             elif topic==self.topic_presence_completed[i]:
                 payload=json.loads(msg)
                 self.digital_button[i]=payload['e'][0]['v']
-                #how to do when the message is received
                 print(f'the value of the presence of the vehicle of the UserID {UserID} is {self.digital_button[i]}')
             elif topic==self.topic_photon_completed[i]:
                 payload=json.loads(msg)
                 self.photon[i]=payload['e'][0]['v']
-                #how to do when the message is received
                 print(f'the value of the energy of the photon of the UserID {UserID} is {self.photon[i]}')
             elif topic==self.topic_daily_completed[i]:
                 payload=json.loads(msg)
                 self.daily[i]=payload['e'][0]['v']
-                #how to do when the message is received
                 print(f'the value of the battery percentage usage today by the userID {UserID} will be {self.daily[i]}')
     
     def control_strategy(self):
         soglia_photon=1.1 # eV energy of the photon 
         for i in range(self.NumberofUser):
-            UserID=self.response_json[i]['UserID']
+            UserID=self.CatalogUser_json[i]['UserID']
             # 1° step car in garage?
             if (self.digital_button[i]==0):
                 print('The vehicle is not present in the garage')
@@ -131,16 +122,16 @@ if __name__=="__main__":
     Catalog=json.load(open('Catalog.json'))
     URL=Catalog['Catalog_url']+'/catalog'
     response= requests.get(URL)
-    response_json = response.json()
-    broker=response_json['broker']['IPAddress']
-    port=response_json['broker']['port']
-    base_topic=response_json['baseTopic']
+    Catalog_json = response.json()
+    broker=Catalog_json['broker']['IPAddress']
+    port=Catalog_json['broker']['port']
+    base_topic=Catalog_json['baseTopic']
     topic_temp='/sensor/temperature'
     topic_battery='/sensor/battery'
     topic_presence='/sensor/presence'
     topic_photon='/sensor/photon'
     topic_daily='/sensor/daily'
-    Contr=Controller('Geraci12232211321',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily)
+    Contr=Controller('Geraci12232211321',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily,Catalog_json)
     Contr.StartOperation()
     # infinite loop to keep the script running 
     while True:
