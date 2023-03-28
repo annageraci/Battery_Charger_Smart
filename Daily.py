@@ -9,7 +9,7 @@ import requests
 
 class BatteryDailyUsage(MyPublisher):
 
-    def __init__(self,ClientID, broker, port, base_topic, topic_daily):
+    def __init__(self,ClientID, broker, port, base_topic, topic_daily, Catalog):
         self.base_topic=base_topic
         self.topic_daily=topic_daily
         self.client = MyMQTT(ClientID, broker, port, None)
@@ -20,9 +20,7 @@ class BatteryDailyUsage(MyPublisher):
                 {'n': 'Battery_percentage', 'value': '', 'timestamp': '', 'unit': '%'},
             ]
         }
-        urlToContact='http://127.0.0.1:8080/AllUsers'
-        response= requests.get(urlToContact)
-        self.response_json_all_user = response.json()
+        self.response_json_all_user = Catalog['UserList']
         self.NumberofUser=len(self.response_json_all_user)
         self.output=[0]*self.NumberofUser
 
@@ -83,12 +81,12 @@ if __name__ == '__main__':
         Catalog=json.load(open('Catalog.json'))
         URL=Catalog['Catalog_url']+'/catalog'
         response= requests.get(URL)
-        response_json = response.json()
-        broker=response_json['broker']['IPAddress']
-        port=response_json['broker']['port']
-        base_topic=response_json['baseTopic']
+        Catalog_json = response.json()
+        broker=Catalog_json['broker']['IPAddress']
+        port=Catalog_json['broker']['port']
+        base_topic=Catalog_json['baseTopic']
         topic_daily='/sensor/daily'
-        daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily)
+        daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,Catalog_json)
         daily.makerequest()
         # time.sleep(5)
         daily.start()
