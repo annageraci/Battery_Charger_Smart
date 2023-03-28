@@ -5,13 +5,6 @@ import time
 import cherrypy
 import requests
 
-<<<<<<< HEAD
-=======
-
-#commento da Greta
-
-
->>>>>>> e746fb7781cc1a60e67b11b1601039a2bb075476
 class Controller:
     def __init__(self,clientID,broker, base_topic, topic_temp, topic_battery, topic_presence, topic_photon,topic_daily, Catalog):
         self.clientID=clientID
