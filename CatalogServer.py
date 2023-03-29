@@ -6,6 +6,9 @@ class Catalog(object):
     exposed=True
 
     def GET(self, *uri, **params):
+	    if uri[0]=='':
+		    return 'select your request through the URL'
+
         if uri[0]=="MessageBroker":
             device=json.load(open('Catalog.json'))
             Broker=device["broker"]
