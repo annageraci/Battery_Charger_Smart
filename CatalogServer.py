@@ -6,29 +6,27 @@ class Catalog(object):
     exposed=True
 
     def GET(self, *uri, **params):
-	    if uri[0]=='':
-		    return 'select your request through the URL'
-
+	
         if uri[0]=="MessageBroker":
             device=json.load(open('Catalog.json'))
             Broker=device["broker"]
             return json.dumps(Broker,indent=2)
         
-        if uri[0]=="TelegramToken":
+        elif uri[0]=="TelegramToken":
             device=json.load(open('Catalog.json'))
             token=device["TelegramToken"]
             return json.dumps(token,indent=2)
         
-        if uri[0]=="catalog":
+        elif uri[0]=="catalog":
             catalog=json.load(open('Catalog.json'))
             return json.dumps(catalog, indent=2)        
 
-        if uri[0]=='AllDevices':
+        elif uri[0]=='AllDevices':
             catalog=json.load(open('Catalog.json'))
             devices=catalog["DeviceList"]
             return json.dumps(devices, indent=2)
 
-        if uri[0]=='DeviceID':
+        elif uri[0]=='DeviceID':
             ID=uri[1]
             Catalog=json.load(open('Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
@@ -38,12 +36,12 @@ class Catalog(object):
                     output=ListOfDevice[i]
             return json.dumps(output, indent=2)
 
-        if uri[0]=='AllUsers':
+        elif uri[0]=='AllUsers':
             catalog=json.load(open('Catalog.json'))
             users=catalog["UserList"]
             return json.dumps(users, indent=2)
 
-        if uri[0]=='UserID':
+        elif uri[0]=='UserID':
             ID=uri[1]
             Catalog=json.load(open('Catalog.json'))
             ListOfUsers=Catalog['UserList']
@@ -57,7 +55,10 @@ class Catalog(object):
                             "Agenda": Agenda
                         }
             return json.dumps(output, indent=2)
-        
+        else: 
+            output='Add a valid uri parameters according to your request'
+            return json.dumps(output,indent=2)
+
     def POST(self, *uri):
         if uri[0]=='Device':
             bodyAsString=cherrypy.request.body.read() 
