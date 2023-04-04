@@ -16,18 +16,11 @@ class CheckUpdate():
     def makerequest(self):
         for i in range(self.NumberofDevice):
             output=self.response_json_alldevices
-            print(f'actual time {time.time()}')
             lastUpDate=int(self.response_json_alldevices[i]['lastUpDate'])
-            print(f'actual time {lastUpDate}')
             dif=int(time.time()-lastUpDate)
-            print({dif})
             if dif>120:
-                print(self.response_json_alldevices[i])
                 self.devdel.append(i)
-        print(self.devdel)
         self.devdel.reverse()
-        print(self.devdel)
-        print(output)
         for i in range(len(self.devdel)):
             output.pop(self.devdel[i])
         print(output)
