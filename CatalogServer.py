@@ -46,14 +46,22 @@ class Catalog(object):
             Catalog=json.load(open('Catalog.json'))
             ListOfUsers=Catalog['UserList']
             output=''
-            for i in range(len(ListOfUsers)):
-                if  ListOfUsers[i]['UserID']==ID:
-                    output=ListOfUsers[i]
-                    if uri[2]=='Agenda':
-                        Agenda=ListOfUsers[i]['Agenda']
-                        output={
-                            "Agenda": Agenda
-                        }
+            for currentUser in ListOfUsers:
+                if  currentUser['UserID']==ID:
+                    output=currentUser
+            return json.dumps(output, indent=2)
+        elif uri[0]=='Agenda':
+            ID=uri[1]
+            Catalog=json.load(open('Catalog.json'))
+            ListOfUsers=Catalog['UserList']
+            output=''
+            for currentUser in ListOfUsers:
+                if currentUser['UserID']==ID:
+                    Agenda=currentUser['Agenda']
+                    output={
+                        'UserID':ID,
+                        'Agenda':Agenda
+                    }
             return json.dumps(output, indent=2)
         else: 
             output='Add a valid uri parameters according to your request'
