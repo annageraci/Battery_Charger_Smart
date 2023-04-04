@@ -1,5 +1,6 @@
 {
   "Catalog_url": "http://127.0.0.1:8080",
+  "DockerIP":"http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
     "IPAddress": "mqtt.eclipseprojects.io",
