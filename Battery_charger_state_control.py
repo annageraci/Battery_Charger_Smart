@@ -16,6 +16,7 @@ class Controller:
         self.topic_photon=topic_photon
         self.topic_daily=topic_daily
         # the notifier is the Sensor itself
+        self.Catalog=Catalog,
         self.CatalogUser_json= Catalog['UserList']
         self.NumberofUser=len(self.CatalogUser_json)
         print(f'the number of the user is {self.NumberofUser}')
@@ -114,24 +115,21 @@ class Controller:
             print(f'{topic} Published {self.actuator_command[i]}')
             self.client.myPublish(topic, self.actuator_command[i])
             dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
-            response = requests.put('http://127.0.0.1:8080/Actuator', json.dumps(dict_to_post))
+            urlToPut=self.Catalog['DockerIP']+'/Actuator'
+            response = requests.put(urlToPut, json.dumps(dict_to_post))
             print(dict_to_post)
-            print(response)
 
 if __name__=="__main__":
     Catalog=json.load(open('Catalog.json'))
-    URL=Catalog['Catalog_url']+'/catalog'
-    response= requests.get(URL)
-    Catalog_json = response.json()
-    broker=Catalog_json['broker']['IPAddress']
-    port=Catalog_json['broker']['port']
-    base_topic=Catalog_json['baseTopic']
+    broker=Catalog['broker']['IPAddress']
+    port=Catalog['broker']['port']
+    base_topic=Catalog['baseTopic']
     topic_temp='/sensor/temperature'
     topic_battery='/sensor/battery'
     topic_presence='/sensor/presence'
     topic_photon='/sensor/photon'
     topic_daily='/sensor/daily'
-    Contr=Controller('Geraci12232211321',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily,Catalog_json)
+    Contr=Controller('Geraci12232211321',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily,Catalog)
     Contr.StartOperation()
     # infinite loop to keep the script running 
     while True:
