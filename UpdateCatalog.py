@@ -8,7 +8,7 @@ class CheckUpdate():
 
     def __init__(self,url):
         self.url=url
-        response= requests.get(self.url)
+        response= requests.get(self.url+'/AllDevices')
         self.response_json_alldevices = response.json()
         self.NumberofDevice=len(self.response_json_alldevices)
         self.devdel=[]
@@ -33,7 +33,7 @@ class CheckUpdate():
         print(output)
 
         # aggiornare il catalogo 
-        response= requests.get('http://127.0.0.1:8080/catalog')
+        response= requests.get(self.url+'/catalog')
         catalog = response.json()
         catalog['DeviceList']=output
         json.dump(catalog, open('setting.json', 'w'), indent=2)
@@ -42,7 +42,8 @@ class CheckUpdate():
 if __name__ == '__main__':
     while True:
         Catalog=json.load(open('Catalog.json'))
-        URL=Catalog['Catalog_url']+'/AllDevices'
+        #URL=Catalog['Catalog_url']
+        URL=Catalog['DockerIP']
         daily=CheckUpdate(URL)
         daily.makerequest()
         time.sleep(60)
