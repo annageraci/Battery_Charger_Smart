@@ -16,7 +16,7 @@ class Controller:
         self.topic_photon=topic_photon
         self.topic_daily=topic_daily
         # the notifier is the Sensor itself
-        self.Catalog=Catalog,
+        self.Catalog=Catalog
         self.CatalogUser_json= Catalog['UserList']
         self.NumberofUser=len(self.CatalogUser_json)
         print(f'the number of the user is {self.NumberofUser}')
@@ -115,6 +115,7 @@ class Controller:
             print(f'{topic} Published {self.actuator_command[i]}')
             self.client.myPublish(topic, self.actuator_command[i])
             dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
+            #urlToPut=self.Catalog['catalog_url']+'/Actuator'
             urlToPut=self.Catalog['DockerIP']+'/Actuator'
             response = requests.put(urlToPut, json.dumps(dict_to_post))
             print(dict_to_post)
