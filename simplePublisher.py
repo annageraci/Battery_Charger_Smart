@@ -1,6 +1,5 @@
 import paho.mqtt.client as PahoMQTT
 import time
-
 class MyPublisher:
 	def __init__(self, clientID,topic,broker):
 		self.clientID = clientID
