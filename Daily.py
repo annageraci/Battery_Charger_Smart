@@ -9,7 +9,7 @@ import requests
 
 class BatteryDailyUsage(MyPublisher):
 
-    def __init__(self,ClientID, broker, port, base_topic, topic_daily, BaseUrl):
+    def __init__(self,ClientID, broker, port, base_topic, topic_daily, BaseUrl, DockerIP):
         self.base_topic=base_topic
         self.topic_daily=topic_daily
         self.client = MyMQTT(ClientID, broker, port, None)
@@ -24,6 +24,7 @@ class BatteryDailyUsage(MyPublisher):
         self.NumberofUser=len(self.response_json_all_user)
         self.output=[0]*self.NumberofUser
         self.BaseUrl=BaseUrl
+        self.DockerIP=DockerIP
 
     def start(self):
         self.client.start()
@@ -41,7 +42,8 @@ class BatteryDailyUsage(MyPublisher):
     def makerequest(self):
         for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
-            url=self.BaseUrl+'/UserID/'+'/'+str(UserID)+'/Agenda'
+            #url=self.BaseUrl+'/UserID/'+'/'+str(UserID)+'/Agenda'
+            url=self.DockerIP+'/UserID/'+'/'+str(UserID)+'/Agenda'
             response= requests.get(url)
             response_json_Agenda = response.json()
             
@@ -81,11 +83,12 @@ if __name__ == '__main__':
     while True:
         Catalog=json.load(open('Catalog.json'))
         BaseUrl=Catalog['Catalog_url']
+        DockerIP=Catalog['DockerIP']
         broker=Catalog['broker']['IPAddress']
         port=Catalog['broker']['port']
         base_topic=Catalog['baseTopic']
         topic_daily='/sensor/daily'
-        daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl)
+        daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
         daily.makerequest()
         # time.sleep(5)
         daily.start()
