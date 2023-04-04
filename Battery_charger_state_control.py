@@ -116,7 +116,7 @@ class Controller:
             self.client.myPublish(topic, self.actuator_command[i])
             dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
             #urlToPut=self.Catalog['catalog_url']+'/Actuator'
-            urlToPut=self.Catalog['DockerIP']+'/Actuator'
+            urlToPut=self.Catalog['DockerIP']+'/Actuator' #for container
             response = requests.put(urlToPut, json.dumps(dict_to_post))
             print(dict_to_post)
 
