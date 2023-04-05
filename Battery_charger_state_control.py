@@ -84,13 +84,13 @@ class Controller:
             # 1° step car in garage?
             if (self.digital_button[i]==0):
                 print('The vehicle is not present in the garage')
-                self.actuator_command.insert(i,0)
+                self.actuator_command[i]=0
             else:
                 # 2* step ha i pannelli fotovoltaici? c'è il sole?
                 if self.photon[i]>=soglia_photon and self.photon[i]!=-1:
                     # self.photon=-1 means no solar pannel 
                     print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
-                    self.actuator_command.insert(i,1)
+                    self.actuator_command[i]=1
                 else:
                     # 3° step check aria condizionata o riscaldamento (temperatura) 
                     daily_appointment=int(self.daily[i]) #%battery usage in this day
@@ -104,21 +104,29 @@ class Controller:
                         print('probably you have to charge the car during the usage in another charge station')
                     if (self.battery_percentage[i]>daily_appointment and int(daily_appointment)!=-1):
                         print(f'percentage of battery sufficient, more than {daily_appointment}')
-                        self.actuator_command.insert(i,0)
+                        self.actuator_command[i]=0
                     elif (daily_appointment!=-1):
                         print(f'percentage of battery insufficient, less than {daily_appointment}')
-                        self.actuator_command.insert(i,1)
+                        self.actuator_command[i]=1
                 if (self.actuator_command[i]==-1):
                     print('last_chance')
-                    self.actuator_command.insert(i,0)            
+                    self.actuator_command[i]=0            
             topic=self.base_topic+UserID+'/actuator'
             print(f'{topic} Published {self.actuator_command[i]}')
-            self.client.myPublish(topic, self.actuator_command[i])
+            #msg= {
+            #        'bn': 'actuator',
+            #        'e':
+            #        [
+            #        {'n': 'actuator', 'v': self.actuator_command[i], 't': time.time(), 'u': '%'},
+            #       ]
+            #    }   
+            msg=self.actuator_command[i]
+            self.client.myPublish(topic, msg)
             dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
-            #urlToPut=self.Catalog['catalog_url']+'/Actuator'
-            urlToPut=self.Catalog['DockerIP']+'/Actuator' #for container
-            response = requests.put(urlToPut, json.dumps(dict_to_post))
+            response = requests.put('http://127.0.0.1:8080/Actuator', json.dumps(dict_to_post))
             print(dict_to_post)
+            print(response)
+        self.actuator_command=[-1]*self.NumberofUser
 
 if __name__=="__main__":
     Catalog=json.load(open('Catalog.json'))
