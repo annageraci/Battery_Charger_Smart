@@ -113,14 +113,13 @@ class Controller:
                     self.actuator_command[i]=0            
             topic=self.base_topic+UserID+'/actuator'
             print(f'{topic} Published {self.actuator_command[i]}')
-            #msg= {
-            #        'bn': 'actuator',
-            #        'e':
-            #        [
-            #        {'n': 'actuator', 'v': self.actuator_command[i], 't': time.time(), 'u': '%'},
-            #       ]
-            #    }   
-            msg=self.actuator_command[i]
+            msg= {
+                    'bn': 'actuator',
+                    'e':
+                    [
+                   {'n': 'actuator', 'v': self.actuator_command[i], 't': time.time(), 'u': '%'},
+                   ]
+                }   
             self.client.myPublish(topic, msg)
             dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
             response = requests.put('http://127.0.0.1:8080/Actuator', json.dumps(dict_to_post))
