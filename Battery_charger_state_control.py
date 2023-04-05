@@ -127,6 +127,12 @@ class Controller:
             print(dict_to_post)
             print(response)
         self.actuator_command=[-1]*self.NumberofUser
+        self.temperature=[-1]*self.NumberofUser
+        self.battery_percentage=[-1]*self.NumberofUser
+        self.digital_button=[-1]*self.NumberofUser
+        self.photon=[-1]*self.NumberofUser
+        self.actuator_command=[-1]*self.NumberofUser
+        self.daily=[-1]*self.NumberofUser
 
 if __name__=="__main__":
     Catalog=json.load(open('Catalog.json'))
