@@ -82,7 +82,7 @@ class Controller:
         for i in range(self.NumberofUser):
             UserID=self.CatalogUser_json[i]['UserID']
             # 1° step car in garage?
-            if (self.digital_button[i]==0):
+            if (self.digital_button[i]==0 or self.digital_button[i]==-1):
                 print('The vehicle is not present in the garage')
                 self.actuator_command[i]=0
             else:
