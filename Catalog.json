@@ -7,6 +7,10 @@
     "port": 1883
   },
   "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
+  "ThingSpeak":{
+    "API_keys":"YJPIP47T25RRGBYX",
+    "ChannelID":"2105394"
+  },
   "DeviceList": [
     {
       "deviceName": "Temperature_Sensor",
