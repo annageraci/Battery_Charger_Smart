@@ -4,7 +4,7 @@ from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 import time
 import paho.mqtt.client as PahoMQTT
 import json
-from Material.MyMQTT import *
+from MyMQTT import *
 import time
 import cherrypy
 import requests
@@ -234,10 +234,8 @@ class SwitchBot:
 
 
 if __name__ == "__main__":
-    conf = json.load(open("Catalog.json"))
+    conf = json.load(open("settings.json"))
     token = conf["TelegramToken"]
-
-    # SimpleSwitchBot
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
