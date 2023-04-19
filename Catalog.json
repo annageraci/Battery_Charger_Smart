@@ -1,15 +1,15 @@
 {
-  "Catalog_url": "http://127.0.0.1:8080",
-  "DockerIP": "http://172.17.0.1:8080",
+  "Catalog_url": "http://192.168.1.27:8080",
+  "DockerIP":"http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
     "IPAddress": "mqtt.eclipseprojects.io",
     "port": 1883
   },
   "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
-  "ThingSpeak": {
-    "API_keys": "YJPIP47T25RRGBYX",
-    "ChannelID": "2105394"
+  "ThingSpeak":{
+    "API_keys":"YJPIP47T25RRGBYX",
+    "ChannelID":"2105394"
   },
   "DeviceList": [
     {
@@ -71,7 +71,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "status": "on",
+      "status": 0,
       "lastUpDate": 1679060549
     },
     {
@@ -146,7 +146,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
-      "lastUpDate": 1681894245
+      "lastUpDate": 1679059744
     },
     {
       "deviceName": "Battery_Detector",
@@ -164,19 +164,6 @@
     {
       "deviceName": "Actuator",
       "DeviceID": "13",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "17",
       "UserAssociationID": "4",
       "MeasureType": "Boolean",
       "availableServices": "MQTT",
@@ -440,95 +427,6 @@
             "Type": "Friends",
             "StartTimeSlot": 19,
             "NumberOfTotalKilometers": 70
-          }
-        ],
-        "Saturday": [],
-        "Sunday": []
-      }
-    },
-    {
-      "UserID": "3",
-      "UserName": "Marco",
-      "UserSurname": "Rivalta",
-      "CapacityBattery": 50,
-      "Consuption_km/kwh": 6,
-      "ChatID": "",
-      "ConnectedDevices": [
-        {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "1"
-        },
-        {
-          "measure": "Photoni",
-          "DeviceName": "Photon_sensor",
-          "DeviceID": "2"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "3"
-        },
-        {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "4"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "5"
-        }
-      ],
-      "Agenda": {
-        "Monday": [
-          {
-            "Type": "work",
-            "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
-          },
-          {
-            "Type": "sport",
-            "StartTimeSlot": 19,
-            "NumberOfTotalKilometers": 15
-          }
-        ],
-        "Tuesday": [
-          {
-            "Type": "work",
-            "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
-          }
-        ],
-        "Wednesday": [
-          {
-            "Type": "work",
-            "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
-          },
-          {
-            "Type": "sport",
-            "StartTimeSlot": 19,
-            "NumberOfTotalKilometers": 15
-          }
-        ],
-        "Thursday": [
-          {
-            "Type": "work",
-            "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
-          }
-        ],
-        "Friday": [
-          {
-            "Type": "work",
-            "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
-          },
-          {
-            "Type": "Friends",
-            "StartTimeSlot": 19,
-            "NumberOfTotalKilometers": 30
           }
         ],
         "Saturday": [],
