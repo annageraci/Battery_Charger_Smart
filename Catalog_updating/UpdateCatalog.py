@@ -35,8 +35,8 @@ class CheckUpdate():
 if __name__ == '__main__':
     while True:
         Catalog=json.load(open('settings.json'))
-        #URL=Catalog['Catalog_url']
-        URL=Catalog['DockerIP']
+        URL=Catalog['Catalog_url']
+        #URL=Catalog['DockerIP']
         daily=CheckUpdate(URL)
         daily.makerequest()
         time.sleep(60)

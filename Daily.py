@@ -20,11 +20,17 @@ class BatteryDailyUsage(MyPublisher):
                 {'n': 'Battery_percentage', 'value': '', 'timestamp': '', 'unit': '%'},
             ]
         }
-        self.response_json_all_user = Catalog['UserList']
-        self.NumberofUser=len(self.response_json_all_user)
-        self.output=[0]*self.NumberofUser
         self.BaseUrl=BaseUrl
         self.DockerIP=DockerIP
+
+        # compute the number of the user
+        #url=self.DockerIP+'/AllUsers'
+        url=self.BaseUrl+'/AllUsers'
+        response= requests.get(url)
+        self.response_json_all_user =response.json()
+        self.NumberofUser=len(self.response_json_all_user)
+        self.output=[0]*self.NumberofUser
+        
 
     def start(self):
         self.client.start()
@@ -42,8 +48,8 @@ class BatteryDailyUsage(MyPublisher):
     def makerequest(self):
         for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
-            #url=self.BaseUrl+'/UserID/'+'/'+str(UserID)+'/Agenda'
-            url=self.DockerIP+'/UserID/'+'/'+str(UserID)+'/Agenda'
+            url=self.BaseUrl+'/UserID/'+'/'+str(UserID)+'/Agenda'
+            #url=self.DockerIP+'/UserID/'+'/'+str(UserID)+'/Agenda'
             response= requests.get(url)
             response_json_Agenda = response.json()
             
@@ -81,16 +87,16 @@ class BatteryDailyUsage(MyPublisher):
 
 if __name__ == '__main__':
     while True:
-        Catalog=json.load(open('Catalog.json'))
-        BaseUrl=Catalog['Catalog_url']
-        DockerIP=Catalog['DockerIP']
-        broker=Catalog['broker']['IPAddress']
-        port=Catalog['broker']['port']
-        base_topic=Catalog['baseTopic']
+        settings=json.load(open('settings.json'))
+        BaseUrl=settings['Catalog_url']
+        DockerIP=settings['DockerIP']
+        broker=settings['broker']['IPAddress']
+        port=settings['broker']['port']
+        base_topic=settings['baseTopic']
         topic_daily='/sensor/daily'
         daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
         daily.makerequest()
         # time.sleep(5)
         daily.start()
         daily.sendData()
-        time.sleep(10)
+        time.sleep(30)
