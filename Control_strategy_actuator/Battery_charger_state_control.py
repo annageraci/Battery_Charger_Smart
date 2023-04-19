@@ -62,7 +62,7 @@ class Controller:
 
     def notify(self,topic,msg):
         for i in range(len(self.Catalog['UserList'])):
-            UserID=int(self.CatalogUser_json[i]['UserID'])
+            UserID=int(self.Catalog['UserList'][i]['UserID'])
             if topic==self.topic_temp_completed[i]:
                 payload=json.loads(msg)
                 self.temperature[i]=payload['e'][0]['v']
@@ -86,6 +86,7 @@ class Controller:
             elif topic==self.topic_flag[i]:
                 payload=json.loads(msg)
                 self.flag[i]=payload['e'][0]['v']
+                print(f'the value of the flag of the userID {UserID} is changed: Flag = {self.flag[i]}')
     
     def control_strategy(self):
         soglia_photon=1.1 # eV energy of the photon 
@@ -125,7 +126,7 @@ class Controller:
                         print('last_chance')
                         self.actuator_command[i]=0            
                 topic=self.base_topic+UserID+'/actuator'
-                print(f'{topic} Published {self.actuator_command[i]}')
+                print(f'{topic} Published {self.actuator_command[i]} from control strategies')
                 msg= {
                         'bn': 'actuator',
                         'e':
@@ -144,7 +145,7 @@ class Controller:
                 self.photon=[-1]*self.NumberofUser
                 self.actuator_command=[-1]*self.NumberofUser
                 self.daily=[-1]*self.NumberofUser
-            elif self.flag==1:
+            elif self.flag[i]==1:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
                         'bn': 'actuator',
@@ -154,10 +155,11 @@ class Controller:
                     ]
                     }   
                 self.client.myPublish(topic, msg)
-                print(f'{topic} Published {self.actuator_command[i]}')
-                dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
+                print(f'{topic} Published {msg["e"][0]["v"]} from manual activation')
+                dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
+                print(dict_to_post)
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
-            elif self.flag==0:
+            elif self.flag[i]==0:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
                         'bn': 'actuator',
@@ -167,8 +169,9 @@ class Controller:
                     ]
                     }   
                 self.client.myPublish(topic, msg)
-                print(f'{topic} Published {self.actuator_command[i]}')
-                dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
+                print(f'{topic} Published {msg["e"][0]["v"]} from manual activation')
+                dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
+                print(dict_to_post)
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
 
                 
