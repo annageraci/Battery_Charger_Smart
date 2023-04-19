@@ -32,6 +32,7 @@ class Controller:
         self.photon=[-1]*self.NumberofUser
         self.actuator_command=[-1]*self.NumberofUser
         self.daily=[-1]*self.NumberofUser
+        self.flag=[2]*self.NumberofUser
 
         # initialize the topic of the message send by the sensor        
         self.topic_temp_completed=[]
@@ -39,6 +40,7 @@ class Controller:
         self.topic_presence_completed=[]
         self.topic_battery_completed=[]
         self.topic_daily_completed=[]
+        self.topic_flag=[]
 
     def StartOperation(self):
         self.client.start() #connect to the broker and start the loop
@@ -55,6 +57,8 @@ class Controller:
             self.client.mySubscribe(self.topic_battery_completed[i])
             self.topic_daily_completed.insert(i,self.base_topic +str(UserID)+ self.topic_daily)
             self.client.mySubscribe(self.topic_daily_completed[i])
+            self.topic_flag.insert(i,self.base_topic+str(UserID)+'/manualFlag')
+            self.client.mySubscribe(self.topic_flag[i])
 
     def notify(self,topic,msg):
         for i in range(len(self.Catalog['UserList'])):
@@ -79,12 +83,15 @@ class Controller:
                 payload=json.loads(msg)
                 self.daily[i]=payload['e'][0]['v']
                 print(f'the value of the battery percentage usage today by the userID {UserID} will be {self.daily[i]}')
+            elif topic==self.topic_flag[i]:
+                payload=json.loads(msg)
+                self.flag[i]=payload['e'][0]['v']
     
     def control_strategy(self):
         soglia_photon=1.1 # eV energy of the photon 
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
-            if flag==2:
+            if self.flag[i]==2:
                 # 1° step car in garage?
                 if (self.digital_button[i]==0):
                     print('The vehicle is not present in the garage')
@@ -137,7 +144,7 @@ class Controller:
                 self.photon=[-1]*self.NumberofUser
                 self.actuator_command=[-1]*self.NumberofUser
                 self.daily=[-1]*self.NumberofUser
-            elif flag==1:
+            elif self.flag==1:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
                         'bn': 'actuator',
@@ -150,7 +157,7 @@ class Controller:
                 print(f'{topic} Published {self.actuator_command[i]}')
                 dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
-            elif flag==0:
+            elif self.flag==0:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
                         'bn': 'actuator',
