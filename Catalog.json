@@ -1,15 +1,15 @@
 {
   "Catalog_url": "http://192.168.1.27:8080",
-  "DockerIP":"http://172.17.0.1:8080",
+  "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
     "IPAddress": "mqtt.eclipseprojects.io",
     "port": 1883
   },
   "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
-  "ThingSpeak":{
-    "API_keys":"YJPIP47T25RRGBYX",
-    "ChannelID":"2105394"
+  "ThingSpeak": {
+    "API_keys": "YJPIP47T25RRGBYX",
+    "ChannelID": "2105394"
   },
   "DeviceList": [
     {
@@ -58,7 +58,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
-      "status": "",
+      "status": "14",
       "lastUpDate": 1679160126
     },
     {
