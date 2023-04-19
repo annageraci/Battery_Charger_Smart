@@ -175,7 +175,7 @@ class Catalog(object):
                             return 'The Device is already present in the list but the other parameter are updated' + json.dumps(Catalog)
                     Catalog['UserList'][i]["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
                     json.dump(Catalog,open('Catalog.json','w'),indent=2)
-                    #json.dump(Catalog,open('setting.json','w'), indent=2)
+                    #json.dump(Catalog,open('CatalogFake.json','w'), indent=2)
                     return json.dumps(Catalog)
                 
         if uri[0]=='Actuator':
