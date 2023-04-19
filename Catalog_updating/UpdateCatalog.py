@@ -10,25 +10,21 @@ class CheckUpdate():
         self.url=url
         response= requests.get(self.url+'/AllDevices')
         self.response_json_alldevices = response.json()
-        self.NumberofDevice=len(self.response_json_alldevices)
-        self.devdel=[]
+        # The list of Device Deleted 
+        self.RemainDevice=[]
 
     def makerequest(self):
-        for i in range(self.NumberofDevice):
-            output=self.response_json_alldevices
-            lastUpDate=int(self.response_json_alldevices[i]['lastUpDate'])
+        for currentDevice in self.response_json_alldevices:
+            lastUpDate=int(currentDevice['lastUpDate'])
             dif=int(time.time()-lastUpDate)
-            if dif>120:
-                self.devdel.append(i)
-        self.devdel.reverse()
-        for i in range(len(self.devdel)):
-            output.pop(self.devdel[i])
-        print(output)
+            if dif<120:
+                self.RemainDevice.append(currentDevice)
+        print('the new device list is '+json.dumps(self.RemainDevice))
 
         # aggiornare il catalogo 
         response= requests.get(self.url+'/catalog')
         catalog = response.json()
-        catalog['DeviceList']=output
+        catalog['DeviceList']=self.RemainDevice
         json.dump(catalog, open('CatalogFake.json', 'w'), indent=2)
         # json.dump(catalog, open('Catalog.json', 'w'), indent=2)
 
