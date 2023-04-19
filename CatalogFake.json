@@ -1,0 +1,270 @@
+{
+  "Catalog_url": "http://127.0.0.1:8080",
+  "DockerIP": "http://172.17.0.1:8080",
+  "baseTopic": "Battery/IoT/project/UserID/",
+  "broker": {
+    "IPAddress": "mqtt.eclipseprojects.io",
+    "port": 1883
+  },
+  "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
+  "DeviceList": [],
+  "UserList": [
+    {
+      "UserID": "1",
+      "UserName": "Mario",
+      "UserSurname": "Rossi",
+      "CapacityBattery": 50,
+      "Consuption_km/kwh": 6,
+      "ChatID": "740346462",
+      "ConnectedDevices": [
+        {
+          "measure": "Temperature",
+          "DeviceName": "Temperature_sensor",
+          "DeviceID": "1"
+        },
+        {
+          "measure": "Photoni",
+          "DeviceName": "Photon_sensor",
+          "DeviceID": "2"
+        },
+        {
+          "measure": "Boolean",
+          "DeviceName": "Digital_Button",
+          "DeviceID": "3"
+        },
+        {
+          "measure": "Percentage",
+          "DeviceName": "Battery_Detector",
+          "DeviceID": "4"
+        },
+        {
+          "measure": "Boolean",
+          "DeviceName": "Actuator",
+          "DeviceID": "5"
+        }
+      ],
+      "Agenda": {
+        "Monday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 15
+          }
+        ],
+        "Tuesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          }
+        ],
+        "Wednesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 15
+          }
+        ],
+        "Thursday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          }
+        ],
+        "Friday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          },
+          {
+            "Type": "Friends",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 30
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      }
+    },
+    {
+      "UserID": "2",
+      "UserName": "Maria",
+      "UserSurname": "Bianchi",
+      "CapacityBattery": 30,
+      "Consuption_km/kwh": 6,
+      "ChatID": "",
+      "ConnectedDevices": [
+        {
+          "measure": "Temperature",
+          "DeviceName": "Temperature_sensor",
+          "DeviceID": "6"
+        },
+        {
+          "measure": "Boolean",
+          "DeviceName": "Digital_Button",
+          "DeviceID": "7"
+        },
+        {
+          "measure": "Percentage",
+          "DeviceName": "Battery_Detector",
+          "DeviceID": "8"
+        },
+        {
+          "measure": "Boolean",
+          "DeviceName": "Actuator",
+          "DeviceID": "9"
+        }
+      ],
+      "Agenda": {
+        "Monday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 18
+          }
+        ],
+        "Tuesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Wednesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 15
+          }
+        ],
+        "Thursday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Friday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "Friends",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 30
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      }
+    },
+    {
+      "UserID": "4",
+      "UserName": "Anna",
+      "UserSurname": "Geraci",
+      "CapacityBattery": 30,
+      "Consuption_km/kwh": 5,
+      "ChatID": "",
+      "ConnectedDevices": [
+        {
+          "measure": "Temperature",
+          "DeviceName": "Temperature_sensor",
+          "DeviceID": "10"
+        },
+        {
+          "measure": "Boolean",
+          "DeviceName": "Digital_Button",
+          "DeviceID": "11"
+        },
+        {
+          "measure": "Percentage",
+          "DeviceName": "Battery_Detector",
+          "DeviceID": "12"
+        },
+        {
+          "measure": "Boolean",
+          "DeviceName": "Actuator",
+          "DeviceID": "13"
+        }
+      ],
+      "Agenda": {
+        "Monday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 20
+          }
+        ],
+        "Tuesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Wednesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 30
+          }
+        ],
+        "Thursday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Friday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          },
+          {
+            "Type": "Friends",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 70
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      }
+    }
+  ]
+}
