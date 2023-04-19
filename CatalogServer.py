@@ -193,6 +193,30 @@ class Catalog(object):
                         DeviceID=currentDevice["DeviceID"]
             for i in range(len(Catalog['DeviceList'])):
                 if Catalog['DeviceList'][i]['DeviceID']==DeviceID:
+                    if value=='on':
+                        Catalog['DeviceList'][i]['status']=1
+                    elif value=='off':
+                        Catalog['DeviceList'][i]['status']=0
+                    else:
+                        return 'The value is not valid '+ json.dumps(Catalog)
+            json.dump(Catalog,open('Catalog.json','w'), indent=2)
+            return json.dumps(Catalog)
+
+        if uri[0]=='Battery':
+            # body {"UserID": "1/2/4" 
+            #        "value": "12"
+            #       }
+            bodyAsString=cherrypy.request.body.read()
+            bodyAsDictionary=json.loads(bodyAsString)
+            value=bodyAsDictionary['value']
+            Catalog=json.load(open('Catalog.json'))
+            ListOfUser=Catalog['UserList']
+            for currentUser in ListOfUser:
+                for currentDevice in currentUser['ConnectedDevices']:
+                    if (currentDevice['DeviceName']=='Battery_Detector' and int(currentUser['UserID'])==int(bodyAsDictionary['UserID'])):
+                        DeviceID=currentDevice["DeviceID"]
+            for i in range(len(Catalog['DeviceList'])):
+                if Catalog['DeviceList'][i]['DeviceID']==DeviceID:
                     Catalog['DeviceList'][i]['status']=value
             json.dump(Catalog,open('Catalog.json','w'), indent=2)
             return json.dumps(Catalog)
