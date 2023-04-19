@@ -180,7 +180,7 @@ class Catalog(object):
                 
         if uri[0]=='Actuator':
             # body {"UserID": "1/2/4" 
-            #        "value": "on/off"
+            #        "value": 0/1
             #       }
             bodyAsString=cherrypy.request.body.read()
             bodyAsDictionary=json.loads(bodyAsString)
@@ -193,10 +193,10 @@ class Catalog(object):
                         DeviceID=currentDevice["DeviceID"]
             for i in range(len(Catalog['DeviceList'])):
                 if Catalog['DeviceList'][i]['DeviceID']==DeviceID:
-                    if value=='on':
-                        Catalog['DeviceList'][i]['status']=1
-                    elif value=='off':
+                    if value==0:
                         Catalog['DeviceList'][i]['status']=0
+                    elif value==1:
+                        Catalog['DeviceList'][i]['status']=1
                     else:
                         return 'The value is not valid '+ json.dumps(Catalog)
             json.dump(Catalog,open('Catalog.json','w'), indent=2)
