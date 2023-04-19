@@ -1,0 +1,332 @@
+{
+	"info": {
+		"_postman_id": "598865a5-ea3e-4ca1-a864-89e5d9b997ab",
+		"name": "HTTP request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26015329"
+	},
+	"item": [
+		{
+			"name": "POST request",
+			"item": [
+				{
+					"name": "{{base_url}}/Device",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"deviceName\": \"Actuator\",\r\n    \"DeviceID\": \"17\",\r\n    \"UserAssociationID\": \"4\",\r\n    \"MeasureType\": \"Boolean\",\r\n    \"availableServices\": \"MQTT\",\r\n    \"ServiceDetails\": {\r\n    \"ServiceType\": \"MQTT\",\r\n   \"topic\": \"Battery/IoT/project/UserID/4/actuator\"\r\n    },\r\n    \"status\": 0,\r\n    \"lastUpDate\": 1679160119\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/Device",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"UserID\": \"3\",\r\n      \"UserName\": \"Marco\",\r\n      \"UserSurname\": \"Rivalta\",\r\n      \"CapacityBattery\": 50,\r\n      \"Consuption_km/kwh\": 6,\r\n      \"ChatID\": \"\",\r\n      \"ConnectedDevices\": [\r\n        {\r\n          \"measure\": \"Temperature\",\r\n          \"DeviceName\": \"Temperature_sensor\",\r\n          \"DeviceID\": \"1\"\r\n        },\r\n        {\r\n          \"measure\": \"Photoni\",\r\n          \"DeviceName\": \"Photon_sensor\",\r\n          \"DeviceID\": \"2\"\r\n        },\r\n        {\r\n          \"measure\": \"Boolean\",\r\n          \"DeviceName\": \"Digital_Button\",\r\n          \"DeviceID\": \"3\"\r\n        },\r\n        {\r\n          \"measure\": \"Percentage\",\r\n          \"DeviceName\": \"Battery_Detector\",\r\n          \"DeviceID\": \"4\"\r\n        },\r\n        {\r\n          \"measure\": \"Boolean\",\r\n          \"DeviceName\": \"Actuator\",\r\n          \"DeviceID\": \"5\"\r\n        }\r\n      ],\r\n      \"Agenda\": {\r\n        \"Monday\": [\r\n          {\r\n            \"Type\": \"work\",\r\n            \"StartTimeSlot\": 8,\r\n            \"NumberOfTotalKilometers\": 22\r\n          },\r\n          {\r\n            \"Type\": \"sport\",\r\n            \"StartTimeSlot\": 19,\r\n            \"NumberOfTotalKilometers\": 15\r\n          }\r\n        ],\r\n        \"Tuesday\": [\r\n          {\r\n            \"Type\": \"work\",\r\n            \"StartTimeSlot\": 8,\r\n            \"NumberOfTotalKilometers\": 22\r\n          }\r\n        ],\r\n        \"Wednesday\": [\r\n          {\r\n            \"Type\": \"work\",\r\n            \"StartTimeSlot\": 8,\r\n            \"NumberOfTotalKilometers\": 22\r\n          },\r\n          {\r\n            \"Type\": \"sport\",\r\n            \"StartTimeSlot\": 19,\r\n            \"NumberOfTotalKilometers\": 15\r\n          }\r\n        ],\r\n        \"Thursday\": [\r\n          {\r\n            \"Type\": \"work\",\r\n            \"StartTimeSlot\": 8,\r\n            \"NumberOfTotalKilometers\": 22\r\n          }\r\n        ],\r\n        \"Friday\": [\r\n          {\r\n            \"Type\": \"work\",\r\n            \"StartTimeSlot\": 8,\r\n            \"NumberOfTotalKilometers\": 22\r\n          },\r\n          {\r\n            \"Type\": \"Friends\",\r\n            \"StartTimeSlot\": 19,\r\n            \"NumberOfTotalKilometers\": 30\r\n          }\r\n        ],\r\n        \"Saturday\": [],\r\n        \"Sunday\": []\r\n      }\r\n    }"
+						},
+						"url": {
+							"raw": "{{base_url}}/User",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/Agenda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserID\": \"1\",\r\n    \"Day\": \"Monday\",\r\n    \"Date\":\r\n    {\r\n        \"Type\": \"work\",\r\n        \"StartTimeSlot\": 8,\r\n        \"NumberOfTotalKilometers\": 22\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/Agenda",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Agenda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET request",
+			"item": [
+				{
+					"name": "{{base_url}}/AllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/AllUsers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"AllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/UserID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/UserID/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"UserID",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/catalog",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/catalog",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/MessageBroker",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/MessageBroker",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"MessageBroker"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/TelegramToken",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/TelegramToken",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"TelegramToken"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/AllDevices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/AllDevices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"AllDevices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/DeviceID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/DeviceID/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"DeviceID",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/Agenda/UserID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/Agenda/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Agenda",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT request",
+			"item": [
+				{
+					"name": "{{base_url}}/Device",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DeviceID\":\"11\",\r\n    \"time\":{{$timestamp}}\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/Device",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Device"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/User",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"UserID\":\"1\",\r\n    \"CapacityBattery\": 60,\r\n    \"Consuption_km/kwh\": 6,\r\n    \"ConnectedDevices\": \r\n    {\r\n        \"measure\": \"Temperature\",\r\n        \"DeviceName\": \"Temperature_sensor\",\r\n        \"DeviceID\": \"1\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/User",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"User"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/Actuator",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserID\": \"1\",\r\n    \"value\": \"on\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/Actuator",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Actuator"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/Battery",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserID\": \"1\",\r\n    \"value\": \"14\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/Battery",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Battery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{base_url}}/Agenda",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"UserID\": \"1\",\r\n    \"Day\": \"Friday\",\r\n    \"Date\":\r\n    {\r\n        \"Type\": \"work\",\r\n        \"StartTimeSlot\": 8,\r\n        \"NumberOfTotalKilometers\": 50\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/Agenda",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"Agenda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
