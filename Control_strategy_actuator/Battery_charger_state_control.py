@@ -20,8 +20,9 @@ class Controller:
         # the notifier is the Sensor itself
         url=self.base_url+'/catalog'
         #url=self.DockerIP+'/catalog'
-        self.Catalog=requests.get(url)
-        self.CatalogUser_json= self.Catalog['UserList']
+        response=requests.get(url)
+        self.Catalog=response.json()
+        self.NumberofUser=len(self.Catalog['UserList'])
         self.client=MyMQTT(self.clientID,self.broker,1883,self)
         
         # initialize the value of the measurement pick from the sensor
@@ -82,7 +83,7 @@ class Controller:
     def control_strategy(self):
         soglia_photon=1.1 # eV energy of the photon 
         for i in range(self.NumberofUser):
-            UserID=self.CatalogUser_json[i]['UserID']
+            UserID=self.Catalog['UserList'][i]['UserID']
             # 1° step car in garage?
             if (self.digital_button[i]==0):
                 print('The vehicle is not present in the garage')
@@ -126,9 +127,8 @@ class Controller:
                 }   
             self.client.myPublish(topic, msg)
             dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
-            response = requests.put('http://127.0.0.1:8080/Actuator', json.dumps(dict_to_post))
+            response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
             print(dict_to_post)
-            print(response)
         self.actuator_command=[-1]*self.NumberofUser
         self.temperature=[-1]*self.NumberofUser
         self.battery_percentage=[-1]*self.NumberofUser
