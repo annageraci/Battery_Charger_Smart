@@ -84,58 +84,88 @@ class Controller:
         soglia_photon=1.1 # eV energy of the photon 
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
-            # 1° step car in garage?
-            if (self.digital_button[i]==0):
-                print('The vehicle is not present in the garage')
-                self.actuator_command[i]=0
-            else:
-                if (self.digital_button[i]==-1):
-                    print('The sensor of presence does not work')
-                # 2* step ha i pannelli fotovoltaici? c'è il sole?
-                if self.photon[i]>=soglia_photon and self.photon[i]!=-1:
-                    # self.photon=-1 means no solar pannel 
-                    print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
-                    self.actuator_command[i]=1
+            if flag==2:
+                # 1° step car in garage?
+                if (self.digital_button[i]==0):
+                    print('The vehicle is not present in the garage')
+                    self.actuator_command[i]=0
                 else:
-                    # 3° step check aria condizionata o riscaldamento (temperatura) 
-                    daily_appointment=int(self.daily[i]) #%battery usage in this day
-                    soglia_Htemperature=20 # more than 20° aria condizionata
-                    soglia_Ltemperature=10 # less than 10° aria calda
-                    if ((self.temperature[i]>soglia_Htemperature or self.temperature[i]<soglia_Ltemperature) and self.temperature[i]!=-1):
-                        print(f'Could be necessary switch on the conditioning, temp: {self.temperature[i]}')
-                        daily_appointment=daily_appointment+0.2*daily_appointment #maggiorazione del 20%
-                    # 4° step % batteria è sufficiente
-                    if (daily_appointment>100):
-                        print('probably you have to charge the car during the usage in another charge station')
-                    if (self.battery_percentage[i]>daily_appointment and int(daily_appointment)!=-1):
-                        print(f'percentage of battery sufficient, more than {daily_appointment}')
-                        self.actuator_command[i]=0
-                    elif (daily_appointment!=-1):
-                        print(f'percentage of battery insufficient, less than {daily_appointment}')
+                    if (self.digital_button[i]==-1):
+                        print('The sensor of presence does not work')
+                    # 2* step ha i pannelli fotovoltaici? c'è il sole?
+                    if self.photon[i]>=soglia_photon and self.photon[i]!=-1:
+                        # self.photon=-1 means no solar pannel 
+                        print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
                         self.actuator_command[i]=1
-                if (self.actuator_command[i]==-1):
-                    print('last_chance')
-                    self.actuator_command[i]=0            
-            topic=self.base_topic+UserID+'/actuator'
-            print(f'{topic} Published {self.actuator_command[i]}')
-            msg= {
-                    'bn': 'actuator',
-                    'e':
-                    [
-                   {'n': 'actuator', 'v': self.actuator_command[i], 't': time.time(), 'u': '%'},
-                   ]
-                }   
-            self.client.myPublish(topic, msg)
-            dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
-            response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
-            print(dict_to_post)
-        self.actuator_command=[-1]*self.NumberofUser
-        self.temperature=[-1]*self.NumberofUser
-        self.battery_percentage=[-1]*self.NumberofUser
-        self.digital_button=[-1]*self.NumberofUser
-        self.photon=[-1]*self.NumberofUser
-        self.actuator_command=[-1]*self.NumberofUser
-        self.daily=[-1]*self.NumberofUser
+                    else:
+                        # 3° step check aria condizionata o riscaldamento (temperatura) 
+                        daily_appointment=int(self.daily[i]) #%battery usage in this day
+                        soglia_Htemperature=20 # more than 20° aria condizionata
+                        soglia_Ltemperature=10 # less than 10° aria calda
+                        if ((self.temperature[i]>soglia_Htemperature or self.temperature[i]<soglia_Ltemperature) and self.temperature[i]!=-1):
+                            print(f'Could be necessary switch on the conditioning, temp: {self.temperature[i]}')
+                            daily_appointment=daily_appointment+0.2*daily_appointment #maggiorazione del 20%
+                        # 4° step % batteria è sufficiente
+                        if (daily_appointment>100):
+                            print('probably you have to charge the car during the usage in another charge station')
+                        if (self.battery_percentage[i]>daily_appointment and int(daily_appointment)!=-1):
+                            print(f'percentage of battery sufficient, more than {daily_appointment}')
+                            self.actuator_command[i]=0
+                        elif (daily_appointment!=-1):
+                            print(f'percentage of battery insufficient, less than {daily_appointment}')
+                            self.actuator_command[i]=1
+                    if (self.actuator_command[i]==-1):
+                        print('last_chance')
+                        self.actuator_command[i]=0            
+                topic=self.base_topic+UserID+'/actuator'
+                print(f'{topic} Published {self.actuator_command[i]}')
+                msg= {
+                        'bn': 'actuator',
+                        'e':
+                        [
+                    {'n': 'actuator', 'v': self.actuator_command[i], 't': time.time(), 'u': '%'},
+                    ]
+                    }   
+                self.client.myPublish(topic, msg)
+                dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
+                response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
+                print(dict_to_post)
+                self.actuator_command=[-1]*self.NumberofUser
+                self.temperature=[-1]*self.NumberofUser
+                self.battery_percentage=[-1]*self.NumberofUser
+                self.digital_button=[-1]*self.NumberofUser
+                self.photon=[-1]*self.NumberofUser
+                self.actuator_command=[-1]*self.NumberofUser
+                self.daily=[-1]*self.NumberofUser
+            elif flag==1:
+                topic=self.base_topic+UserID+'/actuator'
+                msg= {
+                        'bn': 'actuator',
+                        'e':
+                        [
+                    {'n': 'actuator', 'v': 1, 't': time.time(), 'u': '%'},
+                    ]
+                    }   
+                self.client.myPublish(topic, msg)
+                print(f'{topic} Published {self.actuator_command[i]}')
+                dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
+                response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
+            elif flag==0:
+                topic=self.base_topic+UserID+'/actuator'
+                msg= {
+                        'bn': 'actuator',
+                        'e':
+                        [
+                    {'n': 'actuator', 'v': 0, 't': time.time(), 'u': '%'},
+                    ]
+                    }   
+                self.client.myPublish(topic, msg)
+                print(f'{topic} Published {self.actuator_command[i]}')
+                dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
+                response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
+
+                
+
 
 if __name__=="__main__":
     Settings=json.load(open('settings.json'))
