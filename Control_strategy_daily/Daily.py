@@ -2,8 +2,8 @@ import json
 import random
 import time
 from datetime import datetime
-from MyMQTT import MyMQTT
-from simplePublisher import MyPublisher
+from Material.MyMQTT import MyMQTT
+from Material.simplePublisher import MyPublisher
 import cherrypy
 import requests
 
