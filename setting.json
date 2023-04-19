@@ -1,12 +1,16 @@
 {
   "Catalog_url": "http://127.0.0.1:8080",
-  "DockerIP":"http://172.17.0.1:8080",
+  "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
     "IPAddress": "mqtt.eclipseprojects.io",
     "port": 1883
   },
   "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
+  "ThingSpeak": {
+    "API_keys": "YJPIP47T25RRGBYX",
+    "ChannelID": "2105394"
+  },
   "DeviceList": [
     {
       "deviceName": "Temperature_Sensor",
@@ -67,7 +71,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "status": 0,
+      "status": "on",
       "lastUpDate": 1679060549
     },
     {
@@ -142,7 +146,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
-      "lastUpDate": 1679059744
+      "lastUpDate": 1681894245
     },
     {
       "deviceName": "Battery_Detector",
@@ -249,7 +253,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
+            "NumberOfTotalKilometers": 50
           },
           {
             "Type": "Friends",
@@ -257,13 +261,7 @@
             "NumberOfTotalKilometers": 30
           }
         ],
-        "Saturday": [
-          {
-            "Type": "",
-            "StartTimeSlot": [],
-            "NumberOfTotalKilometers": 60
-          }
-        ],
+        "Saturday": [],
         "Sunday": []
       }
     },
