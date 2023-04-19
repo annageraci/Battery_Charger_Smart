@@ -7,7 +7,120 @@
     "port": 1883
   },
   "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
-  "DeviceList": [],
+  "DeviceList": [
+    {
+      "deviceName": "Photon_Sensor",
+      "DeviceID": "2",
+      "UserAssociationID": "1",
+      "MeasureType": "Photoni",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
+      },
+      "lastUpDate": 1681911721
+    },
+    {
+      "deviceName": "Digital_Button",
+      "DeviceID": "3",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "lastUpDate": 1681911717
+    },
+    {
+      "deviceName": "Battery_Detector",
+      "DeviceID": "4",
+      "UserAssociationID": "1",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1681911708
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "5",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1681911701
+    },
+    {
+      "deviceName": "Temperature_Sensor",
+      "DeviceID": "6",
+      "UserAssociationID": "2",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
+      },
+      "lastUpDate": 1681911693
+    },
+    {
+      "deviceName": "Digital_Button",
+      "DeviceID": "7",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "lastUpDate": 1681911688
+    },
+    {
+      "deviceName": "Battery_Detector",
+      "DeviceID": "8",
+      "UserAssociationID": "2",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1681911684
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "9",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1681911668
+    },
+    {
+      "deviceName": "Temperature_Sensor",
+      "DeviceID": "10",
+      "UserAssociationID": "4",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
+      },
+      "lastUpDate": 1681911651
+    }
+  ],
   "UserList": [
     {
       "UserID": "1",
