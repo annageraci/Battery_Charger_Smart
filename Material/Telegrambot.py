@@ -234,7 +234,7 @@ class SwitchBot:
 
 
 if __name__ == "__main__":
-    conf = json.load(open("settings.json"))
+    conf = json.load(open('../settings.json'))
     token = conf["TelegramToken"]
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
