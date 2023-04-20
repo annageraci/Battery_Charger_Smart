@@ -1,6 +1,6 @@
 {
-  "Catalog_url": "http://172.20.228.53",
-  "IphoneAnna": "http://172.20.228.53",
+  "Catalog_url": "http://172.20.228.53:8080",
+  "IphoneAnna":"http://172.20.228.53:8080",
   "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
