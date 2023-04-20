@@ -283,7 +283,7 @@ if __name__=="__main__":
     conf={
         '/':{
             'request.dispatch':cherrypy.dispatch.MethodDispatcher(),
-            'tool.session.on':True
+            'tools.sessions.on':True
         }
     }
     WebService=Catalog()
