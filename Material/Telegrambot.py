@@ -11,10 +11,11 @@ import requests
 
 
 class SwitchBot:
-    def __init__(self, token, broker, port, topic):
+    def __init__(self, token, broker, port, topic,base_url):
         # Local token
         self.tokenBot = token
         # Catalog token
+        self.base_url=base_url
         # self.tokenBot=requests.get("http://catalogIP/telegram_token").json()["telegramToken"]
         self.bot = telepot.Bot(self.tokenBot)
         self.client = MyMQTT("telegramBot21389", broker, port, self)
@@ -39,7 +40,7 @@ class SwitchBot:
         MessageLoop(self.bot, {'chat': self.on_chat_message,
                                'callback_query': self.on_callback_query}).run_as_thread()
         
-        urlToContact='http://127.0.0.1:8080/AllUsers'
+        urlToContact=self.base_url+'/AllUsers'
         response= requests.get(urlToContact)
         self.ListOfAllUser_json = response.json()
         self.topic_presence=[]
@@ -228,7 +229,7 @@ class SwitchBot:
                 payload['Date']['NumberOfTotalKilometers']=60
             elif (query_data=='3' or query_data=='7' or query_data=='11' or query_data=='15' or query_data=='19' or query_data=='23' or query_data=='27'):
                 payload['Date']['NumberOfTotalKilometers']=80
-            response = requests.put('http://127.0.0.1:8080/Agenda', json.dumps(payload))
+            response = requests.put(self.base_url+'/Agenda', json.dumps(payload))
             self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID}, in day {day}, {payload['Date']['NumberOfTotalKilometers']} km")
             self.UserID=-1
 
@@ -239,7 +240,8 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    sb=SwitchBot(token,broker,port,topic_base)
+    base_url = conf["Catalog_url"]
+    sb=SwitchBot(token,broker,port,topic_base, base_url)
 
     while True:
         time.sleep(3)
