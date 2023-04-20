@@ -8,27 +8,27 @@ class Catalog(object):
     def GET(self, *uri, **params):
         if len(uri)>0:
             if uri[0]=="MessageBroker":
-                device=json.load(open('Catalog.json'))
+                device=json.load(open('Catalog_Server\Catalog.json'))
                 Broker=device["broker"]
                 return json.dumps(Broker,indent=2)
             
             elif uri[0]=="TelegramToken":
-                device=json.load(open('Catalog.json'))
+                device=json.load(open('Catalog_Server\Catalog.json'))
                 token=device["TelegramToken"]
                 return json.dumps(token,indent=2)
             
             elif uri[0]=="catalog":
-                catalog=json.load(open('Catalog.json'))
+                catalog=json.load(open('Catalog_Server\Catalog.json'))
                 return json.dumps(catalog, indent=2)        
 
             elif uri[0]=='AllDevices':
-                catalog=json.load(open('Catalog.json'))
+                catalog=json.load(open('Catalog_Server\Catalog.json'))
                 devices=catalog["DeviceList"]
                 return json.dumps(devices, indent=2)
 
             elif uri[0]=='DeviceID':
                 ID=uri[1]
-                Catalog=json.load(open('Catalog.json'))
+                Catalog=json.load(open('Catalog_Server\Catalog.json'))
                 ListOfDevice=Catalog['DeviceList']
                 output=''
                 for i in range(len(ListOfDevice)):
@@ -37,13 +37,13 @@ class Catalog(object):
                 return json.dumps(output, indent=2)
 
             elif uri[0]=='AllUsers':
-                catalog=json.load(open('Catalog.json'))
+                catalog=json.load(open('Catalog_Server\Catalog.json'))
                 users=catalog["UserList"]
                 return json.dumps(users, indent=2)
 
             elif uri[0]=='UserID':
                 ID=uri[1]
-                Catalog=json.load(open('Catalog.json'))
+                Catalog=json.load(open('Catalog_Server\Catalog.json'))
                 ListOfUsers=Catalog['UserList']
                 output=''
                 for currentUser in ListOfUsers:
@@ -52,7 +52,7 @@ class Catalog(object):
                 return json.dumps(output, indent=2)
             elif uri[0]=='Agenda':
                 ID=uri[1]
-                Catalog=json.load(open('Catalog.json'))
+                Catalog=json.load(open('Catalog_Server\Catalog.json'))
                 ListOfUsers=Catalog['UserList']
                 output=''
                 for currentUser in ListOfUsers:
@@ -73,27 +73,27 @@ class Catalog(object):
         if uri[0]=='Device':
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
             for i in range(len(ListOfDevice)):
                 if ListOfDevice[i]['DeviceID']==bodyAsDictionary['DeviceID']:
                     return 'this device is already present in the list \n'
             # else is new so we can update the device list
             Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
-            json.dump(Catalog,open('Catalog.json','w'), indent=2)
+            json.dump(Catalog,open('Catalog_Server\Catalog.json','w'), indent=2)
             return json.dumps(Catalog)
         
         if uri[0]=='User':
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfUser=Catalog['UserList']
             for i in range(len(ListOfUser)):
                 if ListOfUser[i]['UserID']==bodyAsDictionary['UserID']:
                     return 'this user is already present in the list \n'
             # else is new so we can update the user list
             Catalog['UserList'].insert(len(Catalog['UserList']), bodyAsDictionary)
-            json.dump(Catalog,open('Catalog.json','w'), indent=2)
+            json.dump(Catalog,open('Catalog_Server\Catalog.json','w'), indent=2)
             return json.dumps(Catalog)
 
         if uri[0]=='Agenda':
@@ -109,7 +109,7 @@ class Catalog(object):
             #}
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfUser=Catalog['UserList']
             for i in range(len(ListOfUser)):
                 for currentUser in ListOfUser:
@@ -130,7 +130,7 @@ class Catalog(object):
                             currentUser['Agenda']['Sunday'].append(bodyAsDictionary['Date'])
                         else:
                             return 'Does not exist this day'
-                json.dump(Catalog,open('Catalog.json','w'),indent=2)
+                json.dump(Catalog,open('Catalog_Server\Catalog.json','w'),indent=2)
                 return json.dumps(Catalog)
         
     def PUT(self,*uri):
@@ -141,13 +141,13 @@ class Catalog(object):
             # }
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
             for i in range(len(ListOfDevice)):
                 if ListOfDevice[i]['DeviceID']==bodyAsDictionary['DeviceID']:
                     #Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
                     Catalog['DeviceList'][i]['lastUpDate']=int(time.time())
-                    json.dump(Catalog,open('Catalog.json','w'), indent=2)
+                    json.dump(Catalog,open('Catalog_Server\Catalog.json','w'), indent=2)
                     return json.dumps(Catalog)
         
         if uri[0]=='User':
@@ -164,7 +164,7 @@ class Catalog(object):
             # }
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfUser=Catalog['UserList']
             for i in range(len(ListOfUser)):
                 if ListOfUser[i]['UserID']==bodyAsDictionary['UserID']:
@@ -174,7 +174,7 @@ class Catalog(object):
                         if currentDevice['DeviceID']==bodyAsDictionary['ConnectedDevices']['DeviceID']:
                             return 'The Device is already present in the list but the other parameter are updated' + json.dumps(Catalog)
                     Catalog['UserList'][i]["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
-                    json.dump(Catalog,open('Catalog.json','w'),indent=2)
+                    json.dump(Catalog,open('Catalog_Server\Catalog.json','w'),indent=2)
                     #json.dump(Catalog,open('CatalogFake.json','w'), indent=2)
                     return json.dumps(Catalog)
                 
@@ -185,7 +185,7 @@ class Catalog(object):
             bodyAsString=cherrypy.request.body.read()
             bodyAsDictionary=json.loads(bodyAsString)
             value=bodyAsDictionary['value']
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfUser=Catalog['UserList']
             for currentUser in ListOfUser:
                 for currentDevice in currentUser['ConnectedDevices']:
@@ -199,7 +199,7 @@ class Catalog(object):
                         Catalog['DeviceList'][i]['status']=1
                     else:
                         return 'The value is not valid '+ json.dumps(Catalog)
-            json.dump(Catalog,open('Catalog.json','w'), indent=2)
+            json.dump(Catalog,open('Catalog_Server\Catalog.json','w'), indent=2)
             return json.dumps(Catalog)
 
         if uri[0]=='Battery':
@@ -209,7 +209,7 @@ class Catalog(object):
             bodyAsString=cherrypy.request.body.read()
             bodyAsDictionary=json.loads(bodyAsString)
             value=bodyAsDictionary['value']
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfUser=Catalog['UserList']
             for currentUser in ListOfUser:
                 for currentDevice in currentUser['ConnectedDevices']:
@@ -218,7 +218,7 @@ class Catalog(object):
             for i in range(len(Catalog['DeviceList'])):
                 if Catalog['DeviceList'][i]['DeviceID']==DeviceID:
                     Catalog['DeviceList'][i]['status']=value
-            json.dump(Catalog,open('Catalog.json','w'), indent=2)
+            json.dump(Catalog,open('Catalog_Server\Catalog.json','w'), indent=2)
             return json.dumps(Catalog)
         
         if uri[0]=='Agenda':
@@ -234,7 +234,7 @@ class Catalog(object):
             #}
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('Catalog.json'))
+            Catalog=json.load(open('Catalog_Server\Catalog.json'))
             ListOfUser=Catalog['UserList']
             for i in range(len(ListOfUser)):
                 for currentUser in ListOfUser:
@@ -276,7 +276,7 @@ class Catalog(object):
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
                         else:
                             return 'Does not exist this day'
-                json.dump(Catalog,open('Catalog.json','w'),indent=2)
+                json.dump(Catalog,open('Catalog_Server\Catalog.json','w'),indent=2)
                 return json.dumps(Catalog)
     
 if __name__=="__main__":
@@ -290,7 +290,7 @@ if __name__=="__main__":
     cherrypy.tree.mount(WebService,'/',conf)
     cherrypy.config.update({
     'server.socket_host' : '0.0.0.0',
-    'server.socket_port' : 8080,
+    'server.socket_port' : 8080
     })
     cherrypy.engine.start()
     cherrypy.engine.block()
