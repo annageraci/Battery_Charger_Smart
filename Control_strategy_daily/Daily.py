@@ -1,5 +1,4 @@
 import json
-import random
 import time
 from datetime import datetime
 from MyMQTT import MyMQTT
