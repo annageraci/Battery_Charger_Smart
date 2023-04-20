@@ -71,7 +71,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "status": 0,
+      "status": 1,
       "lastUpDate": 1679060549
     },
     {
