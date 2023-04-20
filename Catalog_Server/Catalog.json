@@ -1,6 +1,6 @@
 {
   "Catalog_url": "http://172.20.228.53",
-  "IphoneAnna":"http://172.20.228.53",
+  "IphoneAnna": "http://172.20.228.53",
   "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
@@ -23,7 +23,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
       },
-      "lastUpDate": 1679160151
+      "lastUpDate": 1681996193
     },
     {
       "deviceName": "Photon_Sensor",
@@ -35,7 +35,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
-      "lastUpDate": 1679059710
+      "lastUpDate": 1681996199
     },
     {
       "deviceName": "Digital_Button",
@@ -72,7 +72,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "status": 1,
+      "status": 0,
       "lastUpDate": 1679060549
     },
     {
@@ -147,7 +147,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
-      "lastUpDate": 1679059744
+      "lastUpDate": 1681996186
     },
     {
       "deviceName": "Battery_Detector",
