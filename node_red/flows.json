@@ -1101,44 +1101,8 @@
         "correl": "",
         "expiry": "",
         "broker": "02376e029d38c6fc",
-        "x": 1570,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "858f0673e32882ca",
-        "type": "mqtt out",
-        "z": "ea22f9ccf8be5234",
-        "name": "Actuator 1",
-        "topic": "Battery/IoT/project/UserID/2/actuator",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "02376e029d38c6fc",
-        "x": 1570,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "793c27015ad0d271",
-        "type": "mqtt out",
-        "z": "ea22f9ccf8be5234",
-        "name": "Actuator 4",
-        "topic": "Battery/IoT/project/UserID/4/actuator",
-        "qos": "2",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "02376e029d38c6fc",
-        "x": 1570,
-        "y": 400,
+        "x": 1730,
+        "y": 80,
         "wires": []
     },
     {
@@ -1574,108 +1538,6 @@
         ]
     },
     {
-        "id": "fb815b88e78934d0",
-        "type": "ui_switch",
-        "z": "ea22f9ccf8be5234",
-        "name": "",
-        "label": "Manual Activation Actuator 1",
-        "tooltip": "",
-        "group": "95e378d3f90482eb",
-        "order": 0,
-        "width": "10",
-        "height": "1",
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1260,
-        "y": 160,
-        "wires": [
-            [
-                "a04047aa78655573"
-            ]
-        ]
-    },
-    {
-        "id": "e3bcf435d0796e0f",
-        "type": "ui_switch",
-        "z": "ea22f9ccf8be5234",
-        "name": "",
-        "label": "Manual Activation Actuator 2",
-        "tooltip": "",
-        "group": "960fc61e4bea28b2",
-        "order": 0,
-        "width": "10",
-        "height": "1",
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1260,
-        "y": 340,
-        "wires": [
-            [
-                "a44c4d2038cf8f20"
-            ]
-        ]
-    },
-    {
-        "id": "ea173bb9b18a8844",
-        "type": "ui_switch",
-        "z": "ea22f9ccf8be5234",
-        "name": "",
-        "label": "Manual Activation Actuator 4",
-        "tooltip": "",
-        "group": "bd833f3d5a3ef447",
-        "order": 0,
-        "width": "10",
-        "height": "1",
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 1260,
-        "y": 500,
-        "wires": [
-            [
-                "8645c0936c520d8b"
-            ]
-        ]
-    },
-    {
         "id": "8d41f3d72492ce27",
         "type": "ui_gauge",
         "z": "ea22f9ccf8be5234",
@@ -1737,7 +1599,7 @@
         "z": "ea22f9ccf8be5234",
         "name": "Daily",
         "group": "95e378d3f90482eb",
-        "order": 15,
+        "order": 5,
         "width": 5,
         "height": 5,
         "gtype": "donut",
@@ -1821,7 +1683,7 @@
         "z": "ea22f9ccf8be5234",
         "name": "Battery",
         "group": "95e378d3f90482eb",
-        "order": 16,
+        "order": 6,
         "width": 5,
         "height": 5,
         "gtype": "donut",
@@ -2069,7 +1931,7 @@
         "z": "ea22f9ccf8be5234",
         "name": "temperature sensor ",
         "group": "95e378d3f90482eb",
-        "order": 9,
+        "order": 4,
         "width": 5,
         "height": 5,
         "label": "Temperature sensor  1",
@@ -2201,7 +2063,7 @@
         "z": "ea22f9ccf8be5234",
         "name": "Photon sensor",
         "group": "95e378d3f90482eb",
-        "order": 8,
+        "order": 3,
         "width": 5,
         "height": 5,
         "label": "Photon sensor 1",
@@ -2372,297 +2234,864 @@
         ]
     },
     {
-        "id": "a04047aa78655573",
-        "type": "function",
+        "id": "3971ac65e2f35caf",
+        "type": "mqtt out",
         "z": "ea22f9ccf8be5234",
-        "name": "function 37",
-        "func": "var newMsg = {'payload':''};\nif (msg.payload==1){\n    newMsg = { 'payload':\n        {\n            'e': [\n            {\n            'v':   1\n            } ]\n        } \n    }\n} else \n{\n    newMsg = {\n        'payload':\n        {\n            'e': [\n                {\n                    'v': 0\n                }]\n        }\n    }\n}\n    \nreturn newMsg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1350,
+        "name": "Actuator 1",
+        "topic": "Battery/IoT/project/UserID/1/actuator",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1730,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a71257dc8d90e98e",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator OFF",
+        "group": "95e378d3f90482eb",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTUATOR OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1160,
         "y": 60,
         "wires": [
             [
-                "970f2d3bdbea11d2"
+                "34187c5cc97a7ef3"
             ]
         ]
     },
     {
-        "id": "a44c4d2038cf8f20",
+        "id": "34187c5cc97a7ef3",
         "type": "function",
         "z": "ea22f9ccf8be5234",
-        "name": "function 38",
-        "func": "var newMsg = {'payload':''};\nif (msg.payload==1){\n    newMsg = { 'payload':\n        {\n            'e': [\n            {\n            'v':   1\n            } ]\n        } \n    }\n} else \n{\n    newMsg = {\n        'payload':\n        {\n            'e': [\n                {\n                    'v': 0\n                }]\n        }\n    }\n}\n    \nreturn newMsg;\n",
+        "name": "function 43",
+        "func": "\nif (msg.payload==0) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 0,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1370,
+        "x": 1410,
+        "y": 60,
+        "wires": [
+            [
+                "970f2d3bdbea11d2",
+                "88b684675bf518b9"
+            ]
+        ]
+    },
+    {
+        "id": "88b684675bf518b9",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 1",
+        "topic": "Battery/IoT/project/UserID/1/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "1dd5873e0b3b4097",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator ON",
+        "group": "95e378d3f90482eb",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTUATOR ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1170,
+        "y": 180,
+        "wires": [
+            [
+                "fd79a62627fd168e"
+            ]
+        ]
+    },
+    {
+        "id": "7d1963e5c246688c",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator Control Strategy",
+        "group": "95e378d3f90482eb",
+        "order": 14,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Actuator Control Strategy",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1130,
         "y": 260,
         "wires": [
             [
-                "858f0673e32882ca"
+                "878a3909413d09ec"
             ]
         ]
     },
     {
-        "id": "8645c0936c520d8b",
+        "id": "2a656b3260a4bd3b",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 1",
+        "topic": "Battery/IoT/project/UserID/1/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "07d1f204be526333",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 1",
+        "topic": "Battery/IoT/project/UserID/1/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "fd79a62627fd168e",
         "type": "function",
         "z": "ea22f9ccf8be5234",
-        "name": "function 39",
-        "func": "var newMsg = {'payload':''};\nif (msg.payload==1){\n    newMsg = { 'payload':\n        {\n            'e': [\n            {\n            'v':   1\n            } ]\n        } \n    }\n} else \n{\n    newMsg = {\n        'payload':\n        {\n            'e': [\n                {\n                    'v': 0\n                }]\n        }\n    }\n}\n    \nreturn newMsg;\n",
+        "name": "function 46",
+        "func": "\nif (msg.payload==1) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 1,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1370,
+        "x": 1410,
+        "y": 180,
+        "wires": [
+            [
+                "07d1f204be526333",
+                "3971ac65e2f35caf"
+            ]
+        ]
+    },
+    {
+        "id": "878a3909413d09ec",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 47",
+        "func": "\nif (msg.payload==2) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 2,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 260,
+        "wires": [
+            [
+                "2a656b3260a4bd3b"
+            ]
+        ]
+    },
+    {
+        "id": "09a45dca66738b21",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator 2",
+        "topic": "Battery/IoT/project/UserID/2/actuator",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1730,
         "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8dd06b493c0123cd",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator 2",
+        "topic": "Battery/IoT/project/UserID/2/actuator",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1730,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "986898bc4b631c2b",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator OFF",
+        "group": "960fc61e4bea28b2",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTUATOR OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1160,
+        "y": 380,
         "wires": [
             [
-                "793c27015ad0d271"
+                "6b3f84eea79d903e"
             ]
         ]
     },
     {
-        "id": "50e2e2f681681f41",
-        "type": "inject",
+        "id": "6b3f84eea79d903e",
+        "type": "function",
         "z": "ea22f9ccf8be5234",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "2",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1030,
-        "y": 160,
+        "name": "function 48",
+        "func": "\nif (msg.payload==0) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 0,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 380,
         "wires": [
             [
-                "fb815b88e78934d0"
+                "09a45dca66738b21",
+                "74d0f7cca8576b30"
             ]
         ]
     },
     {
-        "id": "1a6d98920935d436",
-        "type": "inject",
+        "id": "74d0f7cca8576b30",
+        "type": "mqtt out",
         "z": "ea22f9ccf8be5234",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "2",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1030,
+        "name": "Flag 2",
+        "topic": "Battery/IoT/project/UserID/2/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
         "y": 340,
-        "wires": [
-            [
-                "e3bcf435d0796e0f"
-            ]
-        ]
+        "wires": []
     },
     {
-        "id": "d11f8b06b7b55a96",
-        "type": "inject",
+        "id": "5e6fb2e5fb484193",
+        "type": "ui_button",
         "z": "ea22f9ccf8be5234",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "2",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1030,
+        "name": "Actuator ON",
+        "group": "960fc61e4bea28b2",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTUATOR ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1170,
         "y": 500,
         "wires": [
             [
-                "ea173bb9b18a8844"
+                "b1993649bc01ce0d"
             ]
         ]
     },
     {
-        "id": "4adb0bd2fd0e4a45",
+        "id": "e03ecd88c8aa210f",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator Control Strategy",
+        "group": "960fc61e4bea28b2",
+        "order": 14,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Actuator Control Strategy",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1130,
+        "y": 580,
+        "wires": [
+            [
+                "9bfe6b146a9230b5"
+            ]
+        ]
+    },
+    {
+        "id": "632da029953087c5",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 2",
+        "topic": "Battery/IoT/project/UserID/2/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b4acf3c43c6c415a",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 2",
+        "topic": "Battery/IoT/project/UserID/2/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b1993649bc01ce0d",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 49",
+        "func": "\nif (msg.payload==1) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 1,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 500,
+        "wires": [
+            [
+                "b4acf3c43c6c415a",
+                "8dd06b493c0123cd"
+            ]
+        ]
+    },
+    {
+        "id": "9bfe6b146a9230b5",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 50",
+        "func": "\nif (msg.payload==2) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 2,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 580,
+        "wires": [
+            [
+                "632da029953087c5"
+            ]
+        ]
+    },
+    {
+        "id": "96a10185bffe25c6",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator 4",
+        "topic": "Battery/IoT/project/UserID/4/actuator",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1730,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "3e126afe556afe06",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator 4",
+        "topic": "Battery/IoT/project/UserID/4/actuator",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1730,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "58da57a2956cbc6b",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator OFF",
+        "group": "bd833f3d5a3ef447",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTUATOR OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1160,
+        "y": 700,
+        "wires": [
+            [
+                "12468b81633b5f53"
+            ]
+        ]
+    },
+    {
+        "id": "12468b81633b5f53",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 51",
+        "func": "\nif (msg.payload==0) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 0,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 700,
+        "wires": [
+            [
+                "96a10185bffe25c6",
+                "2d2f0d56ac763125"
+            ]
+        ]
+    },
+    {
+        "id": "2d2f0d56ac763125",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 4",
+        "topic": "Battery/IoT/project/UserID/4/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "53d013a06056eb22",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator ON",
+        "group": "bd833f3d5a3ef447",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ACTUATOR ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1170,
+        "y": 820,
+        "wires": [
+            [
+                "17b479ed6052be48"
+            ]
+        ]
+    },
+    {
+        "id": "0ef9485b6fdd3544",
+        "type": "ui_button",
+        "z": "ea22f9ccf8be5234",
+        "name": "Actuator Control Strategy",
+        "group": "bd833f3d5a3ef447",
+        "order": 14,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Actuator Control Strategy",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1130,
+        "y": 900,
+        "wires": [
+            [
+                "a60b4be73649e933"
+            ]
+        ]
+    },
+    {
+        "id": "b4699b3855767f78",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 4",
+        "topic": "Battery/IoT/project/UserID/4/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "0cb3826d3aa79e3b",
+        "type": "mqtt out",
+        "z": "ea22f9ccf8be5234",
+        "name": "Flag 4",
+        "topic": "Battery/IoT/project/UserID/4/manualFlag",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "02376e029d38c6fc",
+        "x": 1710,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "17b479ed6052be48",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 52",
+        "func": "\nif (msg.payload==1) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 1,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 820,
+        "wires": [
+            [
+                "0cb3826d3aa79e3b",
+                "3e126afe556afe06"
+            ]
+        ]
+    },
+    {
+        "id": "a60b4be73649e933",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 53",
+        "func": "\nif (msg.payload==2) {\n    msg[\"payload\"] = {\n        'bn': 'flag',\n        'e':\n            [{\n                'n': 'status',\n                'v': 2,\n                't': '',\n                'unit': 'bool'\n            }]\n    }\n}\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1410,
+        "y": 900,
+        "wires": [
+            [
+                "b4699b3855767f78"
+            ]
+        ]
+    },
+    {
+        "id": "7d611c4b9354386e",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 3,
-        "width": 1,
+        "group": "bd833f3d5a3ef447",
+        "order": 7,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "559a5d666a83c481",
+        "id": "19e75c8c3721af13",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 4,
-        "width": 1,
+        "group": "bd833f3d5a3ef447",
+        "order": 9,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "061933776bdddb65",
+        "id": "9f8b924ba7386a1e",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 5,
-        "width": 1,
+        "group": "bd833f3d5a3ef447",
+        "order": 10,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "24cf088e6a31b75c",
+        "id": "4e95e97a4c547e97",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 6,
-        "width": 1,
+        "group": "bd833f3d5a3ef447",
+        "order": 12,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "8c86e41be1b26fcf",
+        "id": "eae574bccc2e1587",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "bd833f3d5a3ef447",
+        "order": 13,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "cdf336c4ad2c11b2",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "bd833f3d5a3ef447",
+        "order": 15,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "14c0227cb21eecd4",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "960fc61e4bea28b2",
+        "order": 7,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "dd72254244be7824",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "960fc61e4bea28b2",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "a20ab53e858086fe",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "960fc61e4bea28b2",
+        "order": 10,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "1426d91329e227ae",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "960fc61e4bea28b2",
+        "order": 12,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "86b5382db98e0476",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "960fc61e4bea28b2",
+        "order": 13,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "4aa47f8901cba39e",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "960fc61e4bea28b2",
+        "order": 15,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "32d507e4f33983d1",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "95e378d3f90482eb",
         "order": 7,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "bb914591c248947b",
+        "id": "afca40ae3e4556c7",
+        "type": "ui_spacer",
+        "z": "ea22f9ccf8be5234",
+        "name": "spacer",
+        "group": "95e378d3f90482eb",
+        "order": 9,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "d9b08734df491e97",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "95e378d3f90482eb",
         "order": 10,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "f29cc002424a3129",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 11,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "c698a97169bb4f24",
+        "id": "93e701c05f639d87",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "95e378d3f90482eb",
         "order": 12,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "f006d6cffc80e2bd",
+        "id": "aac6c78f244ffd4a",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "95e378d3f90482eb",
         "order": 13,
-        "width": 1,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "c68ab1b9767a8494",
+        "id": "ef98d57b67a21929",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "95e378d3f90482eb",
-        "order": 14,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "d279a2c6b563092b",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 17,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "55c1125974fd0902",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 18,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "3ad7c983649a6cc9",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 19,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "35e0209e0603c347",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 20,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "be2fb028a51a3e86",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 21,
-        "width": 1,
+        "order": 15,
+        "width": 2,
         "height": 1
     },
     {
@@ -2704,17 +3133,6 @@
         "className": ""
     },
     {
-        "id": "95e378d3f90482eb",
-        "type": "ui_group",
-        "name": "User ID 1",
-        "tab": "16aee7ded59d95f5",
-        "order": 1,
-        "disp": true,
-        "width": "11",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "960fc61e4bea28b2",
         "type": "ui_group",
         "name": "User ID 2",
@@ -2737,17 +3155,20 @@
         "className": ""
     },
     {
+        "id": "95e378d3f90482eb",
+        "type": "ui_group",
+        "name": "User ID 1",
+        "tab": "16aee7ded59d95f5",
+        "order": 1,
+        "disp": true,
+        "width": 10,
+        "collapse": false,
+        "className": ""
+    },
+    {
         "id": "86d9a45eb8787d9e",
         "type": "ui_tab",
         "name": "Home",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
-        "id": "16aee7ded59d95f5",
-        "type": "ui_tab",
-        "name": "User 1",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
@@ -2764,6 +3185,14 @@
         "id": "469c4650e3cf1e4c",
         "type": "ui_tab",
         "name": "User 4",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "16aee7ded59d95f5",
+        "type": "ui_tab",
+        "name": "User 1",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
