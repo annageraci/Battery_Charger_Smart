@@ -159,7 +159,9 @@ class SwitchBot:
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
 
                 # Da completare con lo sviluppo di ThingSpeakAdaptor
-                # elif message=='/Statistics':
+                # elif message=='/StatisticsEnergy':
+                #   self.bot.sendMessage(chat_ID, text='Energy graph: link')
+                #    self.client.stop()
 
                 # Da completare con lo sviluppo di State Control
                 elif message=='/AlertSMS':
