@@ -1,6 +1,7 @@
 import json 
 import cherrypy
 import time
+
 class Catalog(object):
     exposed=True
 
