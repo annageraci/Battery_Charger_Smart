@@ -44,18 +44,18 @@ class StateControl(MyPublisher):
     def start(self):
         self.client.start()
         time.sleep(6) # asyncronous so we want exaclty ordered
-        for i in range(len(self.Catalog['UserList'])):
-            UserID=int(self.Catalog['UserList'][i]['UserID'])
+        for i in range(self.NumberofUser):
+            UserID=int(self.response_json_all_user[i]['UserID'])
             self.topic_Btemp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_Btemp) 
-            self.client.mySubscribe(self.topic_Btemp_completed)
+            self.client.mySubscribe(self.topic_Btemp_completed[i])
             self.topic_presence_completed.insert(i,self.base_topic +str(UserID)+ self.topic_presence) 
             self.client.mySubscribe(self.topic_presence_completed[i])
             self.topic_battery_completed.insert(i,self.base_topic +str(UserID)+ self.topic_battery) 
             self.client.mySubscribe(self.topic_battery_completed[i])
 
     def notify(self,topic,msg):
-        for i in range(len(self.Catalog['UserList'])):
-            UserID=int(self.Catalog['UserList'][i]['UserID'])
+        for i in range(len(self.NumberofUser)):
+            UserID=int(self.response_json_all_user[i]['UserID'])
             if topic==self.topic_Btemp_completed[i]:
                 payload=json.loads(msg)
                 self.Btemp[i]=payload['e'][0]['v']
@@ -71,40 +71,52 @@ class StateControl(MyPublisher):
             
     def control_strategy(self):
         for i in range(self.NumberofUser):
-            UserID=self.Catalog['UserList'][i]['UserID']
+            UserID=self.response_json_all_user[i]['UserID']
             # temperature of the battery too high 
             if self.Btemp[i]>33:
                 self.output[i]='The temperature of the battery is too high, cannot recharge the battery, leave the vehicle to a specialist'
-                topic=self.base_topic+UserID+self.topic_alert
-                print(f'{topic} Published this alert from StateControl: {self.output[i]}')
-                message=self.__message
-                message['text'] = self.output[i]
-                message['t'] = str(time.time())
-                self.client.myPublish(topic, message)
+            else: 
+                self.output[i]='No temperature battery issue'
+            topic=self.base_topic+UserID+self.topic_alert
+            print(f'{topic} Published this alert from StateControl: {self.output[i]}')
+            message=self.__message
+            message['text'] = self.output[i]
+            message['t'] = str(time.time())
+            self.client.myPublish(topic, message)
 
             if self.digital_button[i]==0:
                 self.output[i]='The vehicle is not present in the garage'
-                print(f'{topic} Published this alert from StateControl: {self.output[i]}')
-                message=self.__message
-                message['text'] = self.output[i]
-                message['t'] = str(time.time())
-                self.client.myPublish(topic, message)
+            elif self.digital_button[i]==-1: 
+                self.output[i]='Presence sensor not work'
+            else: 
+                self.output[i]='No issue from presence sensor'
+            topic=self.base_topic+UserID+self.topic_alert
+            print(f'{topic} Published this alert from StateControl: {self.output[i]}')
+            message=self.__message
+            message['text'] = self.output[i]
+            message['t'] = str(time.time())
+            self.client.myPublish(topic, message)
 
-            if self.battery_percentage<15 and self.battery_percentage!=-1:
-                self.output[i]=f'The percentage of battery is too low (<15%): {self.battery_percentage}'
-                print(f'{topic} Published this alert from StateControl: {self.output[i]}')
-                message=self.__message
-                message['text'] = self.output[i]
-                message['t'] = str(time.time())
-                self.client.myPublish(topic, message)
-                print(self.topic+f' Published:  '+str(message['text']))
+            if self.battery_percentage[i]<15 and self.battery_percentage[i]!=-1:
+                self.output[i]=f'The percentage of battery is too low (<15%): {self.battery_percentage[i]}'
+            elif self.battery_percentage==-1:
+                self.output[i]=f'Battery percentage is not detected'
+            else: 
+                self.output[i]=f'Battery percentage is not too low: {self.battery_percentage[i]}'
+            topic=self.base_topic+UserID+self.topic_alert   
+            print(f'{topic} Published this alert from StateControl: {self.output[i]}')
+            message=self.__message
+            message['text'] = self.output[i]
+            message['t'] = str(time.time())
+            self.client.myPublish(topic, message)
+            print(f'{topic} Published:  {message}')
 
 
 
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url']
+        BaseUrl=settings['Catalog_url_Anna']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
