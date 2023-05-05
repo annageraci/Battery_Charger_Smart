@@ -99,8 +99,8 @@ class StateControl(MyPublisher):
 
             if self.battery_percentage[i]<15 and self.battery_percentage[i]!=-1:
                 self.output[i]=f'The percentage of battery is too low (<15%): {self.battery_percentage[i]}'
-            elif self.battery_percentage==-1:
-                self.output[i]=f'Battery percentage is not detected'
+            elif self.battery_percentage[i]==-1:
+                self.output[i]=f'Battery percentage is not detected!!'
             else: 
                 self.output[i]=f'Battery percentage is not too low: {self.battery_percentage[i]}'
             topic=self.base_topic+UserID+self.topic_alert   
