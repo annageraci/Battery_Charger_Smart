@@ -55,11 +55,10 @@ class SwitchBot:
         self.client.start() #connect to the broker and start the loop
         time.sleep(6) # asyncronous so we want exaclty ordered
         self.topic_presence=self.BaseTopic +str(self.UserID)+ '/sensor/presence'
-        if self.AlertOutput==-1:
-
-            # Da completare con il topic del tipo di allerta pubblicato dallo State Control
-            self.client.mySubscribe(self.topic_statecontrol)
-            
+        self.topic_StateControl=self.BaseTopic+str(self.UserID) + '/statecontrol/AlertSMS'
+        #enter in the if ONLY when the request is done by the telegram bot 
+        if self.AlertOutput=='':
+            self.client.mySubscribe(self.topic_StateControl)
         elif self.output==-1:
             self.client.mySubscribe(self.topic_presence)
     
@@ -68,8 +67,13 @@ class SwitchBot:
         if topic==self.topic_presence:
             payload=json.loads(msg)
             self.output=payload['e'][0]['value']
-            #how to do when the message is received
             print(f'the value of the presence of the vehicle of the UserID {self.UserID} is {self.output}')
+
+        if topic==self.topic_StateControl:
+            payload=json.loads(msg)
+            self.AlertOutput=self.AlertOutput+ '\n' + payload['text']
+            print(f'Received')
+
 
     def on_chat_message(self, msg):
         content_type, chat_type, chat_ID = telepot.glance(msg)
@@ -165,19 +169,16 @@ class SwitchBot:
 
                 # Da completare con lo sviluppo di State Control
                 elif message=='/AlertSMS':
-                    self.AlertOutput=-1
-                    time.sleep(15)
-                    if self.AlertOutput==1:
-                        # update con il giusto alert che darà 
-                        self.bot.sendMessage(chat_ID, text='Type of Alert: ')
-                        self.client.stop()
-                    elif self.AlertOutput==0:
-                        # Da continuare con il giusto Alert
-                        self.bot.sendMessage(chat_ID, text='Type of Alert: ')
-                        self.client.stop()
-                    else:
-                        self.bot.sendMessage(chat_ID, text='In this moment the service is not work')
-                        self.client.stop()
+                    self.AlertOutput=''
+                    sb.StartOperation()
+                    self.bot.sendMessage(chat_ID, text='Wait the response!')
+                    time.sleep(29)
+                    if self.AlertOutput=='':
+                        self.bot.sendMessage(chat_ID, text=f'Re-try')
+                        self.client.stop() 
+                    else: 
+                        self.bot.sendMessage(chat_ID, text=f'Alert message are: {self.AlertOutput}')
+                        self.client.stop()                  
 
                 else:
                     self.bot.sendMessage(chat_ID, text="Command not supported")
@@ -243,7 +244,7 @@ class SwitchBot:
             elif (query_data=='3' or query_data=='7' or query_data=='11' or query_data=='15' or query_data=='19' or query_data=='23' or query_data=='27'):
                 payload['Date']['NumberOfTotalKilometers']=80
             response = requests.put(self.base_url+'/Agenda', json.dumps(payload))
-            self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID}, in day {day}, {payload['Date']['NumberOfTotalKilometers']} km")
+            self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID} \n Day: {day} \n Kilometers: {payload['Date']['NumberOfTotalKilometers']}")
             self.UserID=-1
 
 
@@ -253,7 +254,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url"]
+    base_url = conf["Catalog_url_Anna"]
     sb=SwitchBot(token,broker,port,topic_base, base_url)
 
     while True:
