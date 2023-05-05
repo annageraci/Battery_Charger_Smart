@@ -83,13 +83,16 @@ class SwitchBot:
             if currentUser['ChatID']==str(ChatID):
                 self.UserID=currentUser['UserID']
                 
-                if message == "/switch":
+                if message == "/start":
+                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewStatistics')
+
+                elif message == "/switch":
                     buttons = [[InlineKeyboardButton(text=f'start charge🔋', callback_data=f'on'), 
                             InlineKeyboardButton(text=f'stop charge🪫', callback_data=f'off'), 
                             InlineKeyboardButton(text=f'nothing', callback_data=f'nothing')]]
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='What do you want to do?', reply_markup=keyboard)
-                
+
                 elif message=="/IsPresence":
                     self.output=-1
                     sb.StartOperation()
