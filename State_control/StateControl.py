@@ -72,8 +72,9 @@ class StateControl(MyPublisher):
     def control_strategy(self):
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
+            # temperature of the battery too high 
             if self.Btemp[i]>33:
-                self.output[i]='The temperature of the battery is too high, cannot recharge the battery, leave the machine to a specialist'
+                self.output[i]='The temperature of the battery is too high, cannot recharge the battery, leave the vehicle to a specialist'
                 topic=self.base_topic+UserID+self.topic_alert
                 print(f'{topic} Published this alert from StateControl: {self.output[i]}')
                 message=self.__message
@@ -89,7 +90,7 @@ class StateControl(MyPublisher):
                 message['t'] = str(time.time())
                 self.client.myPublish(topic, message)
 
-            if self.battery_percentage<15:
+            if self.battery_percentage<15 and self.battery_percentage!=-1:
                 self.output[i]=f'The percentage of battery is too low (<15%): {self.battery_percentage}'
                 print(f'{topic} Published this alert from StateControl: {self.output[i]}')
                 message=self.__message
