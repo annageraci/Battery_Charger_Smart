@@ -109,8 +109,6 @@ class StateControl(MyPublisher):
             message['text'] = self.output[i]
             message['t'] = str(time.time())
             self.client.myPublish(topic, message)
-            print(f'{topic} Published:  {message}')
-
 
 
 if __name__ == '__main__':
