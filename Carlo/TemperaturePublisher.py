@@ -4,13 +4,13 @@ from rPiCatalogUpdater import CatalogUpdater
 from SimPublisher import SimSensorPublisher
 
 if __name__ == "__main__":
-    topic = "Battery/IoT/project/UserID/1/sensor"
+    baseTopic = "Battery/IoT/project/UserID/1/sensor"
     deviceID = "110"
     userAssociationID = "1"
     deviceName = "TemperatureSimulator1"
     catalogURL = "http://127.0.0.1:8080"
-    sensor = TemperatureSensor(deviceID, deviceName, userAssociationID, topic, True)
-    
+    sensor = TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
+    topic = sensor.MQTTtopic
 
     broker = "mqtt.eclipseprojects.io" # to be updated with the relative reference
     port = 1883 # same
