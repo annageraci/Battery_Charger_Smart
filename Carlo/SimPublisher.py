@@ -31,6 +31,7 @@ class SimSensorPublisher():
     def rPi_publish(self, topic, json_payload, QoS=2):
         self.client.publish(topic, json.dumps(json_payload), QoS)
         print(json_payload)
+        print(topic)
         self.lastUpdate = time.time()
         self.catalogUpdater.setUpdateTime(self.lastUpdate)
 
