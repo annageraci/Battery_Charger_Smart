@@ -51,7 +51,7 @@ class CatalogUpdater():
         print(devices)
 
 if __name__ == '__main__':
-    URL='http://127.0.0.1:8080'
+    URL='http://localhost:8080'
     updater = CatalogUpdater(URL,"100", "Presence", "1")
     while True:
         updater.sendMessage()
