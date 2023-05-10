@@ -1,7 +1,10 @@
 {
   "Catalog_url_ubuntu_IP": "http://172.20.228.53:8080",
+<<<<<<< Updated upstream
   "Catalog_url_Anna": "http://172.20.10.3:8080",
   "Catalog_url_Carlo": "http://192.168.72.122:8080",
+=======
+>>>>>>> Stashed changes
   "Catalog_url": "http://192.168.1.18:8080",
   "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
@@ -178,8 +181,13 @@
       "lastUpDate": 1679160119
     },
     {
+<<<<<<< Updated upstream
       "deviceName": "BatterySimulator1",
       "DeviceID": "101",
+=======
+      "deviceName": "LightnessSimulator1",
+      "DeviceID": "102",
+>>>>>>> Stashed changes
       "UserAssociationID": "1",
       "MeasureType": "",
       "availableServices": "MQTT",
@@ -188,11 +196,19 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
+<<<<<<< Updated upstream
       "lastUpDate": 1683742886
     },
     {
       "deviceName": "TemperatureSimulator1",
       "DeviceID": "111",
+=======
+      "lastUpDate": 1683710834
+    },
+    {
+      "deviceName": "TemperatureSimulator1",
+      "DeviceID": "110",
+>>>>>>> Stashed changes
       "UserAssociationID": "1",
       "MeasureType": "",
       "availableServices": "MQTT",
@@ -201,7 +217,11 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
+<<<<<<< Updated upstream
       "lastUpDate": 1683743874
+=======
+      "lastUpDate": 1683743265
+>>>>>>> Stashed changes
     }
   ],
   "UserList": [
