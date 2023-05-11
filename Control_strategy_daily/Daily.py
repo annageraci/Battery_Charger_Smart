@@ -16,7 +16,7 @@ class BatteryDailyUsage(MyPublisher):
             'bn': 'Battery_daily_usage',
             'e':
             [
-                {'n': 'Battery_percentage', 'value': '', 'timestamp': '', 'unit': '%'},
+                {'n': 'Battery_percentage', 'v': '', 't': '', 'unit': '%'},
             ]
         }
         self.BaseUrl=BaseUrl
