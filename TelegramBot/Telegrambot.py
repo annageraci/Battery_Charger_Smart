@@ -167,7 +167,7 @@ class SwitchBot:
 
                 # Da completare con lo sviluppo di ThingSpeakAdaptor
                 # elif message=='/StatisticsEnergy':
-                #   self.bot.sendMessage(chat_ID, text='Energy graph: link')
+                #   self.bot.sendMessage(chat_ID, text='Energy graph: link')  #get request
                 #    self.client.stop()
 
                 # Da completare con lo sviluppo di State Control
