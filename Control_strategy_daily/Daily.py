@@ -41,7 +41,7 @@ class BatteryDailyUsage(MyPublisher):
             message['e'][0]['v'] = self.output[i]
             message['e'][0]['t'] = str(time.time())
             self.topic=self.base_topic+str(UserID)+self.topic_daily
-            print(self.topic+f' Published:  '+str(message['e'][0]['value']))
+            print(self.topic+f' Published:  '+str(message['e'][0]['v']))
             self.client.myPublish(self.topic, message)
 
     def makerequest(self):
@@ -94,8 +94,9 @@ if __name__ == '__main__':
         base_topic=settings['baseTopic']
         topic_daily='/sensor/daily'
         daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
-        daily.makerequest()
-        # time.sleep(5)
-        daily.start()
-        daily.sendData()
-        time.sleep(30)
+        while True:
+            daily.makerequest()
+            # time.sleep(5)
+            daily.start()
+            daily.sendData()
+            time.sleep(15)
