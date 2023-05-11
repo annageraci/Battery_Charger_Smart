@@ -38,8 +38,8 @@ class BatteryDailyUsage(MyPublisher):
         for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
             message = self.__message
-            message['e'][0]['value'] = self.output[i]
-            message['e'][0]['timestamp'] = str(time.time())
+            message['e'][0]['v'] = self.output[i]
+            message['e'][0]['t'] = str(time.time())
             self.topic=self.base_topic+str(UserID)+self.topic_daily
             print(self.topic+f' Published:  '+str(message['e'][0]['value']))
             self.client.myPublish(self.topic, message)
@@ -87,7 +87,7 @@ class BatteryDailyUsage(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url']
+        BaseUrl=settings['Catalog_url_Anna']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
