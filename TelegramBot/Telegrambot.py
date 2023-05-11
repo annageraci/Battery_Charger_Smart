@@ -243,7 +243,6 @@ class SwitchBot:
                 payload['Date']['NumberOfTotalKilometers']=80
             response = requests.put(self.base_url+'/Agenda', json.dumps(payload))
             self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID} \n Day: {day} \n Kilometers: {payload['Date']['NumberOfTotalKilometers']}")
-            self.UserID=-1
 
 
 if __name__ == "__main__":
