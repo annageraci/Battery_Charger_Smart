@@ -89,7 +89,7 @@ class SwitchBot:
                 elif message == "/switch":
                     buttons = [[InlineKeyboardButton(text=f'start charge🔋', callback_data=f'on'), 
                             InlineKeyboardButton(text=f'stop charge🪫', callback_data=f'off'), 
-                            InlineKeyboardButton(text=f'nothing', callback_data=f'nothing')]]
+                            InlineKeyboardButton(text=f'no manual control', callback_data=f'no')]]
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='What do you want to do?', reply_markup=keyboard)
 
@@ -191,33 +191,28 @@ class SwitchBot:
 
     def on_callback_query(self,msg):
         query_ID , chat_ID , query_data = telepot.glance(msg,flavor='callback_query')
-        if (query_data=='on' or query_data=='off' or query_data=='nothing'):
-            self.topic_actuator=self.BaseTopic+str(self.UserID)+'/actuator'
+        if (query_data=='on' or query_data=='off' or query_data=='no'):
             self.topic_flag=self.BaseTopic+str(self.UserID)+'/manualFlag'
             if query_data=='on':
                 output=1
                 payload = self.__message.copy()
                 payload['e'][0]['v'] = output
                 payload['e'][0]['t'] = time.time()
-                self.client.myPublish(self.topic_actuator, payload)
                 self.client.myPublish(self.topic_flag, payload)
             elif query_data=='off':
                 output=0
                 payload = self.__message.copy()
                 payload['e'][0]['v'] = output
                 payload['e'][0]['t'] = time.time()
-                self.client.myPublish(self.topic_actuator, payload)
                 self.client.myPublish(self.topic_flag, payload)
-            elif query_data=='nothing':
+            elif query_data=='no':
                 output=2
                 payload = self.__message.copy()
                 payload['e'][0]['v'] = output
                 payload['e'][0]['t'] = time.time()
-                self.client.myPublish(self.topic_actuator, payload)
                 self.client.myPublish(self.topic_flag, payload)
-            print('Published to the topic '+self.topic_actuator+':'+str(payload['e'][0]['v']))
             print('Published to the topic '+self.topic_flag+':'+str(payload['e'][0]['v']))
-            self.bot.sendMessage(chat_ID, text=f"Charger switched {query_data}")
+            self.bot.sendMessage(chat_ID, text=f"Charger control by control strategy")
             #self.UserID=-1
         
         else: 
