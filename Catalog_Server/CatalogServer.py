@@ -220,8 +220,9 @@ class Catalog(object):
                     Catalog['DeviceList'][i]['status']=value
             json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
-        
-        if uri[0]=='Agenda' and uri[1]=='Update':
+    
+
+        if uri[0]=='AgendaUpdate':
             #{
             #   "UserID": "1",
             #   "Day": "Monday",
@@ -231,7 +232,7 @@ class Catalog(object):
             #        "StartTimeSlot": 8,
             #        "NumberOfTotalKilometers": 50
             #      }
-            #}
+            print('ok')
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
@@ -244,44 +245,57 @@ class Catalog(object):
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         elif "Tuesday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Tuesday']:
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         elif "Wednesday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Wednesday']:
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         elif "Thursday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Thursday']:
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         elif "Friday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Friday']:
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         elif "Saturday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Saturday']:
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         elif "Sunday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Sunday']:
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
                         else:
                             return 'Does not exist this day'
                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                 print(Catalog)
                 return json.dumps(Catalog)
             
-    def PUT(self,*uri):
-        if uri[0]=='Agenda' and uri[1]=='Remove':
+        if uri[0]=='AgendaRemove':
             #{
             #   "UserID": "1",
             #   "Day": "Monday",
