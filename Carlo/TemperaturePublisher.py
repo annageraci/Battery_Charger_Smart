@@ -1,20 +1,26 @@
 import time
 from Sensors import *
-from rPiCatalogUpdater import CatalogUpdater
 from SimPublisher import SimSensorPublisher
+import json
 
 if __name__ == "__main__":
-    baseTopic = "Battery/IoT/project/UserID/1/sensor"
+    settings_file_path = 'settings.json'
+
+    settingsFile = open(settings_file_path)
+    settingsDict = json.load(settingsFile)
+    settingsFile.close()
+    baseTopic = settingsDict["baseTopic"]
     deviceID = "110"
     userAssociationID = "1"
+    baseTopic += userAssociationID + "/sensor"
     deviceName = "TemperatureSimulator1"
-    catalogURL = "http://127.0.0.1:8080"
+    catalogURL = settingsDict["Catalog_url_Anna"]
     sensor = TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
-    topic = sensor.MQTTtopic
+    topic = sensor.getMQTTtopic()
 
-    broker = "mqtt.eclipseprojects.io" # to be updated with the relative reference
-    port = 1883 # same
-    publisher = SimSensorPublisher("csim48rPisensor" + str(1), deviceID, deviceName, broker, port, topic, catalogURL)
+    broker = settingsDict["broker"]["IPAddress"] # to be updated with the relative reference
+    port = settingsDict["broker"]["port"] # same
+    publisher = SimSensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:

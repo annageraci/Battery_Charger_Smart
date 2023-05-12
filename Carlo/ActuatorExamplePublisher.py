@@ -1,11 +1,12 @@
 import paho.mqtt.client as pahoMQTT
-import cherrypy
-import requests
 import json
 import time
 from Sensors import *
-from rPiCatalogUpdater import CatalogUpdater
 from numpy import random
+
+'''
+  This file is used for simulating the signals received by the actuator, only for testing purposes
+'''
 
 class ActuatorPublisher():
     def __init__(self, clientID, deviceID, deviceName, broker, port, topic, catalogURI, notifier=None):
