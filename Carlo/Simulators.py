@@ -48,7 +48,7 @@ class TemperatureSimulator():
 
         return temp
     
-class PresenceSimulator():
+class DigitalSimulator():
     def __init__(self, meanDuration = 8, meanWait = 15):
         self.meanDuration = meanDuration #in number of events
         self.meanWait = meanWait
