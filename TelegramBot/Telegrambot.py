@@ -109,6 +109,58 @@ class SwitchBot:
                         self.client.stop()
                         self.output=[]
                 
+                elif message=='/AgendaMonday':
+                    output=currentUser['Agenda']['Monday']
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Monday is that: \n {output}')
+                
+                elif message=='/AgendaThursday':
+                    buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'4'), 
+                            InlineKeyboardButton(text=f'40 km\n', callback_data=f'5'), 
+                            InlineKeyboardButton(text=f'60 km\n', callback_data=f'6'),
+                            InlineKeyboardButton(text=f'80 km\n', callback_data=f'7')]]
+                    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+                    self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
+                
+                elif message=='/AgendaWednesday':
+                    buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'8'), 
+                            InlineKeyboardButton(text=f'40 km\n', callback_data=f'9'), 
+                            InlineKeyboardButton(text=f'60 km\n', callback_data=f'10'),
+                            InlineKeyboardButton(text=f'80 km\n', callback_data=f'11')]]
+                    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+                    self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
+                
+                elif message=='/AgendaTuesday':
+                    buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'12'), 
+                            InlineKeyboardButton(text=f'40 km\n', callback_data=f'13'), 
+                            InlineKeyboardButton(text=f'60 km\n', callback_data=f'14'),
+                            InlineKeyboardButton(text=f'80 km\n', callback_data=f'15')]]
+                    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+                    self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
+                
+                elif message=='/AgendaFriday':
+                    buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'16'), 
+                            InlineKeyboardButton(text=f'40 km\n', callback_data=f'17'), 
+                            InlineKeyboardButton(text=f'60 km\n', callback_data=f'18'),
+                            InlineKeyboardButton(text=f'80 km\n', callback_data=f'19')]]
+                    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+                    self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
+                
+                elif message=='/AgendaSaturday':
+                    buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'20'), 
+                            InlineKeyboardButton(text=f'40 km\n', callback_data=f'21'), 
+                            InlineKeyboardButton(text=f'60 km\n', callback_data=f'22'),
+                            InlineKeyboardButton(text=f'80 km\n', callback_data=f'23')]]
+                    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+                    self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
+                
+                elif message=='/AgendaSunday':
+                    buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'24'), 
+                            InlineKeyboardButton(text=f'40 km\n', callback_data=f'25'), 
+                            InlineKeyboardButton(text=f'60 km\n', callback_data=f'26'),
+                            InlineKeyboardButton(text=f'80 km\n', callback_data=f'27')]]
+                    keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
+                    self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
+                
                 elif message=='/AgendaMondayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'0'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'1'), 
@@ -149,7 +201,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaSaturdayUpate':
+                elif message=='/AgendaSaturdayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'20'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'21'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'22'),
@@ -251,7 +303,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url"]
+    base_url = conf["Catalog_url_Anna"]
     sb=SwitchBot(token,broker,port,topic_base, base_url)
 
     while True:
