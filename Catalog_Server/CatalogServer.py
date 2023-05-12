@@ -280,7 +280,7 @@ class Catalog(object):
                 print(Catalog)
                 return json.dumps(Catalog)
             
-    def DELETE (self,uri*):
+    def PUT(self,*uri):
         if uri[0]=='Agenda' and uri[1]=='Remove':
             #{
             #   "UserID": "1",
@@ -296,39 +296,54 @@ class Catalog(object):
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfUser=Catalog['UserList']
+            ElemToRemove=bodyAsDictionary['Date']
             for i in range(len(ListOfUser)):
                 for currentUser in ListOfUser:
                     if currentUser['UserID']==bodyAsDictionary['UserID']:
                         if "Monday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Monday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    currentUser['Agenda']['Monday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Tuesday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Tuesday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Tuesday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Wednesday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Wednesday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Wednesday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Thursday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Thursday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Thursday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Friday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Friday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Friday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Saturday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Saturday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Saturday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Sunday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Sunday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
-                                    pass
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Sunday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         else:
-                            return 'Does not exist this appointment'
+                            return 'Does not exist this Day'
                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                 print(Catalog)
                 return json.dumps(Catalog)
