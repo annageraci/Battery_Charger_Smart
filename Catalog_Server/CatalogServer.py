@@ -277,6 +277,7 @@ class Catalog(object):
                         else:
                             return 'Does not exist this day'
                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
+                print(Catalog)
                 return json.dumps(Catalog)
     
 if __name__=="__main__":

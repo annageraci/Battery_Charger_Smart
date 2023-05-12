@@ -296,7 +296,13 @@
           }
         ],
         "Saturday": [],
-        "Sunday": []
+        "Sunday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 7
+          }
+        ]
       }
     },
     {
