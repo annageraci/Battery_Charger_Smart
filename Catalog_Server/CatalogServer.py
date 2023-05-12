@@ -221,7 +221,7 @@ class Catalog(object):
             json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
         
-        if uri[0]=='Agenda':
+        if uri[0]=='Agenda' and uri[1]=='Update':
             #{
             #   "UserID": "1",
             #   "Day": "Monday",
@@ -279,6 +279,61 @@ class Catalog(object):
                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                 print(Catalog)
                 return json.dumps(Catalog)
+            
+    def DELETE (self,uri*):
+        if uri[0]=='Agenda' and uri[1]=='Remove':
+            #{
+            #   "UserID": "1",
+            #   "Day": "Monday",
+            #   "Date":
+            #    {
+            #        "Type": "work",
+            #        "StartTimeSlot": 8,
+            #        "NumberOfTotalKilometers": 50
+            #      }
+            #}
+            bodyAsString=cherrypy.request.body.read() 
+            bodyAsDictionary=json.loads(bodyAsString)
+            Catalog=json.load(open('../Catalog.json'))
+            ListOfUser=Catalog['UserList']
+            for i in range(len(ListOfUser)):
+                for currentUser in ListOfUser:
+                    if currentUser['UserID']==bodyAsDictionary['UserID']:
+                        if "Monday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Monday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        elif "Tuesday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Tuesday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        elif "Wednesday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Wednesday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        elif "Thursday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Thursday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        elif "Friday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Friday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        elif "Saturday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Saturday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        elif "Sunday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Sunday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type'] and appointment['StartTimeSlot']==bodyAsDictionary['Date']['StartTimeSlot'] and appointment['NumberOfTotalKilometers']==bodyAsDictionary['Date']['NumberOfTotalKilometers']:
+                                    pass
+                        else:
+                            return 'Does not exist this appointment'
+                json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
+                print(Catalog)
+                return json.dumps(Catalog)
+            
+
     
 if __name__=="__main__":
     conf={
