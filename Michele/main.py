@@ -3,7 +3,7 @@ from deviceSubscriber import DeviceSubscriber
 import time
 from thingSpeakAdapter import send_data_to_thingspeak_channel
 
-catalog = CatalogAdapter("http://127.0.0.1:8080")
+catalog = CatalogAdapter("http://192.168.72.16:8080")
 deviceList = catalog.get_devices()
 
 
