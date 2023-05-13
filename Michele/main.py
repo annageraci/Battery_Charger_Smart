@@ -17,7 +17,7 @@ for i in deviceList:
     #CONTROLLARE SE THINGSPEAK VUOLE VALORI INTERI OPPURE STRINGHE
     #subscriber.stop()
     #subscribedDevices.append(subscriber)
-    time.sleep(5) #messo in modo tale da permettere al publisher di pubblicare
+    time.sleep(5) #in modo tale da permettere al publisher di pubblicare
     toThingSpeak = send_data_to_thingspeak_channel(deviceList)
     break
 
