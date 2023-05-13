@@ -37,7 +37,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
-      "lastUpDate": 1681996199
+      "lastUpDate": 1683897222
     },
     {
       "deviceName": "Digital_Button",
@@ -247,11 +247,6 @@
       "Agenda": {
         "Monday": [
           {
-            "Type": "work",
-            "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
-          },
-          {
             "Type": "sport",
             "StartTimeSlot": 19,
             "NumberOfTotalKilometers": 15
@@ -261,7 +256,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
+            "NumberOfTotalKilometers": 42
           }
         ],
         "Wednesday": [
@@ -296,7 +291,13 @@
           }
         ],
         "Saturday": [],
-        "Sunday": []
+        "Sunday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 7
+          }
+        ]
       }
     },
     {
