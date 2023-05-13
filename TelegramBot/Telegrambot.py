@@ -77,6 +77,7 @@ class SwitchBot:
 
     def on_chat_message(self, msg):
         content_type, chat_type, chat_ID = telepot.glance(msg)
+        #print(msg)
         message = msg['text']
         ChatID=msg['chat']['id']
         for currentUser in self.ListOfAllUser_json:
@@ -84,7 +85,7 @@ class SwitchBot:
                 self.UserID=currentUser['UserID']
                 
                 if message == "/start":
-                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewStatistics')
+                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpdate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewStatistics \n - exit from the request \n    /exit')
 
                 elif message == "/switch":
                     buttons = [[InlineKeyboardButton(text=f'start charge🔋', callback_data=f'on'), 
@@ -208,9 +209,9 @@ class SwitchBot:
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
 
                 # Da completare con lo sviluppo di ThingSpeakAdaptor
-                # elif message=='/StatisticsEnergy':
-                #   self.bot.sendMessage(chat_ID, text='Energy graph: link')  #get request
-                #    self.client.stop()
+                elif message=='/ViewGraph':
+                   self.bot.sendMessage(chat_ID, text='Energy graph: link')  #get request
+                   self.client.stop()
 
                 # Da completare con lo sviluppo di State Control
                 elif message=='/AlertSMS':
@@ -222,7 +223,7 @@ class SwitchBot:
                         self.bot.sendMessage(chat_ID, text=f'Re-try')
                         self.client.stop() 
                     else: 
-                        self.bot.sendMessage(chat_ID, text=f'Alert message are: {self.AlertOutput}')
+                        self.bot.sendMessage(chat_ID, text=f'Alerts messages are: {self.AlertOutput}')
                         self.client.stop()                  
 
                 else:
@@ -241,20 +242,24 @@ class SwitchBot:
                 payload['e'][0]['v'] = output
                 payload['e'][0]['t'] = time.time()
                 self.client.myPublish(self.topic_flag, payload)
+                print('Published to the topic '+self.topic_flag+':'+str(payload['e'][0]['v']))
+                self.bot.sendMessage(chat_ID, text=f"Start Charge")
             elif query_data=='off':
                 output=0
                 payload = self.__message.copy()
                 payload['e'][0]['v'] = output
                 payload['e'][0]['t'] = time.time()
                 self.client.myPublish(self.topic_flag, payload)
+                print('Published to the topic '+self.topic_flag+':'+str(payload['e'][0]['v']))
+                self.bot.sendMessage(chat_ID, text=f"Stop Charge")
             elif query_data=='no':
                 output=2
                 payload = self.__message.copy()
                 payload['e'][0]['v'] = output
                 payload['e'][0]['t'] = time.time()
                 self.client.myPublish(self.topic_flag, payload)
-            print('Published to the topic '+self.topic_flag+':'+str(payload['e'][0]['v']))
-            self.bot.sendMessage(chat_ID, text=f"Charger control by control strategy")
+                print('Published to the topic '+self.topic_flag+':'+str(payload['e'][0]['v']))
+                self.bot.sendMessage(chat_ID, text=f"Charger control by control strategy")
             #self.UserID=-1
         
         else: 

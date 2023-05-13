@@ -306,7 +306,7 @@
       "UserSurname": "Bianchi",
       "CapacityBattery": 30,
       "Consuption_km/kwh": 6,
-      "ChatID": "",
+      "ChatID": "51065691",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
