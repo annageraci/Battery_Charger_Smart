@@ -85,7 +85,7 @@ class SwitchBot:
                 self.UserID=currentUser['UserID']
                 
                 if message == "/start":
-                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpdate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewStatistics \n - exit from the request \n    /exit')
+                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpdate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewGraphs \n - exit from the request \n    /exit')
 
                 elif message == "/switch":
                     buttons = [[InlineKeyboardButton(text=f'start charge🔋', callback_data=f'on'), 
@@ -214,8 +214,10 @@ class SwitchBot:
 
                 ###
 
-                elif message=='/ViewGraph':
-                   self.bot.sendMessage(chat_ID, text='Energy graph: link')  #get request
+                elif message=='/ViewGraphs':
+                   channelID=currentUser['ThingSpeakKey']
+                   url=f'https://api.thingspeak.com/channels/{channelID}'
+                   self.bot.sendMessage(chat_ID, text=f'Energy graph: {url}')  #get request
                    self.client.stop()
 
                 # Da completare con lo sviluppo di State Control

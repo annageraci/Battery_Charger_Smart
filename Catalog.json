@@ -217,6 +217,7 @@
       "CapacityBattery": 50,
       "Consuption_km/kwh": 6,
       "ChatID": "740346462",
+      "ThingSpeakKey":"2141952",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
@@ -307,6 +308,7 @@
       "CapacityBattery": 30,
       "Consuption_km/kwh": 6,
       "ChatID": "51065691",
+      "ThingSpeakKey":"2141957",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
@@ -386,11 +388,12 @@
     },
     {
       "UserID": "4",
-      "UserName": "Anna",
-      "UserSurname": "Geraci",
+      "UserName": "Ciro",
+      "UserSurname": "Esposito",
       "CapacityBattery": 30,
       "Consuption_km/kwh": 5,
       "ChatID": "",
+      "ThingSpeakID":"2141962",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
