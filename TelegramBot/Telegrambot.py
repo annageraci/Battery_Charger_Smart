@@ -77,7 +77,6 @@ class SwitchBot:
 
     def on_chat_message(self, msg):
         content_type, chat_type, chat_ID = telepot.glance(msg)
-        print(msg)
         message = msg['text']
         ChatID=msg['chat']['id']
         for currentUser in self.ListOfAllUser_json:
@@ -85,7 +84,7 @@ class SwitchBot:
                 self.UserID=currentUser['UserID']
                 
                 if message == "/start":
-                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpdate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewGraphs \n - exit from the request \n    /exit')
+                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpdate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewGraphs \n - Exit from the request \n    /exit')
 
                 elif message == "/switch":
                     buttons = [[InlineKeyboardButton(text=f'start charge🔋', callback_data=f'on'), 
@@ -231,7 +230,7 @@ class SwitchBot:
                         self.client.stop()                  
 
                 elif message=='/exit':
-                    pass
+                    self.bot.sendMessage(chat_ID, text=f'End your request')
 
                 else:
                     self.bot.sendMessage(chat_ID, text="Command not supported")
