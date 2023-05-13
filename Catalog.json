@@ -392,8 +392,8 @@
       "UserSurname": "Esposito",
       "CapacityBattery": 30,
       "Consuption_km/kwh": 5,
-      "ChatID": "",
-      "ThingSpeakID":"2141962",
+      "ChatID": "153123772",
+      "ThingSpeakKey":"2141962",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
