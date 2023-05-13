@@ -67,12 +67,11 @@ class SwitchBot:
         if topic==self.topic_presence:
             payload=json.loads(msg)
             self.output=payload['e'][0]['value']
-            print(f'the value of the presence of the vehicle of the UserID {self.UserID} is {self.output}')
+            #print(f'the value of the presence of the vehicle of the UserID {self.UserID} is {self.output}')
 
         if topic==self.topic_StateControl:
             payload=json.loads(msg)
             self.AlertOutput=self.AlertOutput+ '\n' + payload['text']
-            print(f'Received')
 
 
     def on_chat_message(self, msg):
@@ -307,7 +306,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url_Carlo"]
+    base_url = conf["Catalog_url_Anna"]
     sb=SwitchBot(token,broker,port,topic_base, base_url)
 
     while True:
