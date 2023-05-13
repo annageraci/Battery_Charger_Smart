@@ -11,8 +11,7 @@ class CatalogAdapter:
     def get_devices(self):
         json_devices = requests.get(self.catalogServer+"/AllDevices").json()
         deviceList = []
-        deviceAllowList = ["Temperature_Sensor",
-                           "Photon_Sensor", "Battery_Detector", "MeasureType"]
+        deviceAllowList = ["Temperature_Sensor", "Photon_Sensor", "Battery_Detector", "MeasureType"]
         for item in json_devices:
             if item["deviceName"] not in deviceAllowList:
                 continue
