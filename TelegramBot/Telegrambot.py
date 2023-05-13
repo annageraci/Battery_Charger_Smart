@@ -307,7 +307,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url_Anna"]
+    base_url = conf["Catalog_url_Carlo"]
     sb=SwitchBot(token,broker,port,topic_base, base_url)
 
     while True:
