@@ -207,6 +207,19 @@
       },
       "status": "",
       "lastUpDate": 1683745621
+    },
+    {
+      "deviceName": "",
+      "DeviceID": "Battery/IoT/project/UserID/11/actuator",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "101"
+      },
+      "status": "",
+      "lastUpDate": 1683973005.0572736
     }
   ],
   "UserList": [
@@ -217,7 +230,7 @@
       "CapacityBattery": 50,
       "Consuption_km/kwh": 6,
       "ChatID": "740346462",
-      "ThingSpeakKey":"2141952",
+      "ThingSpeakKey": "2141952",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
@@ -308,7 +321,7 @@
       "CapacityBattery": 30,
       "Consuption_km/kwh": 6,
       "ChatID": "51065691",
-      "ThingSpeakKey":"2141957",
+      "ThingSpeakKey": "2141957",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
@@ -393,7 +406,7 @@
       "CapacityBattery": 30,
       "Consuption_km/kwh": 5,
       "ChatID": "153123772",
-      "ThingSpeakKey":"2141962",
+      "ThingSpeakKey": "2141962",
       "ConnectedDevices": [
         {
           "measure": "Temperature",
