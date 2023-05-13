@@ -208,7 +208,12 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
 
-                # Da completare con lo sviluppo di ThingSpeakAdaptor
+                ###
+
+                ### Da completare con lo sviluppo di ThingSpeakAdaptor ###
+
+                ###
+
                 elif message=='/ViewGraph':
                    self.bot.sendMessage(chat_ID, text='Energy graph: link')  #get request
                    self.client.stop()
