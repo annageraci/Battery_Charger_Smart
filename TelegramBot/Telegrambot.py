@@ -208,19 +208,16 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
 
-                ###
-
-                ### Da completare con lo sviluppo di ThingSpeakAdaptor ###
-
-                ###
 
                 elif message=='/ViewGraphs':
                    channelID=currentUser['ThingSpeakKey']
-                   url=f'https://api.thingspeak.com/channels/{channelID}'
-                   self.bot.sendMessage(chat_ID, text=f'Energy graph: {url}')  #get request
+                   if channelID=='':
+                       self.bot.sendMessage(chat_ID, text=f'No ThingSpeak feature available')
+                   else: 
+                        url=f'https://api.thingspeak.com/channels/{channelID}'
+                        self.bot.sendMessage(chat_ID, text=f'Your graphs will be available here: \n {url}')  #get request
                    self.client.stop()
 
-                # Da completare con lo sviluppo di State Control
                 elif message=='/AlertSMS':
                     self.AlertOutput=''
                     sb.StartOperation()
@@ -233,8 +230,14 @@ class SwitchBot:
                         self.bot.sendMessage(chat_ID, text=f'Alerts messages are: {self.AlertOutput}')
                         self.client.stop()                  
 
+                elif message=='/exit':
+                    pass
+
                 else:
                     self.bot.sendMessage(chat_ID, text="Command not supported")
+
+                            
+
         
         if self.UserID==-1:
             self.bot.sendMessage(chat_ID, text="You do not have User associated with this Telegram profile")
