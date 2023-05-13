@@ -1,7 +1,7 @@
 import json
 import time
 from datetime import datetime
-from MyMQTT import MyMQTT
+from MyMQTT import *
 from simplePublisher import MyPublisher
 import cherrypy
 import requests
@@ -14,7 +14,7 @@ class StateControl(MyPublisher):
         self.topic_Btemp=topic_Btemp
         self.topic_battery=topic_battery
         self.topic_presence=topic_presence
-        self.client = MyMQTT(ClientID, broker, port, None)
+        self.client = MyMQTT(ClientID, broker, port,self)
         self.__message = {
             'bn': 'State_Control',
             'text':'', 
@@ -54,7 +54,7 @@ class StateControl(MyPublisher):
             self.client.mySubscribe(self.topic_battery_completed[i])
 
     def notify(self,topic,msg):
-        for i in range(len(self.NumberofUser)):
+        for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
             if topic==self.topic_Btemp_completed[i]:
                 payload=json.loads(msg)
@@ -78,7 +78,7 @@ class StateControl(MyPublisher):
             else: 
                 self.output[i]='No temperature battery issue'
             topic=self.base_topic+UserID+self.topic_alert
-            print(f'{topic} Published this alert from StateControl: {self.output[i]}')
+            print(f'Published to {topic}')
             message=self.__message
             message['text'] = self.output[i]
             message['t'] = str(time.time())
@@ -91,20 +91,20 @@ class StateControl(MyPublisher):
             else: 
                 self.output[i]='No issue from presence sensor'
             topic=self.base_topic+UserID+self.topic_alert
-            print(f'{topic} Published this alert from StateControl: {self.output[i]}')
+            print(f'Published to {topic}')
             message=self.__message
             message['text'] = self.output[i]
             message['t'] = str(time.time())
             self.client.myPublish(topic, message)
 
             if self.battery_percentage[i]<15 and self.battery_percentage[i]!=-1:
-                self.output[i]=f'The percentage of battery is too low (<15%): {self.battery_percentage[i]}'
+                self.output[i]=f'The percentage of battery is too low (<15%): {self.battery_percentage[i]} %'
             elif self.battery_percentage[i]==-1:
                 self.output[i]=f'Battery percentage is not detected!!'
             else: 
                 self.output[i]=f'Battery percentage is not too low: {self.battery_percentage[i]}'
             topic=self.base_topic+UserID+self.topic_alert   
-            print(f'{topic} Published this alert from StateControl: {self.output[i]}')
+            print(f'Published to {topic}')
             message=self.__message
             message['text'] = self.output[i]
             message['t'] = str(time.time())
@@ -114,7 +114,7 @@ class StateControl(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Carlo']
+        BaseUrl=settings['Catalog_url_Anna']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']

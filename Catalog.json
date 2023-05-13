@@ -74,7 +74,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "status": 0,
+      "status": 1,
       "lastUpDate": 1679060549
     },
     {
@@ -188,12 +188,12 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1683744191
+      "lastUpDate": 1683973796
     },
     {
       "deviceName": "TemperatureSimulator1",
       "DeviceID": "111",
-      "lastUpDate": 1683710834
+      "lastUpDate": 1683977111
     },
     {
       "deviceName": "TemperatureSimulator1",
@@ -206,7 +206,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1683745621
+      "lastUpDate": 1683977109
     },
     {
       "deviceName": "",
@@ -220,6 +220,45 @@
       },
       "status": "",
       "lastUpDate": 1683973005.0572736
+    },
+    {
+      "deviceName": "",
+      "DeviceID": "Battery/IoT/project/UserID/1/actuator",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "101"
+      },
+      "status": "",
+      "lastUpDate": 1683974262.294368
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "113",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1683977106
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "114",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1683977108
     }
   ],
   "UserList": [
@@ -304,7 +343,13 @@
             "NumberOfTotalKilometers": 30
           }
         ],
-        "Saturday": [],
+        "Saturday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 25
+          }
+        ],
         "Sunday": [
           {
             "Type": "Hollyday",

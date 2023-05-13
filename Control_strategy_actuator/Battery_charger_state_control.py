@@ -69,6 +69,7 @@ class Controller:
                 print(f'the value of the temperature sensor of the UserID {UserID} is {self.temperature[i]}')
             elif topic==self.topic_battery_completed[i]:
                 payload=json.loads(msg)
+                print(payload)
                 self.battery_percentage[i]=payload['e'][0]['v']
                 print(f'the value of the percentage of the battery of the UserID {UserID} is {self.battery_percentage[i]}')
             elif topic==self.topic_presence_completed[i]:
@@ -179,7 +180,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url_Carlo']
+    base_url=Settings['Catalog_url_Anna']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
