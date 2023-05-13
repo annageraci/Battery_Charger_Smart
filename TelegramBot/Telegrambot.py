@@ -84,7 +84,7 @@ class SwitchBot:
                 self.UserID=currentUser['UserID']
                 
                 if message == "/start":
-                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewStatistics')
+                    self.bot.sendMessage(chat_ID, text='What do you want to know/do: \n - Control manually the recharge: \n     /switch \n - Ask if the vehicle is in postation: \n      /IsPresence \n - Add an appointment to the Agenda: \n     /AgendaSundayUpate \n - See the Agenda in this day: \n    /AgendaSunday \n - See the AlertSMS: \n     /AlertSMS \n - View graphs: \n     /ViewStatistics')
 
                 elif message == "/switch":
                     buttons = [[InlineKeyboardButton(text=f'start charge🔋', callback_data=f'on'), 
@@ -110,6 +110,48 @@ class SwitchBot:
                         self.output=[]
                 
                 elif message=='/AgendaMonday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Monday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Monday is that: \n {output}')
+                
+                elif message=='/AgendaThursday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Thursday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Thursday is that: \n {output}')
+                
+                elif message=='/AgendaWednesday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Wednesday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Wednesday is that: \n {output}')
+                
+                elif message=='/AgendaTuesday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Tuesday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Tuesday is that: \n {output}')
+                
+                elif message=='/AgendaFriday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Friday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Friday is that: \n {output}')
+                
+                elif message=='/AgendaSaturday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Saturday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Saturday is that: \n {output}')
+                
+                elif message=='/AgendaSunday':
+                    output=''
+                    for appointment in currentUser['Agenda']['Sunday']:
+                        output=output+f' {appointment} \n'
+                    self.bot.sendMessage(chat_ID, text=f'Your Agenda on Sunday is that: \n {output}')
+                
+                elif message=='/AgendaMondayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'0'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'1'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'2'),
@@ -117,7 +159,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaThursday':
+                elif message=='/AgendaThursdayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'4'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'5'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'6'),
@@ -125,7 +167,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaWednesday':
+                elif message=='/AgendaWednesdayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'8'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'9'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'10'),
@@ -133,7 +175,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaTuesday':
+                elif message=='/AgendaTuesdayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'12'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'13'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'14'),
@@ -141,7 +183,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaFriday':
+                elif message=='/AgendaFridayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'16'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'17'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'18'),
@@ -149,7 +191,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaSaturday':
+                elif message=='/AgendaSaturdayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'20'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'21'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'22'),
@@ -157,7 +199,7 @@ class SwitchBot:
                     keyboard = InlineKeyboardMarkup(inline_keyboard=buttons)
                     self.bot.sendMessage(chat_ID, text='How Many kilometers?', reply_markup=keyboard)
                 
-                elif message=='/AgendaSunday':
+                elif message=='/AgendaSundayUpdate':
                     buttons = [[InlineKeyboardButton(text=f'20 km\n', callback_data=f'24'), 
                             InlineKeyboardButton(text=f'40 km\n', callback_data=f'25'), 
                             InlineKeyboardButton(text=f'60 km\n', callback_data=f'26'),
@@ -241,7 +283,7 @@ class SwitchBot:
                 payload['Date']['NumberOfTotalKilometers']=60
             elif (query_data=='3' or query_data=='7' or query_data=='11' or query_data=='15' or query_data=='19' or query_data=='23' or query_data=='27'):
                 payload['Date']['NumberOfTotalKilometers']=80
-            response = requests.put(self.base_url+'/Agenda', json.dumps(payload))
+            response = requests.post(self.base_url+'/Agenda', json.dumps(payload))
             self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID} \n Day: {day} \n Kilometers: {payload['Date']['NumberOfTotalKilometers']}")
 
 
@@ -251,7 +293,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url"]
+    base_url = conf["Catalog_url_Anna"]
     sb=SwitchBot(token,broker,port,topic_base, base_url)
 
     while True:
