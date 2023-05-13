@@ -75,7 +75,7 @@ class BatteryDailyUsage(MyPublisher):
             for j in range(len(response_json_Agenda['Agenda'][today])):
                 Km=Km+response_json_Agenda['Agenda'][today][j]['NumberOfTotalKilometers']
             if Km>max_autonomy:
-                print('too much km')
+                # too km 
                 energy=capacity
                 battery=100
                 self.output=battery
