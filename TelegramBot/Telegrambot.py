@@ -77,7 +77,7 @@ class SwitchBot:
 
     def on_chat_message(self, msg):
         content_type, chat_type, chat_ID = telepot.glance(msg)
-        #print(msg)
+        print(msg)
         message = msg['text']
         ChatID=msg['chat']['id']
         for currentUser in self.ListOfAllUser_json:
