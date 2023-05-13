@@ -119,7 +119,7 @@ class Controller:
                         if (self.battery_percentage[i]>daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery sufficient, more than {daily_appointment}')
                             self.actuator_command[i]=0
-                        elif (daily_appointment!=-1):
+                        elif (self.battery_percentage[i]>daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery insufficient, less than {daily_appointment}')
                             self.actuator_command[i]=1
                     if (self.actuator_command[i]==-1):
@@ -179,7 +179,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url']
+    base_url=Settings['Catalog_url_Carlo']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
