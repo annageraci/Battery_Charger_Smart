@@ -69,16 +69,15 @@ class BatteryDailyUsage(MyPublisher):
                 today='Sunday'
             
             capacity=self.response_json_all_user[i]['CapacityBattery'] # capacità della batteria in KWh
-            km_kWh=self.response_json_all_user[i]['Consuption_km/kwh'] # consumo in km/KWh
+            km_kWh=self.response_json_all_user[i]['Consumption_km/kwh'] # consumo in km/KWh
             max_autonomy=km_kWh*capacity
             Km=0
             for j in range(len(response_json_Agenda['Agenda'][today])):
                 Km=Km+response_json_Agenda['Agenda'][today][j]['NumberOfTotalKilometers']
             if Km>max_autonomy:
-                # too km 
+                # too km ALERT
                 energy=capacity
                 battery=100
-                self.output=battery
             else:
                 energy=Km/km_kWh #6 km 1 KWh 
                 battery=100*energy/capacity
