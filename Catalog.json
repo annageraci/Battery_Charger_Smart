@@ -267,7 +267,7 @@
       "UserName": "Mario",
       "UserSurname": "Rossi",
       "CapacityBattery": 50,
-      "Consuption_km/kwh": 6,
+      "Consumption_km/kwh": 6,
       "ChatID": "740346462",
       "ThingSpeakKey": "2141952",
       "ConnectedDevices": [
@@ -364,7 +364,7 @@
       "UserName": "Maria",
       "UserSurname": "Bianchi",
       "CapacityBattery": 30,
-      "Consuption_km/kwh": 6,
+      "Consumption_km/kwh": 6,
       "ChatID": "51065691",
       "ThingSpeakKey": "2141957",
       "ConnectedDevices": [
@@ -449,7 +449,7 @@
       "UserName": "Ciro",
       "UserSurname": "Esposito",
       "CapacityBattery": 30,
-      "Consuption_km/kwh": 5,
+      "Consumption_km/kwh": 5,
       "ChatID": "153123772",
       "ThingSpeakKey": "2141962",
       "ConnectedDevices": [
