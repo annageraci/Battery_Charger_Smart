@@ -21,6 +21,8 @@ class SimSensorPublisher():
         self.client.connect(self.broker, self.port)
         self.client.loop_start()
     
+    def updateValue(self, newValue):
+        self.value = newValue
 
     def rPi_onConnect(self, paho_mqtt, userdata, flags, rc):
         print("Connected to broker " + self.broker + " on port " + str(self.port) + " with result code " + str(rc))
@@ -35,8 +37,8 @@ class SimSensorPublisher():
     def getLastUpdate(self):
         return self.lastUpdate
     
-    def sendLastUpdateToCatalog(self):
-        self.catalogUpdater.generateMessage()
+    def sendLastUpdateToCatalog(self, value):
+        self.catalogUpdater.generateMessage(value)
         self.catalogUpdater.sendMessage()
 
     

@@ -4,9 +4,9 @@ from Sensor import Sensor
 import time
 import datetime as dt
 import paho.mqtt.client as pahoMQTT
-#import board
-#import adafruit_dht
-#import RPi.GPIO as gpio
+import board
+import adafruit_dht
+import RPi.GPIO as gpio
 
 class TemperatureSensor(Sensor):
     def __init__(self, ID, name = "", userID = "1", baseTopic = "", simulated = True, currTemp = None):
@@ -68,8 +68,8 @@ class TemperatureSensor(Sensor):
 
 
 class PresenceSensor(Sensor):
-    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
-        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, meanDuration=8, meanWait=15):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated)
         self.unit = ""
         self.quantity = "presence"
         if self.simulated:
@@ -83,7 +83,7 @@ class PresenceSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self):
-        self.simulator = PresenceSimulator()
+        self.simulator = DigitalSimulator(15, 0)
         self.value = self.simulator.generateNewVal()
 
             
@@ -244,3 +244,21 @@ class PhotonSensor(Sensor):
         self.dict["e"][0]["v"] = self.value
         return self.dict
 
+class SwitchSensor(Sensor):
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+        self.unit = ""
+        self.quantity = "switch"
+        if self.simulated:
+            self.start_simulator()
+        
+        else:
+            # instructions related to RPi
+            pass
+        
+        self.MQTTtopic += "/" + self.quantity
+        self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
+
+    def start_simulator(self):
+        self.simulator = DigitalSimulator()
+        self.value = self.simulator.generateNewVal()
