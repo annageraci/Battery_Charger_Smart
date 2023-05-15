@@ -14,7 +14,7 @@ if __name__ == "__main__":
     userAssociationID = "1"
     baseTopic += userAssociationID + "/sensor"
     deviceName = "BatteryChargeSimulator1"
-    catalogURL = "http://192.168.72.16:8080"
+    catalogURL = settingsDict["Catalog_url_Carlo"]
     sensor = BatteryChargeSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
     topic = sensor.getMQTTtopic()
 
@@ -25,5 +25,5 @@ if __name__ == "__main__":
 
     while True:
         publisher.rPi_publish(topic, sensor.sensor_update(), 2)
-        publisher.sendLastUpdateToCatalog()
+        publisher.sendLastUpdateToCatalog(sensor.getValue())
         time.sleep(5)

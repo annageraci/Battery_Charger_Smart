@@ -65,8 +65,8 @@ class TemperatureSensor(Sensor):
 
 
 class PresenceSensor(Sensor):
-    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
-        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, meanDuration=8, meanWait=15):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated)
         self.unit = ""
         self.quantity = "presence"
         if self.simulated:
@@ -80,7 +80,7 @@ class PresenceSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self):
-        self.simulator = DigitalSimulator()
+        self.simulator = DigitalSimulator(15, 0)
         self.value = self.simulator.generateNewVal()
 
             
@@ -212,24 +212,24 @@ class PhotonSensor(Sensor):
         return self.dict
     
     
-    class SwitchSensor(Sensor):
-        def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
-            Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
-            self.unit = ""
-            self.quantity = "switch"
-            if self.simulated:
-                self.start_simulator()
-            
-            else:
-                # instructions related to RPi
-                pass
-            
-            self.MQTTtopic += "/" + self.quantity
-            self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
+class SwitchSensor(Sensor):
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+        self.unit = ""
+        self.quantity = "switch"
+        if self.simulated:
+            self.start_simulator()
+        
+        else:
+            # instructions related to RPi
+            pass
+        
+        self.MQTTtopic += "/" + self.quantity
+        self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
-        def start_simulator(self):
-            self.simulator = DigitalSimulator()
-            self.value = self.simulator.generateNewVal()
+    def start_simulator(self):
+        self.simulator = DigitalSimulator()
+        self.value = self.simulator.generateNewVal()
 
         
 

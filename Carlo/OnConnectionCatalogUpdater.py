@@ -16,8 +16,8 @@ class CatalogUpdater():
         self.joined = False
         self.MQTTtopic = MQTTtopic
 
-        currentDevices = json.loads(self.checkCatalog)
-        for item in currentDevices["DeviceList"]:
+        currentDevices = self.checkCatalog()
+        for item in currentDevices:
             if item["DeviceID"] == deviceID:
                 self.joined = True 
         
@@ -44,17 +44,17 @@ class CatalogUpdater():
     def setUpdateTime(self, newTime):
         self.updateTime = newTime
 
-    def generateMessage(self):
-        self.messageAsDict = {"DeviceID": self.deviceID, "time": self.updateTime}
+    def generateMessage(self, value):
+        self.messageAsDict = {"DeviceID": self.deviceID, "time": self.updateTime, "value": value}
         self.messageAsStr = json.dumps(self.messageAsDict, indent=2)
         return self.messageAsStr
 
-    def sendMessage(self):
-        requests.put(self.uri + "/Device", self.generateMessage())
+    def sendMessage(self, param="Device"):
+        requests.put(self.uri + "/" + param, self.generateMessage())
     
     def checkCatalog(self):
         devices = requests.get(self.uri+"/AllDevices")
-        return devices
+        return devices.json()
 
 # For testing purposes only
 
