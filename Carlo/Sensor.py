@@ -21,6 +21,9 @@ class Sensor():
     def start_simulator(self):
         pass
 
+    def getValue(self):
+        return self.value
+
     def sensor_update(self):
         self.prevValue = self.value
         if self.simulated:

@@ -14,7 +14,7 @@ class ArduinoPiConnector():
         self.arduinoInputIterator = pyfirmata.util.Iterator(self.board)
         self.relayPin = self.board.digital[relayPin]
         self.feedbackPin = self.board.digital[feedbackPin]
-        self.currentState = None # boolean
+        self.currentState = False # boolean
         self.timeLastUpdate = time.time()
         self.errorCode = 0
         self.error = 0
@@ -30,6 +30,9 @@ class ArduinoPiConnector():
         self.timeLastUpdate = time.time()
         if oldState != newState:
             self.relayPin.write(newState)
+    
+    def getCurrentState(self):
+        return self.currentState
 
     def errorCheck(self):
         self.errorCode = 0
