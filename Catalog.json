@@ -25,7 +25,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
       },
-      "value":"",
+      "value": "",
       "lastUpDate": 1681996193
     },
     {
@@ -38,7 +38,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
-      "value":"",
+      "value": "",
       "lastUpDate": 1683897222
     },
     {
@@ -51,7 +51,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
-      "value":0,
+      "value": 0,
       "lastUpDate": 1679060935
     },
     {
@@ -90,7 +90,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
       },
-      "value":"",
+      "value": "",
       "lastUpDate": 1679059744
     },
     {
@@ -103,7 +103,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
-      "value":0,
+      "value": 0,
       "lastUpDate": 1679059744
     },
     {
@@ -142,7 +142,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
       },
-      "value":"",
+      "value": "",
       "lastUpDate": 1679059744
     },
     {
@@ -155,7 +155,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
-      "value":"",
+      "value": "",
       "lastUpDate": 1681996186
     },
     {
@@ -233,7 +233,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 42
+            "NumberOfTotalKilometers": 43
           }
         ],
         "Wednesday": [
