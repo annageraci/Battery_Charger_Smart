@@ -1,4 +1,3 @@
-#import thingSpeakAdapter
 import paho.mqtt.client as PahoMQTT
 import json
 
@@ -18,15 +17,6 @@ class DeviceSubscriber:
         self._paho_mqtt.on_connect = self.myOnConnect
         self._paho_mqtt.on_message = self.myOnMessageReceived
 
-    # definire callback()
-
-    # def callback():
-        # ...
-        # thingspeak.send_data_to_thingspeak_channel(self.device.thingspeak_coordinates, data)
-        # ...
-
-    def mock_input(self):  # call callback function with fake data
-        pass
 
     def start(self):
         # manage connection to broker
@@ -47,6 +37,7 @@ class DeviceSubscriber:
     def myOnMessageReceived(self, paho_mqtt, userdata, msg):
         # A new message is received
         received_msg = json.loads(msg.payload)
+        print(received_msg)
         self.device.value = received_msg
         return
 
