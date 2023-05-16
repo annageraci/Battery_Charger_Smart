@@ -16,7 +16,7 @@ class BatteryDailyUsage(MyPublisher):
             'bn': 'Battery_daily_usage',
             'e':
             [
-                {'n': 'Battery_percentage', 'value': '', 'timestamp': '', 'unit': '%'},
+                {'n': 'Battery_percentage', 'v': '', 't': '', 'unit': '%'},
             ]
         }
         self.BaseUrl=BaseUrl
@@ -38,10 +38,10 @@ class BatteryDailyUsage(MyPublisher):
         for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
             message = self.__message
-            message['e'][0]['value'] = self.output[i]
-            message['e'][0]['timestamp'] = str(time.time())
+            message['e'][0]['v'] = self.output[i]
+            message['e'][0]['t'] = str(time.time())
             self.topic=self.base_topic+str(UserID)+self.topic_daily
-            print(self.topic+f' Published:  '+str(message['e'][0]['value']))
+            print(self.topic+f' Published:  '+str(message['e'][0]['v']))
             self.client.myPublish(self.topic, message)
 
     def makerequest(self):
@@ -75,7 +75,7 @@ class BatteryDailyUsage(MyPublisher):
             for j in range(len(response_json_Agenda['Agenda'][today])):
                 Km=Km+response_json_Agenda['Agenda'][today][j]['NumberOfTotalKilometers']
             if Km>max_autonomy:
-                print('too much km')
+                # too km 
                 energy=capacity
                 battery=100
                 self.output=battery
@@ -94,8 +94,9 @@ if __name__ == '__main__':
         base_topic=settings['baseTopic']
         topic_daily='/sensor/daily'
         daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
-        daily.makerequest()
-        # time.sleep(5)
-        daily.start()
-        daily.sendData()
-        time.sleep(30)
+        while True:
+            daily.makerequest()
+            # time.sleep(5)
+            daily.start()
+            daily.sendData()
+            time.sleep(15)

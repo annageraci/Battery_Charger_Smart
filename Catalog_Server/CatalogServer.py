@@ -220,8 +220,82 @@ class Catalog(object):
                     Catalog['DeviceList'][i]['status']=value
             json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
-        
-        if uri[0]=='Agenda':
+    
+
+        if uri[0]=='AgendaUpdate':
+            #{
+            #   "UserID": "1",
+            #   "Day": "Monday",
+            #   "Date":
+            #    {
+            #        "Type": "work",
+            #        "StartTimeSlot": 8,
+            #        "NumberOfTotalKilometers": 50
+            #      }
+            print('ok')
+            bodyAsString=cherrypy.request.body.read() 
+            bodyAsDictionary=json.loads(bodyAsString)
+            Catalog=json.load(open('../Catalog.json'))
+            ListOfUser=Catalog['UserList']
+            for i in range(len(ListOfUser)):
+                for currentUser in ListOfUser:
+                    if currentUser['UserID']==bodyAsDictionary['UserID']:
+                        if "Monday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Monday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        elif "Tuesday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Tuesday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        elif "Wednesday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Wednesday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        elif "Thursday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Thursday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        elif "Friday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Friday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        elif "Saturday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Saturday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        elif "Sunday"==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda']['Sunday']:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                else: 
+                                    return 'no corrispondence in your agenda'
+                        else:
+                            return 'Does not exist this day'
+                json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
+                print(Catalog)
+                return json.dumps(Catalog)
+            
+        if uri[0]=='AgendaRemove':
             #{
             #   "UserID": "1",
             #   "Day": "Monday",
@@ -236,48 +310,59 @@ class Catalog(object):
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfUser=Catalog['UserList']
+            ElemToRemove=bodyAsDictionary['Date']
             for i in range(len(ListOfUser)):
                 for currentUser in ListOfUser:
                     if currentUser['UserID']==bodyAsDictionary['UserID']:
                         if "Monday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Monday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    currentUser['Agenda']['Monday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Tuesday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Tuesday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Tuesday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Wednesday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Wednesday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Wednesday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Thursday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Thursday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Thursday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Friday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Friday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Friday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Saturday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Saturday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Saturday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         elif "Sunday"==bodyAsDictionary['Day']:
                             for appointment in currentUser['Agenda']['Sunday']:
-                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                if ElemToRemove==appointment:
+                                    ListOfUser['Agenda']['Sunday'].remove(appointment)
+                                else:
+                                    return 'Does not exist this appointment in your Agenda'
                         else:
-                            return 'Does not exist this day'
+                            return 'Does not exist this Day'
                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
+                print(Catalog)
                 return json.dumps(Catalog)
+            
+
     
 if __name__=="__main__":
     conf={

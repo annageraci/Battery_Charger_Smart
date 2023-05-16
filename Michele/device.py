@@ -12,7 +12,8 @@ class Device:
         self.field = -1
 
         if userAssociationID == "1":
-            self.channel = "EUWUGU3WMLEZ6U88"
+            self.channel = "GE6I54M68UHJM19B" # ESEMPIO
+            #self.channel = "EUWUGU3WMLEZ6U88" USER1
         elif userAssociationID == "2":
             self.channel = "YBW43BVJKR1G742E"
         elif userAssociationID == "4":

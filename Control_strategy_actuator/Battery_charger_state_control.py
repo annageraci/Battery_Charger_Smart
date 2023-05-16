@@ -116,17 +116,17 @@ class Controller:
                         # 4° step % batteria è sufficiente
                         if (daily_appointment>100):
                             print('probably you have to charge the car during the usage in another charge station')
-                        if (self.battery_percentage[i]>daily_appointment and int(daily_appointment)!=-1):
+                        if (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery sufficient, more than {daily_appointment}')
                             self.actuator_command[i]=0
-                        elif (daily_appointment!=-1):
+                        elif (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery insufficient, less than {daily_appointment}')
                             self.actuator_command[i]=1
                     if (self.actuator_command[i]==-1):
-                        print('last_chance')
+                        print('All the previous check down')
                         self.actuator_command[i]=0            
                 topic=self.base_topic+UserID+'/actuator'
-                print(f'{topic} Published {self.actuator_command[i]} from control strategies')
+                print(f'{topic} Published {self.actuator_command[i]} from control strategies \n')
                 msg= {
                         'bn': 'actuator',
                         'e':
@@ -137,7 +137,7 @@ class Controller:
                 self.client.myPublish(topic, msg)
                 dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
-                print(dict_to_post)
+                #print(dict_to_post)
                 self.actuator_command=[-1]*self.NumberofUser
                 self.temperature=[-1]*self.NumberofUser
                 self.battery_percentage=[-1]*self.NumberofUser
@@ -155,9 +155,9 @@ class Controller:
                     ]
                     }   
                 self.client.myPublish(topic, msg)
-                print(f'{topic} Published {msg["e"][0]["v"]} from manual activation')
+                print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
-                print(dict_to_post)
+                #print(dict_to_post)
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
             elif self.flag[i]==0:
                 topic=self.base_topic+UserID+'/actuator'
@@ -169,9 +169,9 @@ class Controller:
                     ]
                     }   
                 self.client.myPublish(topic, msg)
-                print(f'{topic} Published {msg["e"][0]["v"]} from manual activation')
+                print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
-                print(dict_to_post)
+                #print(dict_to_post)
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
 
                 
@@ -179,7 +179,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url_Carlo']
+    base_url=Settings['Catalog_url_Anna']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
