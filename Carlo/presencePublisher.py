@@ -10,16 +10,16 @@ if __name__ == "__main__":
     settingsDict = json.load(settingsFile)
     settingsFile.close()
     baseTopic = settingsDict["baseTopic"]
-    deviceID = "110"
+    deviceID = "114"
     userAssociationID = "1"
     baseTopic += userAssociationID + "/sensor"
-    deviceName = "TemperatureSimulator1"
+    deviceName = "PhotonSimulator1"
     catalogURL = settingsDict["Catalog_url_Carlo"]
-    sensor = TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
+    sensor = PresenceSensor(deviceID, deviceName, userAssociationID, baseTopic, True,15,0)
     topic = sensor.getMQTTtopic()
 
-    broker = settingsDict["broker"]["IPAddress"] # to be updated with the relative reference
-    port = settingsDict["broker"]["port"] # same
+    broker = settingsDict["broker"]["IPAddress"]
+    port = settingsDict["broker"]["port"]
     publisher = SimSensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
     publisher.startOperation()
 

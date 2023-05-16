@@ -1,14 +1,15 @@
 import paho.mqtt.client as pahoMQTT
-import cherrypy
-import requests
 import json
 import time
 from Sensors import *
-from rPiCatalogUpdater import CatalogUpdater
 from numpy import random
 
+'''
+  This file is used for simulating the signals received by the actuator, only for testing purposes
+'''
+
 class ActuatorPublisher():
-    def __init__(self, clientID, deviceID, deviceName, broker, port, topic, catalogURI, notifier=None):
+    def __init__(self, clientID, deviceID, deviceName, broker, port, topic, notifier=None):
         self.client = pahoMQTT.Client(clientID, True)
         self.deviceID = deviceID
         self.deviceName = deviceName
@@ -42,7 +43,6 @@ if __name__ == "__main__":
     deviceID = "101"
     userAssociationID = "1"
     deviceName = "BatterySimulator1"
-    catalogURL = "http://127.0.0.1:8080"
     msg= {
             'bn': 'actuator',
             'e':
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     broker = "mqtt.eclipseprojects.io" # to be updated with the relative reference
     port = 1883 # same
-    publisher = ActuatorPublisher("csim48rPiActuator" + str(1) + "pub", deviceID, deviceName, broker, port, topic, catalogURL)
+    publisher = ActuatorPublisher("csim48rPiActuator" + str(1) + "pub", deviceID, deviceName, broker, port, topic)
     publisher.startOperation()
 
     while True:

@@ -4,8 +4,7 @@ import time
 import datetime as dt
 import json
 import cherrypy
-from TemperatureSensor import TemperatureSensor
-from PresenceSensor import PresenceSensor
+from Sensors import *
 from numpy import random
 import math
 

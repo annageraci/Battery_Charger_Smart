@@ -1,29 +1,28 @@
 import paho.mqtt.client as pahoMQTT
-import cherrypy
-import requests
 import json
 import time
-from Sensors import *
-from rPiCatalogUpdater import CatalogUpdater
+from OnConnectionCatalogUpdater import CatalogUpdater
 
 class SimSensorPublisher():
-    def __init__(self, clientID, deviceID, deviceName, broker, port, topic, catalogURI, notifier=None):
+    def __init__(self, clientID, deviceID, deviceName, userID, broker, port, topic, catalogURI, notifier=None):
         self.client = pahoMQTT.Client(clientID, True)
         self.deviceID = deviceID
         self.deviceName = deviceName
-        # self.userID = userID
+        self.userID = userID
         self.broker = broker
         self.port = port
         self.notifier = notifier
         self.client.on_connect = self.rPi_onConnect
         self.topic = topic
-        self.catalogUpdater = CatalogUpdater(catalogURI, self.deviceID, self.deviceName)
+        self.catalogUpdater = CatalogUpdater(catalogURI, self.topic, self.deviceID, self.deviceName, self.userID)
 
     def startOperation(self):
-        self.client.connect(self.broker, self.port)
         self.catalogUpdater.joinCatalog()
+        self.client.connect(self.broker, self.port)
         self.client.loop_start()
     
+    def updateValue(self, newValue):
+        self.value = newValue
 
     def rPi_onConnect(self, paho_mqtt, userdata, flags, rc):
         print("Connected to broker " + self.broker + " on port " + str(self.port) + " with result code " + str(rc))
@@ -38,17 +37,19 @@ class SimSensorPublisher():
     def getLastUpdate(self):
         return self.lastUpdate
     
-    def sendLastUpdateToCatalog(self):
-        self.catalogUpdater.generateMessage()
+    def sendLastUpdateToCatalog(self, value):
+        self.catalogUpdater.generateMessage(value)
         self.catalogUpdater.sendMessage()
 
     
+# For testing only
 
 if __name__ == "__main__":
+    from Sensors import PhotonSensor
     topic = "Battery/IoT/project/UserID/1/sensor"
     deviceID = "101"
     userAssociationID = "1"
-    deviceName = "HumiditySimulator1"
+    deviceName = "PhotonSimulator1"
     catalogURL = "https://192.168.72.16:8080"
     sensor = PhotonSensor(deviceID, deviceName, userAssociationID, topic, True)
     

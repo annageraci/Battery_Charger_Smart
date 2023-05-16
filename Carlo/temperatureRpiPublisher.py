@@ -1,5 +1,5 @@
 import time
-from Sensors import *
+from RPiSensors import *
 from SimPublisher import SimSensorPublisher
 import json
 
@@ -15,7 +15,7 @@ if __name__ == "__main__":
     baseTopic += userAssociationID + "/sensor"
     deviceName = "TemperatureSimulator1"
     catalogURL = settingsDict["Catalog_url_Carlo"]
-    sensor = TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
+    sensor = TempHumSensor(deviceID, deviceName, userAssociationID, baseTopic, False)
     topic = sensor.getMQTTtopic()
 
     broker = settingsDict["broker"]["IPAddress"] # to be updated with the relative reference
