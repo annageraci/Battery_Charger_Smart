@@ -75,9 +75,20 @@ class BatteryDailyUsage(MyPublisher):
             for j in range(len(response_json_Agenda['Agenda'][today])):
                 Km=Km+response_json_Agenda['Agenda'][today][j]['NumberOfTotalKilometers']
             if Km>max_autonomy:
-                # too km ALERT
+                # too km 
+                topic=self.base_topic+str(UserID)+'/statecontrol/AlertSMS'  
+                print(f'Published to {topic}')
+                message={
+                    'bn': 'State_Control',
+                    'text':'', 
+                    't':''
+                }
+                message['text'] = f'Today your Agenda is full, so could be necessary to charge the car in dedicated car station during your trip: \n Number of km necessary to your agenda: {Km} km \n Autonomy in km with the 100% of battery: {max_autonomy} km'
+                message['t'] = str(time.time())
+                self.client.myPublish(topic, message)
                 energy=capacity
                 battery=100
+                time.sleep(15)
             else:
                 energy=Km/km_kWh #6 km 1 KWh 
                 battery=100*energy/capacity
@@ -86,7 +97,7 @@ class BatteryDailyUsage(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Carlo']
+        BaseUrl=settings['Catalog_url']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
