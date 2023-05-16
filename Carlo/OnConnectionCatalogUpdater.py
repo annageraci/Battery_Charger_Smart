@@ -49,8 +49,8 @@ class CatalogUpdater():
         self.messageAsStr = json.dumps(self.messageAsDict, indent=2)
         return self.messageAsStr
 
-    def sendMessage(self, param="Device"):
-        requests.put(self.uri + "/" + param, self.generateMessage())
+    def sendMessage(self, URIarg="Device"):
+        requests.put(self.uri + "/" + URIarg, self.generateMessage())
     
     def checkCatalog(self):
         devices = requests.get(self.uri+"/AllDevices")
