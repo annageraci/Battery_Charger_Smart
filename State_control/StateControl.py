@@ -83,12 +83,19 @@ class StateControl(MyPublisher):
                 message['e'][0]['v'] = 0
                 message['e'][0]['t'] = str(time.time())
                 self.client.myPublish(topic, message)
+                alert=1
                 # send alertSMS
                 self.output[i]='The temperature of the battery is too high, cannot recharge the battery, leave the vehicle to a specialist'
             else: 
-                #restore the actuator controller by the manual Flag 
-
-
+                #restore the actuator controller strategy only the first time
+                if alert==1: 
+                    topic=self.base_topic+UserID+'/manualFlag'
+                    print(f'Published to {topic}')
+                    message={"bn": 'manualFlag', "e": [{"n": 'Flag', "u": 'boolean', "t": [], "v": []}]}
+                    message['e'][0]['v'] = 0
+                    message['e'][0]['t'] = str(time.time())
+                    self.client.myPublish(topic, message)
+                    alert=0
                 self.output[i]='No temperature battery issue'
             topic=self.base_topic+UserID+self.topic_alert
             print(f'Published to {topic}')
