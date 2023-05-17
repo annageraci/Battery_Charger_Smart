@@ -72,10 +72,23 @@ class StateControl(MyPublisher):
     def control_strategy(self):
         for i in range(self.NumberofUser):
             UserID=self.response_json_all_user[i]['UserID']
+            
+            
             # temperature of the battery too high 
             if self.Btemp[i]>33:
+                #set the actuator OFF manually
+                topic=self.base_topic+UserID+'/manualFlag'
+                print(f'Published to {topic}')
+                message={"bn": 'manualFlag', "e": [{"n": 'Flag', "u": 'boolean', "t": [], "v": []}]}
+                message['e'][0]['v'] = 0
+                message['e'][0]['t'] = str(time.time())
+                self.client.myPublish(topic, message)
+                # send alertSMS
                 self.output[i]='The temperature of the battery is too high, cannot recharge the battery, leave the vehicle to a specialist'
             else: 
+                #restore the actuator controller by the manual Flag 
+
+
                 self.output[i]='No temperature battery issue'
             topic=self.base_topic+UserID+self.topic_alert
             print(f'Published to {topic}')
