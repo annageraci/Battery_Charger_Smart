@@ -209,8 +209,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523101.2848797,
-      "value": 301.8463781573962
+      "lastUpDate": 1684523418.0564632,
+      "value": 300.5123862069857
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -223,8 +223,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523324.2511113,
-      "value": 698.7361162789665
+      "lastUpDate": 1684523418.2446313,
+      "value": 702.3536398322402
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -237,8 +237,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523096.245567,
-      "value": 699.018043350277
+      "lastUpDate": 1684523512.9512372,
+      "value": 699.3319502266467
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523324.2019355,
-      "value": 32.36377784371859
+      "lastUpDate": 1684523518.0415223,
+      "value": 31.15624307227338
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -265,8 +265,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523101.324001,
-      "value": 89.44010254609935
+      "lastUpDate": 1684523418.512512,
+      "value": 89.61346983283016
     },
     {
       "deviceName": "BatteryChargeSimulator4",
@@ -279,8 +279,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523324.3048253,
-      "value": 52.32157864481598
+      "lastUpDate": 1684523413.3739333,
+      "value": 50.14542339310209
     },
     {
       "deviceName": "PhotonSimulator1",
@@ -293,7 +293,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1684523101.2501364,
+      "lastUpDate": 1684523512.8231246,
       "value": 1
     },
     {
@@ -307,7 +307,7 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1684523101.324001,
+      "lastUpDate": 1684523512.8731525,
       "value": 1
     },
     {
@@ -321,7 +321,7 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1684523069.9599087,
+      "lastUpDate": 1684523413.4640095,
       "value": 1
     }
   ],

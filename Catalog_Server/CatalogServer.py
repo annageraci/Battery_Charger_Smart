@@ -148,7 +148,7 @@ class Catalog(object):
                 if ListOfDevice[i]['DeviceID']==bodyAsDictionary['DeviceID']:
                     Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
                     Catalog['DeviceList'][i]['value']=bodyAsDictionary['value']
-                    json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
+                    json.dump(Catalog,open('../CatalogFake.json', 'w'), indent=2)
                     return json.dumps(Catalog)
         
         if uri[0]=='User':
