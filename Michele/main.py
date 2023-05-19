@@ -1,26 +1,26 @@
 from catalogAdapter import CatalogAdapter
 from deviceSubscriber import DeviceSubscriber
 import time
-from thingSpeakAdapter import send_data_to_thingspeak_channel
 
-catalog = CatalogAdapter("http://192.168.72.16:8080")
+catalog = CatalogAdapter("http://192.168.72.220:8080") #avviato da Anna (pc-lavoro)
 deviceList = catalog.get_devices()
 
 
 clientSubID = "dataAnalysisAsSubscriber"
-clientPubID = "dataAnalysisAsPublisher"
 broker = "mqtt.eclipseprojects.io"
 port = 1883
-for i in deviceList:
-    subscriber = DeviceSubscriber(clientSubID, broker, port, device=i)
+    
+for item in deviceList:
+    subscriber = DeviceSubscriber(clientSubID, broker, port, device=item)
     subscriber.start()
     #CONTROLLARE SE THINGSPEAK VUOLE VALORI INTERI OPPURE STRINGHE
     #subscriber.stop()
     #subscribedDevices.append(subscriber)
     time.sleep(5) #in modo tale da permettere al publisher di pubblicare
-    toThingSpeak = send_data_to_thingspeak_channel(deviceList)
-    break
 
+
+while True:
+    continue
 
 # implementare:
 # - (Da fare passo passo mentre completi i punti successivi) classe Device in modo da avere al suo interno delle
