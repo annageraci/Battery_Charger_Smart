@@ -77,7 +77,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "value": 0,
+      "value": 1,
       "lastUpDate": 1679060549
     },
     {
@@ -182,7 +182,8 @@
         "topic": "Battery/IoT/project/UserID/4/actuator"
       },
       "status": 0,
-      "lastUpDate": 1679160119
+      "lastUpDate": 1679160119,
+      "value": 0
     },
     {
       "deviceName": "Actuator",
@@ -208,8 +209,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684520461.3497746,
-      "value": 297.6666666666667
+      "lastUpDate": 1684520920.2417493,
+      "value": 302.6666666666667
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -222,8 +223,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684520461.4059584,
-      "value": 297.6666666666667
+      "lastUpDate": 1684520920.2918608,
+      "value": 303.0
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -236,8 +237,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684520461.476446,
-      "value": 297.6666666666667
+      "lastUpDate": 1684520920.3412821,
+      "value": 303.0
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -250,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684520456.305661,
-      "value": 28.399993995172228
+      "lastUpDate": 1684520925.302955,
+      "value": 32.19060283149653
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -264,8 +265,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684520456.3816082,
-      "value": 30.9190635596582
+      "lastUpDate": 1684520925.43294,
+      "value": 25.507404484192275
     },
     {
       "deviceName": "BatteryChargeSimulator4",
@@ -278,8 +279,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684520456.4399807,
-      "value": 30.851193920962647
+      "lastUpDate": 1684520920.248924,
+      "value": 32.21814233204537
     }
   ],
   "UserList": [
@@ -551,4 +552,4 @@
       }
     }
   ]
-}}
+}
