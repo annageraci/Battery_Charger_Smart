@@ -20,7 +20,6 @@ class CatalogAdapter:
             topic = item["ServiceDetails"]["topic"]
             measureType = item["MeasureType"]
             # BISOGNA AGGIUNGERE I CHANNEL PER GLI ALTRU USERS PER THINGSPEAK e LE MISURE DAI TOPIC
-            deviceListForUser = Device(
-                deviceID, userAssociatedID, topic, measureType)
+            deviceListForUser = Device(deviceID, userAssociatedID, topic, measureType)
             deviceList.append(deviceListForUser)
         return deviceList
