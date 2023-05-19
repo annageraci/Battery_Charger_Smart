@@ -25,6 +25,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
       },
+      "value": "",
       "lastUpDate": 1681996193
     },
     {
@@ -37,6 +38,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
+      "value": "",
       "lastUpDate": 1683897222
     },
     {
@@ -49,6 +51,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
+      "value": 0,
       "lastUpDate": 1679060935
     },
     {
@@ -61,7 +64,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
-      "status": "14",
+      "value": "14",
       "lastUpDate": 1679160126
     },
     {
@@ -74,7 +77,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "status": 0,
+      "value": 0,
       "lastUpDate": 1679060549
     },
     {
@@ -87,6 +90,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
       },
+      "value": "",
       "lastUpDate": 1679059744
     },
     {
@@ -99,6 +103,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
+      "value": 0,
       "lastUpDate": 1679059744
     },
     {
@@ -111,7 +116,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
-      "status": "",
+      "value": "",
       "lastUpDate": 1679059744
     },
     {
@@ -124,7 +129,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/actuator"
       },
-      "status": 0,
+      "value": 0,
       "lastUpDate": 1679059744
     },
     {
@@ -137,6 +142,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
       },
+      "value": "",
       "lastUpDate": 1679059744
     },
     {
@@ -149,6 +155,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
+      "value": "",
       "lastUpDate": 1681996186
     },
     {
@@ -176,50 +183,6 @@
       },
       "status": 0,
       "lastUpDate": 1679160119
-    },
-    {
-      "deviceName": "BatterySimulator1",
-      "DeviceID": "101",
-      "UserAssociationID": "1",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
-      },
-      "status": "",
-      "lastUpDate": 1683744191
-    },
-    {
-      "deviceName": "TemperatureSimulator1",
-      "DeviceID": "111",
-      "lastUpDate": 1683710834
-    },
-    {
-      "deviceName": "TemperatureSimulator1",
-      "DeviceID": "110",
-      "UserAssociationID": "1",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
-      },
-      "status": "",
-      "lastUpDate": 1683745621
-    },
-    {
-      "deviceName": "",
-      "DeviceID": "Battery/IoT/project/UserID/11/actuator",
-      "UserAssociationID": "1",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "101"
-      },
-      "status": "",
-      "lastUpDate": 1683973005.0572736
     }
   ],
   "UserList": [
@@ -228,7 +191,7 @@
       "UserName": "Mario",
       "UserSurname": "Rossi",
       "CapacityBattery": 50,
-      "Consuption_km/kwh": 6,
+      "Consumption_km/kwh": 6,
       "ChatID": "740346462",
       "ThingSpeakKey": "2141952",
       "ConnectedDevices": [
@@ -270,7 +233,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 42
+            "NumberOfTotalKilometers": 43
           }
         ],
         "Wednesday": [
@@ -304,7 +267,13 @@
             "NumberOfTotalKilometers": 30
           }
         ],
-        "Saturday": [],
+        "Saturday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 25
+          }
+        ],
         "Sunday": [
           {
             "Type": "Hollyday",
@@ -319,7 +288,7 @@
       "UserName": "Maria",
       "UserSurname": "Bianchi",
       "CapacityBattery": 30,
-      "Consuption_km/kwh": 6,
+      "Consumption_km/kwh": 6,
       "ChatID": "51065691",
       "ThingSpeakKey": "2141957",
       "ConnectedDevices": [
@@ -404,7 +373,7 @@
       "UserName": "Ciro",
       "UserSurname": "Esposito",
       "CapacityBattery": 30,
-      "Consuption_km/kwh": 5,
+      "Consumption_km/kwh": 5,
       "ChatID": "153123772",
       "ThingSpeakKey": "2141962",
       "ConnectedDevices": [
