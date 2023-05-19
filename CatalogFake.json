@@ -183,7 +183,7 @@
       },
       "status": 0,
       "lastUpDate": 1679160119,
-      "value": 0
+      "value": 1
     },
     {
       "deviceName": "Actuator",
@@ -237,8 +237,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523559.7683313,
-      "value": 701.064023219732
+      "lastUpDate": 1684523512.9512372,
+      "value": 699.3319502266467
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523518.0415223,
-      "value": 31.15624307227338
+      "lastUpDate": 1684524409.2398584,
+      "value": 39.856191268106585
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -594,4 +594,3 @@
       }
     }
   ]
-}}
