@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684521427.2821977,
-      "value": 37.01741948287862
+      "lastUpDate": 1684521514.0562568,
+      "value": 37.749281026782825
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -265,8 +265,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684521422.1814146,
-      "value": 15.839662555365528
+      "lastUpDate": 1684521514.1306129,
+      "value": 14.26235488171859
     },
     {
       "deviceName": "BatteryChargeSimulator4",
@@ -279,8 +279,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684521380.5106235,
-      "value": 36.701581593427406
+      "lastUpDate": 1684521514.2039907,
+      "value": 37.9459014747631
     }
   ],
   "UserList": [
@@ -552,5 +552,4 @@
       }
     }
   ]
-}
 }
