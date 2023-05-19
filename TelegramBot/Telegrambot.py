@@ -10,7 +10,7 @@ import cherrypy
 import requests
 
 
-class SwitchBot:
+class BatteryBot:
     def __init__(self, token, broker, port, topic,base_url):
         # Local token
         self.tokenBot = token
@@ -307,7 +307,7 @@ if __name__ == "__main__":
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
     base_url = conf["Catalog_url"]
-    sb=SwitchBot(token,broker,port,topic_base, base_url)
+    sb=BatteryBot(token,broker,port,topic_base, base_url)
 
     while True:
         time.sleep(3)
