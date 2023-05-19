@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523095.9833195,
-      "value": 30.24926987661459
+      "lastUpDate": 1684523303.2119348,
+      "value": 32.14675427142381
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -283,7 +283,7 @@
       "value": 50.253888868315954
     },
     {
-      "deviceName": ""PhotonSimulator1",
+      "deviceName": "PhotonSimulator1",
       "DeviceID": "114",
       "UserAssociationID": "1",
       "MeasureType": "",
