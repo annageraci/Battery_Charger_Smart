@@ -97,7 +97,7 @@ class BatteryDailyUsage(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url']
+        BaseUrl=settings['Catalog_url_Carlo']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']

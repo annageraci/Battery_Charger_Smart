@@ -75,7 +75,7 @@ class StateControl(MyPublisher):
             
             
             # temperature of the battery too high 
-            if self.Btemp[i]>33:
+            if self.Btemp[i]>50:
                 #set the actuator OFF manually
                 topic=self.base_topic+UserID+'/manualFlag'
                 print(f'Published to {topic}')
