@@ -1,5 +1,6 @@
 import paho.mqtt.client as PahoMQTT
 import json
+from thingSpeakAdapter import send_data_to_thingspeak_channel
 
 
 class DeviceSubscriber:
@@ -9,11 +10,12 @@ class DeviceSubscriber:
         #mqtt.subscribe(device.mqttURL, callback = callback())
 
         self.clientID = clientID
-        self._paho_mqtt = PahoMQTT.Client(clientID, True)
+        self._paho_mqtt = PahoMQTT.Client(clientID, True) #True è la duration: si riconnette automaticamente se non legge il messaggio
         self.topic = device.topic
         self.messageBroker = broker
         self.value = device.value
         self.port = port
+        self._paho_mqtt.subscribe(self.topic, 2)
         self._paho_mqtt.on_connect = self.myOnConnect
         self._paho_mqtt.on_message = self.myOnMessageReceived
 
@@ -32,13 +34,15 @@ class DeviceSubscriber:
         self._paho_mqtt.disconnect()
 
     def myOnConnect(self, paho_mqtt, userdata, flags, rc):
-        print("DataAnalysis as SUBSCRIBER connected to %s with result code: %d" % (self.messageBroker, rc))  # rc = Return Code. Se rc = 0 no errori
+        print("DataAnalysis as SUBSCRIBER connected to %s at the topic %s with result code: %d" % (self.messageBroker, self.topic,rc))  # rc = Return Code. Se rc = 0 no errori
 
     def myOnMessageReceived(self, paho_mqtt, userdata, msg):
         # A new message is received
-        received_msg = json.loads(msg.payload)
-        print(received_msg)
+        print(msg)
+        received_msg = json.loads(msg)["e"][0]["v"]
+
         self.device.value = received_msg
+        send_data_to_thingspeak_channel(self.device)
         return
 
 
