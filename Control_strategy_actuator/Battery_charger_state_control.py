@@ -193,5 +193,5 @@ if __name__=="__main__":
     Contr.StartOperation()
     # infinite loop to keep the script running 
     while True:
-        time.sleep(30)
+        time.sleep(60)
         Contr.control_strategy()
