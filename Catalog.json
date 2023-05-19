@@ -223,8 +223,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523070.3620687,
-      "value": 700.165585495257
+      "lastUpDate": 1684523324.2511113,
+      "value": 698.7361162789665
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523303.2119348,
-      "value": 32.14675427142381
+      "lastUpDate": 1684523324.2019355,
+      "value": 32.36377784371859
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -279,8 +279,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523096.1582613,
-      "value": 50.253888868315954
+      "lastUpDate": 1684523324.3048253,
+      "value": 52.32157864481598
     },
     {
       "deviceName": "PhotonSimulator1",
