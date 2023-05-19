@@ -48,11 +48,12 @@ class TemperatureSimulator():
 
         return temp
     
-class PresenceSimulator():
+class DigitalSimulator():
     def __init__(self, meanDuration = 8, meanWait = 15):
         self.meanDuration = meanDuration #in number of events
         self.meanWait = meanWait
-        self.value = random.binomial(1, meanDuration/meanWait)
+        self.value = random.binomial(1, meanDuration/(meanDuration+meanWait))
+        self.prevVal = self.value
         if self.value:
             self.currStay = math.floor(max([0, self.meanDuration * (1 + random.randn()/8)]))
         else:
@@ -63,7 +64,11 @@ class PresenceSimulator():
     
     def generateNewVal(self):
         self.presentSince += 1
-        if self.presentSince > self.currStay:
+        if self.meanWait == 0:
+            newVal = 1
+        elif self.meanDuration == 0:
+            newVal = 0
+        elif self.presentSince > self.currStay:
             self.presentSince = 0
             if self.value:
                 self.currStay = max([1, self.meanWait * (1 + random.randn()/8)])

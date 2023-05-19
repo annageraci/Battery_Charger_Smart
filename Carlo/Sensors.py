@@ -65,8 +65,8 @@ class TemperatureSensor(Sensor):
 
 
 class PresenceSensor(Sensor):
-    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
-        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, meanDuration=8, meanWait=15):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated)
         self.unit = ""
         self.quantity = "presence"
         if self.simulated:
@@ -80,7 +80,7 @@ class PresenceSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self):
-        self.simulator = PresenceSimulator()
+        self.simulator = DigitalSimulator(15, 0)
         self.value = self.simulator.generateNewVal()
 
             
@@ -97,28 +97,6 @@ class PresenceSensor(Sensor):
     #     self.dict["e"][0]["t"] = self.time_last_update
     #     self.dict["e"][0]["v"] = self.value
     #     return self.dict
-        
-
-    def errorCheck(self):
-        try:
-            if math.abs(self.value - self.prevValue) > 5:
-                self.error = True
-                self.errorCode = 1
-        except:
-            pass
-
-        if time.time() - self.time_last_update > 120:
-            self.error = True
-            self.errorCode = 2
-
-        
-        if self.error:
-            if self.errorCode == 1:
-                print("Value error: incoherent temperature values (previous: " + str(self.value) +"°C, current: " + str(self.prevValue) + "°C)")
-            elif self.errorCode == 2:
-                print("Error: the sensor has generated no data for 120 seconds. Disconnecting.")
-
-        return self.errorCode
     
     
 class BatteryChargeSensor(Sensor):
@@ -204,7 +182,7 @@ class PhotonSensor(Sensor):
     def __init__(self, ID, name = "", userID = "1", baseTopic = "", simulated = True, currLight = None):
         Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currLight)
         self.unit = ""
-        self.quantity = "light_intensity"
+        self.quantity = "photon"
         if self.simulated:
             self.start_simulator()
         
@@ -232,7 +210,28 @@ class PhotonSensor(Sensor):
         self.dict["e"][0]["t"] = self.time_last_update
         self.dict["e"][0]["v"] = self.value
         return self.dict
+    
+    
+class SwitchSensor(Sensor):
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+        self.unit = ""
+        self.quantity = "switch"
+        if self.simulated:
+            self.start_simulator()
+        
+        else:
+            # instructions related to RPi
+            pass
+        
+        self.MQTTtopic += "/" + self.quantity
+        self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
+    def start_simulator(self):
+        self.simulator = DigitalSimulator()
+        self.value = self.simulator.generateNewVal()
+
+        
 
 
 
