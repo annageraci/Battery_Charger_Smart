@@ -183,7 +183,7 @@
       },
       "status": 0,
       "lastUpDate": 1679160119,
-      "value": 1
+      "value": 0
     },
     {
       "deviceName": "Actuator",
@@ -209,8 +209,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684522964.0714817,
-      "value": 301.3117245061582
+      "lastUpDate": 1684523070.3272705,
+      "value": 299.76837835080664
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -223,8 +223,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684522902.1090078,
-      "value": 699.8557090026778
+      "lastUpDate": 1684523070.3620687,
+      "value": 700.165585495257
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -237,8 +237,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684522959.024441,
-      "value": 700.434592705427
+      "lastUpDate": 1684523070.4091105,
+      "value": 699.2544082023192
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684522901.9756653,
-      "value": 30.55022518395265
+      "lastUpDate": 1684523075.0269573,
+      "value": 30.05815789492823
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -265,8 +265,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684522958.985673,
-      "value": 87.76732412577496
+      "lastUpDate": 1684523075.1430783,
+      "value": 89.89829086666028
     },
     {
       "deviceName": "BatteryChargeSimulator4",
@@ -279,8 +279,50 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684522902.0770519,
-      "value": 50.519403243801115
+      "lastUpDate": 1684523075.189226,
+      "value": 50.05291595490731
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "114",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1684523069.8656156,
+      "value": 1
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "124",
+      "UserAssociationID": "2",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1684523075.1076124,
+      "value": 1
+    },
+    {
+      "deviceName": "PhotonSimulator4",
+      "DeviceID": "144",
+      "UserAssociationID": "4",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1684523069.9599087,
+      "value": 1
     }
   ],
   "UserList": [
