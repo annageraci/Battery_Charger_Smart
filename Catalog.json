@@ -209,8 +209,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684522958.896882,
-      "value": 300.74020582109534
+      "lastUpDate": 1684522964.0714817,
+      "value": 301.3117245061582
     },
     {
       "deviceName": "PhotonSimulator2",
