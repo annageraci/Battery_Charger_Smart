@@ -46,6 +46,7 @@ class Controller:
         self.client.start() #connect to the broker and start the loop
         time.sleep(6) # asyncronous so we want exaclty ordered
         for i in range(len(self.Catalog['UserList'])):
+            print('INITIALIZING')
             UserID=int(self.Catalog['UserList'][i]['UserID'])
             self.topic_temp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_temp)       
             self.client.mySubscribe(self.topic_temp_completed[i])
@@ -108,6 +109,8 @@ class Controller:
                     else:
                         # 3° step check aria condizionata o riscaldamento (temperatura) 
                         daily_appointment=int(self.daily[i]) #%battery usage in this day
+                        print(daily_appointment)
+                        print(self.battery_percentage[i])
                         soglia_Htemperature=20 # more than 20° aria condizionata
                         soglia_Ltemperature=10 # less than 10° aria calda
                         if ((self.temperature[i]>soglia_Htemperature or self.temperature[i]<soglia_Ltemperature) and self.temperature[i]!=-1):
@@ -119,7 +122,7 @@ class Controller:
                         if (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery sufficient, more than {daily_appointment}')
                             self.actuator_command[i]=0
-                        elif (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
+                        elif (self.battery_percentage[i]-15<daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery insufficient, less than {daily_appointment}')
                             self.actuator_command[i]=1
                     if (self.actuator_command[i]==-1):
@@ -138,13 +141,13 @@ class Controller:
                 dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
                 #print(dict_to_post)
-                self.actuator_command=[-1]*self.NumberofUser
-                self.temperature=[-1]*self.NumberofUser
-                self.battery_percentage=[-1]*self.NumberofUser
-                self.digital_button=[-1]*self.NumberofUser
-                self.photon=[-1]*self.NumberofUser
-                self.actuator_command=[-1]*self.NumberofUser
-                self.daily=[-1]*self.NumberofUser
+                self.actuator_command[i]=-1
+                self.temperature[i]=-1
+                self.battery_percentage[i]=-1
+                self.digital_button[i]=-1
+                self.photon[i]=-1
+                self.actuator_command[i]=-1
+                self.daily[i]=-1
             elif self.flag[i]==1:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
@@ -193,5 +196,5 @@ if __name__=="__main__":
     Contr.StartOperation()
     # infinite loop to keep the script running 
     while True:
-        time.sleep(60)
+        time.sleep(30)
         Contr.control_strategy()

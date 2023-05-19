@@ -77,7 +77,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "value": 0,
+      "value": 1,
       "lastUpDate": 1679060549
     },
     {
@@ -183,7 +183,7 @@
       },
       "status": 0,
       "lastUpDate": 1679160119,
-      "value": 0
+      "value": 1
     },
     {
       "deviceName": "Actuator",
@@ -209,8 +209,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684521385.56754,
-      "value": 925
+      "lastUpDate": 1684522958.896882,
+      "value": 300.74020582109534
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -223,8 +223,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684521380.4132054,
-      "value": 924
+      "lastUpDate": 1684522902.1090078,
+      "value": 699.8557090026778
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -237,8 +237,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684521422.2352371,
-      "value": 927
+      "lastUpDate": 1684522959.024441,
+      "value": 700.434592705427
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684521529.5957444,
-      "value": 37.89566009055167
+      "lastUpDate": 1684522901.9756653,
+      "value": 30.55022518395265
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -265,8 +265,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684521529.632551,
-      "value": 14.0075470081101
+      "lastUpDate": 1684522958.985673,
+      "value": 87.76732412577496
     },
     {
       "deviceName": "BatteryChargeSimulator4",
@@ -279,8 +279,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684521529.6917002,
-      "value": 38.105150757063946
+      "lastUpDate": 1684522902.0770519,
+      "value": 50.519403243801115
     }
   ],
   "UserList": [
