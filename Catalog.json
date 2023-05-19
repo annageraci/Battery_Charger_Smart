@@ -183,6 +183,103 @@
       },
       "status": 0,
       "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "17",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "113",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1684520461.3497746,
+      "value": 297.6666666666667
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "123",
+      "UserAssociationID": "2",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1684520461.4059584,
+      "value": 297.6666666666667
+    },
+    {
+      "deviceName": "PhotonSimulator4",
+      "DeviceID": "143",
+      "UserAssociationID": "4",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1684520461.476446,
+      "value": 297.6666666666667
+    },
+    {
+      "deviceName": "BatteryChargeSimulator1",
+      "DeviceID": "111",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1684520456.305661,
+      "value": 28.399993995172228
+    },
+    {
+      "deviceName": "BatteryChargeSimulator2",
+      "DeviceID": "121",
+      "UserAssociationID": "2",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1684520456.3816082,
+      "value": 30.9190635596582
+    },
+    {
+      "deviceName": "BatteryChargeSimulator4",
+      "DeviceID": "141",
+      "UserAssociationID": "4",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1684520456.4399807,
+      "value": 30.851193920962647
     }
   ],
   "UserList": [
@@ -454,4 +551,4 @@
       }
     }
   ]
-}
+}}
