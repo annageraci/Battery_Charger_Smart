@@ -80,7 +80,7 @@ class Catalog(object):
                     return 'this device is already present in the list \n'
             # else is new so we can update the device list
             Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
-            json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
+            json.dump(Catalog,open('../CatalogFake.json', 'w'), indent=2)
             return json.dumps(Catalog)
         
         if uri[0]=='User':

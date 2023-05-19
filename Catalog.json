@@ -209,8 +209,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523070.3272705,
-      "value": 299.76837835080664
+      "lastUpDate": 1684523101.2848797,
+      "value": 301.8463781573962
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -237,8 +237,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1684523070.4091105,
-      "value": 699.2544082023192
+      "lastUpDate": 1684523096.245567,
+      "value": 699.018043350277
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -251,8 +251,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523075.0269573,
-      "value": 30.05815789492823
+      "lastUpDate": 1684523095.9833195,
+      "value": 30.24926987661459
     },
     {
       "deviceName": "BatteryChargeSimulator2",
@@ -265,8 +265,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523075.1430783,
-      "value": 89.89829086666028
+      "lastUpDate": 1684523101.324001,
+      "value": 89.44010254609935
     },
     {
       "deviceName": "BatteryChargeSimulator4",
@@ -279,11 +279,11 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1684523075.189226,
-      "value": 50.05291595490731
+      "lastUpDate": 1684523096.1582613,
+      "value": 50.253888868315954
     },
     {
-      "deviceName": "PhotonSimulator1",
+      "deviceName": ""PhotonSimulator1",
       "DeviceID": "114",
       "UserAssociationID": "1",
       "MeasureType": "",
@@ -293,7 +293,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1684523069.8656156,
+      "lastUpDate": 1684523101.2501364,
       "value": 1
     },
     {
@@ -307,7 +307,7 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1684523075.1076124,
+      "lastUpDate": 1684523101.324001,
       "value": 1
     },
     {

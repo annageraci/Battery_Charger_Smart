@@ -109,8 +109,6 @@ class Controller:
                     else:
                         # 3° step check aria condizionata o riscaldamento (temperatura) 
                         daily_appointment=int(self.daily[i]) #%battery usage in this day
-                        print(daily_appointment)
-                        print(self.battery_percentage[i])
                         soglia_Htemperature=20 # more than 20° aria condizionata
                         soglia_Ltemperature=10 # less than 10° aria calda
                         if ((self.temperature[i]>soglia_Htemperature or self.temperature[i]<soglia_Ltemperature) and self.temperature[i]!=-1):
