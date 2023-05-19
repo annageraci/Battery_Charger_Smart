@@ -136,7 +136,8 @@ class Catalog(object):
     def PUT(self,*uri):
         if uri[0]=='Device':
             # body {
-            #   "DeviceID":13
+            #   "DeviceID":13,
+            #   "value":23,
             #   "time":time.time()
             # }
             bodyAsString=cherrypy.request.body.read() 
@@ -145,8 +146,8 @@ class Catalog(object):
             ListOfDevice=Catalog['DeviceList']
             for i in range(len(ListOfDevice)):
                 if ListOfDevice[i]['DeviceID']==bodyAsDictionary['DeviceID']:
-                    #Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
-                    Catalog['DeviceList'][i]['lastUpDate']=int(time.time())
+                    Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
+                    Catalog['DeviceList'][i]['value']=bodyAsDictionary['value']
                     json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
                     return json.dumps(Catalog)
         
