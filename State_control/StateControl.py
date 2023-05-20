@@ -140,7 +140,7 @@ if __name__ == '__main__':
         port=settings['broker']['port']
         base_topic=settings['baseTopic']
         topic_alert='/statecontrol/AlertSMS'
-        topic_Btemp='/sensor/Btemperature' #DA INSERIRE SE NECESSARIO 
+        topic_Btemp='/sensor/Btemperature' 
         topic_battery='/sensor/battery'
         topic_presence='/sensor/presence'
         state=StateControl('Geraci15273627', broker, port, base_topic, topic_alert,BaseUrl, DockerIP, topic_Btemp, topic_battery,topic_presence)
