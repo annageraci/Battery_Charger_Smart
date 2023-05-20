@@ -100,21 +100,21 @@ class Controller:
                     self.actuator_command[i]=0
                 else:
                     if (self.digital_button[i]==-1):
-                        print('The sensor of presence does not work')
-                    # 2* step ha i pannelli fotovoltaici? c'è il sole?
+                        print('WARNING: The sensor of presence does not work')
+                    # 2* step has the photovoltaic panel? Enought enegy in this moment?
                     if self.photon[i]<=soglia_photon and self.photon[i]!=-1:
                         # self.photon=-1 means no solar pannel 
                         print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
                         self.actuator_command[i]=1
                     else:
-                        # 3° step check aria condizionata o riscaldamento (temperatura) 
+                        # 3° step check conditioner or heater necessary? (external temperature) 
                         daily_appointment=int(self.daily[i]) #%battery usage in this day
-                        soglia_Htemperature=20 # more than 20° aria condizionata
-                        soglia_Ltemperature=10 # less than 10° aria calda
+                        soglia_Htemperature=20 # more than 20° conditionier 
+                        soglia_Ltemperature=10 # less than 10° heater
                         if ((self.temperature[i]>soglia_Htemperature or self.temperature[i]<soglia_Ltemperature) and self.temperature[i]!=-1):
                             print(f'Could be necessary switch on the conditioning, temp: {self.temperature[i]}')
-                            daily_appointment=daily_appointment+0.2*daily_appointment #maggiorazione del 20%
-                        # 4° step % batteria è sufficiente
+                            daily_appointment=daily_appointment+0.2*daily_appointment # 20% more of battery percentage
+                        # 4° step Is percentage of battery available sufficient?
                         if (daily_appointment>100):
                             print('probably you have to charge the car during the usage in another charge station')
                         if (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
@@ -138,7 +138,6 @@ class Controller:
                 self.client.myPublish(topic, msg)
                 dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
-                #print(dict_to_post)
                 self.actuator_command[i]=-1
                 self.temperature[i]=-1
                 self.battery_percentage[i]=-1
@@ -158,7 +157,6 @@ class Controller:
                 self.client.myPublish(topic, msg)
                 print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
-                #print(dict_to_post)
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
             elif self.flag[i]==0:
                 topic=self.base_topic+UserID+'/actuator'
@@ -172,7 +170,6 @@ class Controller:
                 self.client.myPublish(topic, msg)
                 print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
-                #print(dict_to_post)
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
 
                 
