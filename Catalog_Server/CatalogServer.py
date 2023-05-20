@@ -338,7 +338,7 @@ class Catalog(object):
                                 else:
                                     return 'Does not exist this appointment in your Agenda'
                         else:
-                            return 'Does not exist this Day'
+                           return 'Does not exist this Day'
                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                 print(Catalog)
                 return json.dumps(Catalog)
