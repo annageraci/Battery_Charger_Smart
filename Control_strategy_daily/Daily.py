@@ -53,21 +53,9 @@ class BatteryDailyUsage(MyPublisher):
             response_json_Agenda = response.json()
             
             today_num=datetime.today().weekday()
-            if today_num==0:
-                today='Monday'
-            if today_num==1:
-                today='Tuesday'
-            if today_num==2:
-                today='Wednesday'
-            if today_num==3:
-                today='Thursday'
-            if today_num==4:
-                today='Friday'
-            elif today_num==5:
-                today='Saturday'
-            elif today_num==6:
-                today='Sunday'
-            
+            week_day=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            today=week_day[today_num]
+
             capacity=self.response_json_all_user[i]['CapacityBattery'] # capacità della batteria in KWh
             km_kWh=self.response_json_all_user[i]['Consumption_km/kwh'] # consumo in km/KWh
             max_autonomy=km_kWh*capacity
@@ -75,7 +63,7 @@ class BatteryDailyUsage(MyPublisher):
             for j in range(len(response_json_Agenda['Agenda'][today])):
                 Km=Km+response_json_Agenda['Agenda'][today][j]['NumberOfTotalKilometers']
             if Km>max_autonomy:
-                # too km 
+                # too km -> AlertSMS 
                 topic=self.base_topic+str(UserID)+'/statecontrol/AlertSMS'  
                 print(f'Published to {topic}')
                 message={
@@ -97,7 +85,7 @@ class BatteryDailyUsage(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Carlo']
+        BaseUrl=settings['Catalog_url']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
@@ -106,7 +94,6 @@ if __name__ == '__main__':
         daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
         while True:
             daily.makerequest()
-            # time.sleep(5)
             daily.start()
             daily.sendData()
             time.sleep(15)
