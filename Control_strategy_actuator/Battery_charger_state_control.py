@@ -177,7 +177,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url_Carlo']
+    base_url=Settings['Catalog_url']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
