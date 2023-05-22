@@ -31,8 +31,8 @@ class Catalog(object):
                 Catalog=json.load(open('../Catalog.json'))
                 ListOfDevice=Catalog['DeviceList']
                 output=''
-                for i in range(len(ListOfDevice)):
-                    if  ListOfDevice[i]['DeviceID']==ID:
+                for currentDevice in ListOfDevice:
+                    if  currentDevice['DeviceID']==ID:
                         output=ListOfDevice[i]
                 return json.dumps(output, indent=2)
 
@@ -75,8 +75,8 @@ class Catalog(object):
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
-            for i in range(len(ListOfDevice)):
-                if ListOfDevice[i]['DeviceID']==bodyAsDictionary['DeviceID']:
+            for currentDevice in ListOfDevice:
+                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
                     return 'this device is already present in the list \n'
             # else is new so we can update the device list
             Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
@@ -88,8 +88,8 @@ class Catalog(object):
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfUser=Catalog['UserList']
-            for i in range(len(ListOfUser)):
-                if ListOfUser[i]['UserID']==bodyAsDictionary['UserID']:
+            for currentUser in ListOfUser:
+                if currentUser['UserID']==bodyAsDictionary['UserID']:
                     return 'this user is already present in the list \n'
             # else is new so we can update the user list
             Catalog['UserList'].insert(len(Catalog['UserList']), bodyAsDictionary)
@@ -112,12 +112,10 @@ class Catalog(object):
             Catalog=json.load(open('../Catalog.json'))
             ListOfUser=Catalog['UserList']
             Week=['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            for i in range(len(ListOfUser)):
-                for currentUser in ListOfUser:
-                    if currentUser['UserID']==bodyAsDictionary['UserID']:
-                        for i in range(7):
-                            if bodyAsDictionary['Day']==Week[i]:
-                                day=Week[i]
+            for currentUser in ListOfUser:
+                if currentUser['UserID']==bodyAsDictionary['UserID']:
+                    for day in Week:
+                           if bodyAsDictionary['Day']==day:
                                 currentUser['Agenda'][day].append(bodyAsDictionary['Date'])
                                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                                 return json.dumps(Catalog)
@@ -135,8 +133,8 @@ class Catalog(object):
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
-            for i in range(len(ListOfDevice)):
-                if ListOfDevice[i]['DeviceID']==bodyAsDictionary['DeviceID']:
+            for currentDevice in ListOfDevice:
+                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
                     Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
                     Catalog['DeviceList'][i]['value']=bodyAsDictionary['value']
                     json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
@@ -158,8 +156,8 @@ class Catalog(object):
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfUser=Catalog['UserList']
-            for i in range(len(ListOfUser)):
-                if ListOfUser[i]['UserID']==bodyAsDictionary['UserID']:
+            for currentUser in ListOfUser:
+                if currentUser['UserID']==bodyAsDictionary['UserID']:
                     Catalog['UserList'][i]['CapacityBattery']=bodyAsDictionary['CapacityBattery']
                     Catalog['UserList'][i]["Consuption_km/kwh"]=bodyAsDictionary["Consuption_km/kwh"]
                     for currentDevice in Catalog['UserList'][i]["ConnectedDevices"]:
@@ -182,12 +180,10 @@ class Catalog(object):
                 for currentDevice in currentUser['ConnectedDevices']:
                     if (currentDevice['DeviceName']=='Actuator' and int(currentUser['UserID'])==int(bodyAsDictionary['UserID'])):
                         DeviceID=currentDevice["DeviceID"]
-            for i in range(len(Catalog['DeviceList'])):
-                if Catalog['DeviceList'][i]['DeviceID']==DeviceID:
-                    if value==0:
-                        Catalog['DeviceList'][i]['value']=0
-                    elif value==1:
-                        Catalog['DeviceList'][i]['value']=1
+            for currentDevice in Catalog['DeviceList']:
+                if currentDevice['DeviceID']==DeviceID:
+                    if value==0 or value==1:
+                        currentDevice['value']=value
                     else:
                         return 'The value is not valid '+ json.dumps(Catalog)
             json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
@@ -203,27 +199,23 @@ class Catalog(object):
             #        "StartTimeSlot": 8,
             #        "NumberOfTotalKilometers": 50
             #      }
-            print('ok')
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
             Catalog=json.load(open('../Catalog.json'))
             ListOfUser=Catalog['UserList']
             Week=['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            for i in range(len(ListOfUser)):
-                for currentUser in ListOfUser:
-                    if currentUser['UserID']==bodyAsDictionary['UserID']:
-                        for i in range(7):
-                            if Week[i]==bodyAsDictionary['Day']:
-                                day=Week[i]
-                                for appointment in currentUser['Agenda'][day]:
-                                    if appointment['Type']==bodyAsDictionary['Date']['Type']:
-                                        appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
-                                        appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
-                                        json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
-                                        return json.dumps(Catalog)
-                                 
+            for currentUser in ListOfUser:
+                if currentUser['UserID']==bodyAsDictionary['UserID']:
+                    for Day in Week:
+                        if Day==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda'][Day]:
+                                if appointment['Type']==bodyAsDictionary['Date']['Type']:
+                                    appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
+                                    appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
+                                    json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
+                                    return json.dumps(Catalog)
                         return 'no corrispondence in your agenda'
-                return 'no user associated'
+            return 'no user associated'
                         
         if uri[0]=='AgendaRemove':
             #{
@@ -242,18 +234,16 @@ class Catalog(object):
             ListOfUser=Catalog['UserList']
             ElemToRemove=bodyAsDictionary['Date']
             Week=['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            for i in range(len(ListOfUser)):
-                for currentUser in ListOfUser:
-                    if currentUser['UserID']==bodyAsDictionary['UserID']:
-                        for i in range(7):
-                            if Week[i]==bodyAsDictionary['Day']:
-                                day=Week[i]
-                                for appointment in currentUser['Agenda'][day]:
-                                    if ElemToRemove==appointment:
-                                        currentUser['Agenda'][day].remove(appointment)
-                                        json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
-                                        return json.dumps(Catalog)
-                        return 'Does not exist this appointment in your Agenda'
+            for currentUser in ListOfUser:
+                if currentUser['UserID']==bodyAsDictionary['UserID']:
+                    for Day in Week:
+                        if Day==bodyAsDictionary['Day']:
+                            for appointment in currentUser['Agenda'][Day]:
+                                if ElemToRemove==appointment:
+                                    currentUser['Agenda'][Day].remove(appointment)
+                                    json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
+                                    return json.dumps(Catalog)
+            return 'Does not exist this appointment in your Agenda'
                         
 if __name__=="__main__":
     conf={
