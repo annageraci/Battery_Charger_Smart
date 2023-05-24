@@ -135,8 +135,8 @@ class Catalog(object):
             ListOfDevice=Catalog['DeviceList']
             for currentDevice in ListOfDevice:
                 if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
-                    Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
-                    Catalog['DeviceList'][i]['value']=bodyAsDictionary['value']
+                    currentDevice['lastUpDate']=bodyAsDictionary["time"]
+                    currentDevice['value']=bodyAsDictionary['value']
                     json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
                     return json.dumps(Catalog)
         
@@ -158,12 +158,12 @@ class Catalog(object):
             ListOfUser=Catalog['UserList']
             for currentUser in ListOfUser:
                 if currentUser['UserID']==bodyAsDictionary['UserID']:
-                    Catalog['UserList'][i]['CapacityBattery']=bodyAsDictionary['CapacityBattery']
-                    Catalog['UserList'][i]["Consuption_km/kwh"]=bodyAsDictionary["Consuption_km/kwh"]
+                    currentUser['CapacityBattery']=bodyAsDictionary['CapacityBattery']
+                    currentUser["Consuption_km/kwh"]=bodyAsDictionary["Consuption_km/kwh"]
                     for currentDevice in Catalog['UserList'][i]["ConnectedDevices"]:
                         if currentDevice['DeviceID']==bodyAsDictionary['ConnectedDevices']['DeviceID']:
                             return 'The Device is already present in the list but the other parameter are updated' + json.dumps(Catalog)
-                    Catalog['UserList'][i]["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
+                    currentUser["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
                     json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                     return json.dumps(Catalog)
                 
