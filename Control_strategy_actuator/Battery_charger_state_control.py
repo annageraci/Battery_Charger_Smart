@@ -46,7 +46,6 @@ class Controller:
         self.client.start() #connect to the broker and start the loop
         time.sleep(6) # asyncronous so we want exaclty ordered
         for i in range(len(self.Catalog['UserList'])):
-            print('INITIALIZING')
             UserID=int(self.Catalog['UserList'][i]['UserID'])
             self.topic_temp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_temp)       
             self.client.mySubscribe(self.topic_temp_completed[i])
