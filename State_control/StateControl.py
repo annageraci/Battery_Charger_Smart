@@ -73,7 +73,7 @@ class StateControl(MyPublisher):
         for i in range(self.NumberofUser):
             UserID=self.response_json_all_user[i]['UserID']
             
-            
+            alert=0
             # temperature of the battery too high 
             if self.Btemp[i]>50:
                 #set the actuator OFF manually
@@ -134,7 +134,7 @@ class StateControl(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Anna']
+        BaseUrl=settings['Catalog_url_Carlo']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']

@@ -77,7 +77,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/actuator"
       },
-      "value": 0,
+      "value": 1,
       "lastUpDate": 1679060549
     },
     {
@@ -219,7 +219,7 @@
       "UserSurname": "Rossi",
       "CapacityBattery": 50,
       "Consumption_km/kwh": 6,
-      "ChatID": "740346462",
+      "ChatID": "936478810",
       "ThingSpeakKey": "2141952",
       "ConnectedDevices": [
         {
@@ -300,6 +300,11 @@
             "Type": "Hollyday",
             "StartTimeSlot": 8,
             "NumberOfTotalKilometers": 7
+          },
+          {
+            "Type": "",
+            "StartTimeSlot": [],
+            "NumberOfTotalKilometers": 60
           }
         ]
       }
