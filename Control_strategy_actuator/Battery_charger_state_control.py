@@ -89,7 +89,7 @@ class Controller:
                 print(f'the value of the flag of the userID {UserID} is changed: Flag = {self.flag[i]}')
     
     def control_strategy(self):
-        soglia_photon=500 # Voltage produced by the photon 
+        soglia_photon=4 # Voltage produced by the photon 
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
             if self.flag[i]==2:
@@ -101,7 +101,7 @@ class Controller:
                     if (self.digital_button[i]==-1):
                         print('WARNING: The sensor of presence does not work')
                     # 2* step has the photovoltaic panel? Enought enegy in this moment?
-                    if self.photon[i]<=soglia_photon and self.photon[i]!=-1:
+                    if self.photon[i]>=soglia_photon and self.photon[i]!=-1:
                         # self.photon=-1 means no solar pannel 
                         print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
                         self.actuator_command[i]=1
@@ -176,7 +176,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url']
+    base_url=Settings['Catalog_url_Carlo']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
