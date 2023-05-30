@@ -70,7 +70,7 @@ class Catalog(object):
             return 'No information about your request in the uri'
 
     def POST(self, *uri):
-       if uri[0]=='Device':
+        if uri[0]=='Device':
             pass
 #           bodyAsString=cherrypy.request.body.read() 
 #           bodyAsDictionary=json.loads(bodyAsString)
