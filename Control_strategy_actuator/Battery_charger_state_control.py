@@ -90,10 +90,14 @@ class Controller:
     
     def control_strategy(self):
 <<<<<<< HEAD
+<<<<<<< HEAD
         soglia_photon=1.1 # eV energy of the photon 
 =======
         soglia_photon=4 # Voltage produced by the photon 
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+        soglia_photon=3.5 # Voltage produced by the photon 
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
             if self.flag[i]==2:
@@ -104,17 +108,23 @@ class Controller:
                 else:
                     if (self.digital_button[i]==-1):
 <<<<<<< HEAD
+<<<<<<< HEAD
                         print('The sensor of presence does not work')
                     # 2* step ha i pannelli fotovoltaici? c'è il sole?
 =======
                         print('WARNING: The sensor of presence does not work')
                     # 2* step has the photovoltaic panel? Enought enegy in this moment?
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+                        print('WARNING: The sensor of presence does not work')
+                    # 2* step has the photovoltaic panel? Enought enegy in this moment?
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                     if self.photon[i]>=soglia_photon and self.photon[i]!=-1:
                         # self.photon=-1 means no solar pannel 
                         print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
                         self.actuator_command[i]=1
                     else:
+<<<<<<< HEAD
 <<<<<<< HEAD
                         # 3° step check aria condizionata o riscaldamento (temperatura) 
                         daily_appointment=int(self.daily[i]) #%battery usage in this day
@@ -125,6 +135,8 @@ class Controller:
                             daily_appointment=daily_appointment+0.2*daily_appointment #maggiorazione del 20%
                         # 4° step % batteria è sufficiente
 =======
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                         # 3° step check conditioner or heater necessary? (external temperature) 
                         daily_appointment=int(self.daily[i]) #%battery usage in this day
                         soglia_Htemperature=20 # more than 20° conditionier 
@@ -133,17 +145,24 @@ class Controller:
                             print(f'Could be necessary switch on the conditioning, temp: {self.temperature[i]}')
                             daily_appointment=daily_appointment+0.2*daily_appointment # 20% more of battery percentage
                         # 4° step Is percentage of battery available sufficient?
+<<<<<<< HEAD
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                         if (daily_appointment>100):
                             print('probably you have to charge the car during the usage in another charge station')
                         if (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
                             print(f'percentage of battery sufficient, more than {daily_appointment}')
                             self.actuator_command[i]=0
 <<<<<<< HEAD
+<<<<<<< HEAD
                         elif (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
 =======
                         elif (self.battery_percentage[i]-15<daily_appointment and int(daily_appointment)!=-1):
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+                        elif (self.battery_percentage[i]-15<daily_appointment and int(daily_appointment)!=-1):
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                             print(f'percentage of battery insufficient, less than {daily_appointment}')
                             self.actuator_command[i]=1
                     if (self.actuator_command[i]==-1):
@@ -162,6 +181,7 @@ class Controller:
                 dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
 <<<<<<< HEAD
+<<<<<<< HEAD
                 #print(dict_to_post)
                 self.actuator_command=[-1]*self.NumberofUser
                 self.temperature=[-1]*self.NumberofUser
@@ -171,6 +191,8 @@ class Controller:
                 self.actuator_command=[-1]*self.NumberofUser
                 self.daily=[-1]*self.NumberofUser
 =======
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                 self.actuator_command[i]=-1
                 self.temperature[i]=-1
                 self.battery_percentage[i]=-1
@@ -178,7 +200,10 @@ class Controller:
                 self.photon[i]=-1
                 self.actuator_command[i]=-1
                 self.daily[i]=-1
+<<<<<<< HEAD
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
             elif self.flag[i]==1:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
@@ -192,9 +217,12 @@ class Controller:
                 print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
 <<<<<<< HEAD
+<<<<<<< HEAD
                 #print(dict_to_post)
 =======
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
             elif self.flag[i]==0:
                 topic=self.base_topic+UserID+'/actuator'
@@ -209,9 +237,12 @@ class Controller:
                 print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
 <<<<<<< HEAD
+<<<<<<< HEAD
                 #print(dict_to_post)
 =======
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
 
                 
@@ -220,10 +251,14 @@ class Controller:
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
 <<<<<<< HEAD
+<<<<<<< HEAD
     base_url=Settings['Catalog_url_Anna']
 =======
     base_url=Settings['Catalog_url_Carlo']
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+    base_url=Settings['Catalog_url_Carlo']
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']

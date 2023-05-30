@@ -54,6 +54,7 @@ class BatteryDailyUsage(MyPublisher):
             
             today_num=datetime.today().weekday()
 <<<<<<< HEAD
+<<<<<<< HEAD
             if today_num==0:
                 today='Monday'
             if today_num==1:
@@ -74,6 +75,11 @@ class BatteryDailyUsage(MyPublisher):
             today=week_day[today_num]
 
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+            week_day=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+            today=week_day[today_num]
+
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
             capacity=self.response_json_all_user[i]['CapacityBattery'] # capacità della batteria in KWh
             km_kWh=self.response_json_all_user[i]['Consumption_km/kwh'] # consumo in km/KWh
             max_autonomy=km_kWh*capacity
@@ -82,10 +88,14 @@ class BatteryDailyUsage(MyPublisher):
                 Km=Km+response_json_Agenda['Agenda'][today][j]['NumberOfTotalKilometers']
             if Km>max_autonomy:
 <<<<<<< HEAD
+<<<<<<< HEAD
                 # too km 
 =======
                 # too km -> AlertSMS 
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+                # too km -> AlertSMS 
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
                 topic=self.base_topic+str(UserID)+'/statecontrol/AlertSMS'  
                 print(f'Published to {topic}')
                 message={
@@ -108,10 +118,14 @@ if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
 <<<<<<< HEAD
+<<<<<<< HEAD
         BaseUrl=settings['Catalog_url']
 =======
         BaseUrl=settings['Catalog_url_Carlo']
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+        BaseUrl=settings['Catalog_url_Carlo']
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
@@ -121,9 +135,12 @@ if __name__ == '__main__':
         while True:
             daily.makerequest()
 <<<<<<< HEAD
+<<<<<<< HEAD
             # time.sleep(5)
 =======
 >>>>>>> bf3a96336060b94ade79d022901448d0003d4131
+=======
+>>>>>>> 6d9f3d1beed4933f11b8b16b5082e38f0aedff36
             daily.start()
             daily.sendData()
             time.sleep(15)

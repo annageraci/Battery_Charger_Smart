@@ -75,11 +75,7 @@ class StateControl(MyPublisher):
             
             
             # temperature of the battery too high 
-<<<<<<< HEAD
-            if self.Btemp[i]>33:
-=======
             if self.Btemp[i]>50:
->>>>>>> bf3a96336060b94ade79d022901448d0003d4131
                 #set the actuator OFF manually
                 topic=self.base_topic+UserID+'/manualFlag'
                 print(f'Published to {topic}')
@@ -144,11 +140,7 @@ if __name__ == '__main__':
         port=settings['broker']['port']
         base_topic=settings['baseTopic']
         topic_alert='/statecontrol/AlertSMS'
-<<<<<<< HEAD
         topic_Btemp='/sensor/Btemperature' #DA INSERIRE SE NECESSARIO 
-=======
-        topic_Btemp='/sensor/Btemperature' 
->>>>>>> bf3a96336060b94ade79d022901448d0003d4131
         topic_battery='/sensor/battery'
         topic_presence='/sensor/presence'
         state=StateControl('Geraci15273627', broker, port, base_topic, topic_alert,BaseUrl, DockerIP, topic_Btemp, topic_battery,topic_presence)
