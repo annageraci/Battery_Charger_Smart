@@ -3,7 +3,7 @@ from deviceSubscriber1   import DeviceSubscriber
 import time
 import json
 
-catalog = CatalogAdapter("http://192.168.1.11:8080") #avviato da Anna (pc-lavoro)
+catalog = CatalogAdapter("http://172.25.224.1:8080") #avviato da Anna (pc-lavoro)
 deviceList = catalog.get_devices()
 
 Settings=json.load(open("../settings.json"))

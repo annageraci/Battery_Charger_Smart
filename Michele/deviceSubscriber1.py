@@ -15,10 +15,10 @@ class DeviceSubscriber:
         self.port = port
         self._paho_mqtt.on_connect = self.myOnConnect
         self._paho_mqtt.on_message = self.myOnMessageReceived
-        self.i=0
-        self.device=[-1]*9
-        self.value=[-1]*9
-        self.topic=[-1]*9
+        #self.i=0
+        #self.device=[-1]*9
+        #self.value=[-1]*9
+        #self.topic=[-1]*9
 
 
     def start(self):
@@ -27,12 +27,12 @@ class DeviceSubscriber:
         self._paho_mqtt.loop_start()
         # subscribe for a topic
         for item in self.deviceList:
-            self.device[self.i]=item
-            self.topic[self.i]=item.topic
-            self.value[self.i]=item.value
-            self._paho_mqtt.subscribe(self.topic[self.i], 2)
-            print(f'Subscribed to the topic: {self.topic[self.i]}')
-            self.i=self.i+1
+            #self.device[self.i]=item
+            #self.topic[self.i]=item.topic
+            #self.value[self.i]=item.value
+            self._paho_mqtt.subscribe(item.topic, 2)
+            print(f'Subscribed to the topic: {item.topic}')
+            #self.i=self.i+1
 
     def stop(self):
         # da fare prima di disconnettersi
@@ -46,14 +46,13 @@ class DeviceSubscriber:
 
     def myOnMessageReceived(self, paho_mqtt, userdata, msg):
         # A new message is received
-        for j in range(self.i): 
-            if msg.topic==self.topic[j]:
+        for device in self.deviceList: 
+            if msg.topic==device.topic:
                 print(msg.payload)
                 print(msg.topic)
                 received_msg = json.loads(msg.payload)
-                self.value[j] = received_msg["e"][0]["v"]
-                print(self.device[j])
-                send_data_to_thingspeak_channel(self.device[j])
+                device.value = received_msg["e"][0]["v"]
+                send_data_to_thingspeak_channel(device)
         
 
 
