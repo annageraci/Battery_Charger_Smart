@@ -89,7 +89,7 @@ class Controller:
                 print(f'the value of the flag of the userID {UserID} is changed: Flag = {self.flag[i]}')
     
     def control_strategy(self):
-        soglia_photon=4 # Voltage produced by the photon 
+        soglia_photon=3.5 # Voltage produced by the photon 
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
             if self.flag[i]==2:

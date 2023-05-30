@@ -129,7 +129,7 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/2/actuator"
       },
-      "value": 0,
+      "value": 1,
       "lastUpDate": 1679059744
     },
     {
@@ -146,6 +146,19 @@
       "lastUpDate": 1679059744
     },
     {
+      "deviceName": "Photon_Sensor",
+      "DeviceID": "22",
+      "UserAssociationID": "2",
+      "MeasureType": "Photoni",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/photon"
+      },
+      "value": "",
+      "lastUpDate": 1683897222
+    },
+    {
       "deviceName": "Digital_Button",
       "DeviceID": "11",
       "UserAssociationID": "4",
@@ -157,6 +170,19 @@
       },
       "value": "",
       "lastUpDate": 1681996186
+    },
+    {
+      "deviceName": "Photon_Sensor",
+      "DeviceID": "27",
+      "UserAssociationID": "4",
+      "MeasureType": "Photoni",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/photon"
+      },
+      "value": "",
+      "lastUpDate": 1683897222
     },
     {
       "deviceName": "Battery_Detector",
@@ -183,47 +209,7 @@
       },
       "status": 0,
       "lastUpDate": 1679160119,
-      "value": 0
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "17",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119
-    },
-    {
-      "deviceName": "PhotonSimulator2",
-      "DeviceID": "124",
-      "UserAssociationID": "2",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
-      },
-      "status": "",
-      "lastUpDate": 1684523512.8731525,
       "value": 1
-    },
-    {
-      "deviceName": "PhotonSimulator1",
-      "DeviceID": "114",
-      "UserAssociationID": "1",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
-      },
-      "status": "",
-      "lastUpDate": 1684582792.756245
     }
   ],
   "UserList": [
@@ -338,6 +324,11 @@
           "DeviceID": "7"
         },
         {
+          "measure": "Photoni",
+          "DeviceName": "Photon_sensor",
+          "DeviceID": "22"
+        },
+        {
           "measure": "Percentage",
           "DeviceName": "Battery_Detector",
           "DeviceID": "8"
@@ -431,6 +422,11 @@
           "measure": "Boolean",
           "DeviceName": "Actuator",
           "DeviceID": "13"
+        },
+        {
+          "measure": "Photoni",
+          "DeviceName": "Photon_sensor",
+          "DeviceID": "27"
         }
       ],
       "Agenda": {
