@@ -26,7 +26,11 @@ class CheckUpdate():
         catalog = response.json()
         catalog['DeviceList']=self.RemainDevice
         json.dump(catalog, open('../CatalogFake.json', 'w'), indent=2)
+<<<<<<< HEAD
         # json.dump(catalog, open('../Catalog.json', 'w'), indent=2)
+=======
+        #json.dump(catalog, open('../Catalog.json', 'w'), indent=2)
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
 
 if __name__ == '__main__':
     while True:

@@ -1,8 +1,13 @@
 {
   "Catalog_url_ubuntu_IP": "http://172.20.228.53:8080",
   "Catalog_url_Anna": "http://172.20.10.3:8080",
+<<<<<<< HEAD
   "Catalog_url_Carlo": "http://192.168.72.122:8080",
   "Catalog_url": "http://192.168.1.18:8080",
+=======
+  "Catalog_url_Carlo": "http://192.168.72.220:8080",
+  "Catalog_url": "http://192.168.1.11:8080",
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
   "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
@@ -182,7 +187,52 @@
         "topic": "Battery/IoT/project/UserID/4/actuator"
       },
       "status": 0,
+<<<<<<< HEAD
       "lastUpDate": 1679160119
+=======
+      "lastUpDate": 1679160119,
+      "value": 0
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "17",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "124",
+      "UserAssociationID": "2",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1684523512.8731525,
+      "value": 1
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "114",
+      "UserAssociationID": "1",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1684582792.756245
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
     }
   ],
   "UserList": [
@@ -267,6 +317,7 @@
             "NumberOfTotalKilometers": 30
           }
         ],
+<<<<<<< HEAD
         "Saturday": [
           {
             "Type": "Hollyday",
@@ -274,6 +325,9 @@
             "NumberOfTotalKilometers": 25
           }
         ],
+=======
+        "Saturday": [],
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
         "Sunday": [
           {
             "Type": "Hollyday",

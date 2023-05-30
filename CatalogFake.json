@@ -1,6 +1,13 @@
 {
+<<<<<<< HEAD
   "Catalog_url": "http://172.20.228.53",
   "IphoneAnna": "http://172.20.228.53",
+=======
+  "Catalog_url_ubuntu_IP": "http://172.20.228.53:8080",
+  "Catalog_url_Anna": "http://172.20.10.3:8080",
+  "Catalog_url_Carlo": "http://192.168.72.122:8080",
+  "Catalog_url": "http://192.168.1.18:8080",
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
   "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
   "broker": {
@@ -12,15 +19,223 @@
     "API_keys": "YJPIP47T25RRGBYX",
     "ChannelID": "2105394"
   },
+<<<<<<< HEAD
   "DeviceList": [],
+=======
+  "DeviceList": [
+    {
+      "deviceName": "Temperature_Sensor",
+      "DeviceID": "1",
+      "UserAssociationID": "1",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
+      },
+      "value": "",
+      "lastUpDate": 1681996193
+    },
+    {
+      "deviceName": "Photon_Sensor",
+      "DeviceID": "2",
+      "UserAssociationID": "1",
+      "MeasureType": "Photoni",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
+      },
+      "value": "",
+      "lastUpDate": 1683897222
+    },
+    {
+      "deviceName": "Digital_Button",
+      "DeviceID": "3",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "value": 0,
+      "lastUpDate": 1679060935
+    },
+    {
+      "deviceName": "Battery_Detector",
+      "DeviceID": "4",
+      "UserAssociationID": "1",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
+      },
+      "value": "14",
+      "lastUpDate": 1679160126
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "5",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/actuator"
+      },
+      "value": 1,
+      "lastUpDate": 1679060549
+    },
+    {
+      "deviceName": "Temperature_Sensor",
+      "DeviceID": "6",
+      "UserAssociationID": "2",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
+      },
+      "value": "",
+      "lastUpDate": 1679059744
+    },
+    {
+      "deviceName": "Digital_Button",
+      "DeviceID": "7",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "value": 0,
+      "lastUpDate": 1679059744
+    },
+    {
+      "deviceName": "Battery_Detector",
+      "DeviceID": "8",
+      "UserAssociationID": "2",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
+      },
+      "value": "",
+      "lastUpDate": 1679059744
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "9",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/actuator"
+      },
+      "value": 0,
+      "lastUpDate": 1679059744
+    },
+    {
+      "deviceName": "Temperature_Sensor",
+      "DeviceID": "10",
+      "UserAssociationID": "4",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
+      },
+      "value": "",
+      "lastUpDate": 1679059744
+    },
+    {
+      "deviceName": "Digital_Button",
+      "DeviceID": "11",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/presence"
+      },
+      "value": "",
+      "lastUpDate": 1681996186
+    },
+    {
+      "deviceName": "Battery_Detector",
+      "DeviceID": "12",
+      "UserAssociationID": "4",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1679059744
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "13",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119,
+      "value": 1
+    },
+    {
+      "deviceName": "Actuator",
+      "DeviceID": "17",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "124",
+      "UserAssociationID": "2",
+      "MeasureType": "",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1684524580.341586,
+      "value": 1
+    }
+  ],
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
   "UserList": [
     {
       "UserID": "1",
       "UserName": "Mario",
       "UserSurname": "Rossi",
       "CapacityBattery": 50,
+<<<<<<< HEAD
       "Consuption_km/kwh": 6,
       "ChatID": "740346462",
+=======
+      "Consumption_km/kwh": 6,
+      "ChatID": "740346462",
+      "ThingSpeakKey": "2141952",
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
       "ConnectedDevices": [
         {
           "measure": "Temperature",
@@ -51,11 +266,14 @@
       "Agenda": {
         "Monday": [
           {
+<<<<<<< HEAD
             "Type": "work",
             "StartTimeSlot": 8,
             "NumberOfTotalKilometers": 22
           },
           {
+=======
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
             "Type": "sport",
             "StartTimeSlot": 19,
             "NumberOfTotalKilometers": 15
@@ -65,7 +283,11 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
+<<<<<<< HEAD
             "NumberOfTotalKilometers": 22
+=======
+            "NumberOfTotalKilometers": 43
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
           }
         ],
         "Wednesday": [
@@ -91,7 +313,11 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
+<<<<<<< HEAD
             "NumberOfTotalKilometers": 22
+=======
+            "NumberOfTotalKilometers": 50
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
           },
           {
             "Type": "Friends",
@@ -99,8 +325,25 @@
             "NumberOfTotalKilometers": 30
           }
         ],
+<<<<<<< HEAD
         "Saturday": [],
         "Sunday": []
+=======
+        "Saturday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 25
+          }
+        ],
+        "Sunday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 7
+          }
+        ]
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
       }
     },
     {
@@ -108,8 +351,14 @@
       "UserName": "Maria",
       "UserSurname": "Bianchi",
       "CapacityBattery": 30,
+<<<<<<< HEAD
       "Consuption_km/kwh": 6,
       "ChatID": "",
+=======
+      "Consumption_km/kwh": 6,
+      "ChatID": "51065691",
+      "ThingSpeakKey": "2141957",
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
       "ConnectedDevices": [
         {
           "measure": "Temperature",
@@ -189,11 +438,20 @@
     },
     {
       "UserID": "4",
+<<<<<<< HEAD
       "UserName": "Anna",
       "UserSurname": "Geraci",
       "CapacityBattery": 30,
       "Consuption_km/kwh": 5,
       "ChatID": "",
+=======
+      "UserName": "Ciro",
+      "UserSurname": "Esposito",
+      "CapacityBattery": 30,
+      "Consumption_km/kwh": 5,
+      "ChatID": "153123772",
+      "ThingSpeakKey": "2141962",
+>>>>>>> bf3a96336060b94ade79d022901448d0003d4131
       "ConnectedDevices": [
         {
           "measure": "Temperature",
