@@ -3,7 +3,6 @@ import json
 
 class Device:
     def __init__(self, deviceID, userAssociationID, topic, measureType): #bisogna aggiungere il value
-        #self.thingspeak_coordinates = {}
         self.topic = topic
         self.userAssociationID = userAssociationID
         self.deviceID = deviceID
@@ -12,7 +11,7 @@ class Device:
         self.field = -1
 
         if userAssociationID == "1":
-            self.channel = "EUWUGU3WMLEZ6U88" #User1
+            self.channel = "EUWUGU3WMLEZ6U88" # User1
             #self.channel =  "GE6I54M68UHJM19B" ESEMPIO
         elif userAssociationID == "2":
             self.channel = "YBW43BVJKR1G742E"
@@ -23,19 +22,10 @@ class Device:
             self.field = "field1"
         elif measureType == "Photoni":
             self.field = "field2"
-        elif measureType == "Percentage": #livello batteria
+        elif measureType == "Percentage": # Percentage of Battery
             self.field = "field3"
 
-        self.check_errors = self.checkErrors
-
-        # self.devicesForUser = {
-        #     "UserID": self.userAssociationID,
-        #     "DeviceID": self.deviceID,
-        #     "Topic": self.topic,
-        #     "ChannelID": self.channel,
-        #     "Field": self.field,
-        #     "Value": self.value
-        # }
+        self.check_errors = self.checkErrors # to check if an user do not have a ThingSpeak channel
 
     def checkErrors(self):
         if self.channel == -1:
@@ -43,7 +33,4 @@ class Device:
         elif self.field == -1:
             print("Problems with energy attributes of the UserID: %s" % (self.userAssociationID))
 
-    def register_thingspeak(self):
-        #self.thingspeak_coordinates = thingSpeakAdapter.register(self.deviceID, ...)
-        pass
 
