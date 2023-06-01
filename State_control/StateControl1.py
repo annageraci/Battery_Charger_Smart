@@ -1,62 +1,74 @@
+import paho.mqtt.client as PahoMQTT
 import json
-import time
-from datetime import datetime
 from MyMQTT import *
-from simplePublisher import MyPublisher
+import time
 import cherrypy
 import requests
 
-class StateControl(MyPublisher):
-
-    def __init__(self,ClientID, broker, port, base_topic, topic_alert, BaseUrl, DockerIP, topic_Btemp, topic_battery,topic_presence):
+class Controller:
+    def __init__(self,clientID,broker, base_topic, topic_Btemp, topic_battery, topic_presence, topic_alert,topic_daily, base_url, DockerIP):
+        self.clientID=clientID
+        self.broker=broker
+        self.base_url=base_url
+        self.DockerIP=DockerIP
         self.base_topic=base_topic
-        self.topic_alert=topic_alert
         self.topic_Btemp=topic_Btemp
         self.topic_battery=topic_battery
         self.topic_presence=topic_presence
-        self.client = MyMQTT(ClientID, broker, port,self)
+        self.topic_alert=topic_alert
+        self.topic_daily=topic_daily
+        # the notifier is the Sensor itself
+        url=self.base_url+'/catalog'
+        #url=self.DockerIP+'/catalog'
+        response=requests.get(url)
+        self.Catalog=response.json()
+        self.NumberofUser=len(self.Catalog['UserList'])
+        self.client=MyMQTT(self.clientID,self.broker,1883,self)
         self.__message = {
             'bn': 'State_Control',
             'text':'', 
             't':''
         }
-        self.BaseUrl=BaseUrl
-        self.DockerIP=DockerIP
+        self.output=[-1]*self.NumberofUser
 
-        # compute the number of the user
-        #url=self.DockerIP+'/AllUsers'
-        url=self.BaseUrl+'/AllUsers'
-        response= requests.get(url)
-        self.response_json_all_user =response.json()
-        self.NumberofUser=len(self.response_json_all_user)
-        self.output=[0]*self.NumberofUser
-
+        # initialize the value of the measurement pick from the sensor
         self.Btemp=[-1]*self.NumberofUser
         self.battery_percentage=[-1]*self.NumberofUser
         self.digital_button=[-1]*self.NumberofUser
-        self.output=[-1]*self.NumberofUser
+        self.photon=[-1]*self.NumberofUser
+        self.actuator_command=[-1]*self.NumberofUser
+        self.daily=[-1]*self.NumberofUser
+        self.flag=[2]*self.NumberofUser
 
+        # initialize the topic of the message send by the sensor        
         self.topic_Btemp_completed=[]
+        self.topic_alert_completed=[]
         self.topic_presence_completed=[]
         self.topic_battery_completed=[]
-        
+        self.topic_daily_completed=[]
+        self.topic_flag=[]
 
-    def start(self):
-        self.client.start()
+    def StartOperation(self):
+        self.client.start() #connect to the broker and start the loop
         time.sleep(6) # asyncronous so we want exaclty ordered
-        for i in range(self.NumberofUser):
-            UserID=int(self.response_json_all_user[i]['UserID'])
-            self.topic_Btemp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_Btemp) 
+        for i in range(len(self.Catalog['UserList'])):
+            UserID=int(self.Catalog['UserList'][i]['UserID'])
+            self.topic_Btemp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_Btemp)       
             self.client.mySubscribe(self.topic_Btemp_completed[i])
+            self.topic_alert_completed.insert(i,self.base_topic +str(UserID)+ self.topic_alert) 
+            self.client.mySubscribe(self.topic_alert_completed[i])
             self.topic_presence_completed.insert(i,self.base_topic +str(UserID)+ self.topic_presence) 
             self.client.mySubscribe(self.topic_presence_completed[i])
             self.topic_battery_completed.insert(i,self.base_topic +str(UserID)+ self.topic_battery) 
             self.client.mySubscribe(self.topic_battery_completed[i])
+            self.topic_daily_completed.insert(i,self.base_topic +str(UserID)+ self.topic_daily)
+            self.client.mySubscribe(self.topic_daily_completed[i])
+            self.topic_flag.insert(i,self.base_topic+str(UserID)+'/manualFlag')
+            self.client.mySubscribe(self.topic_flag[i])
 
     def notify(self,topic,msg):
-        print('ciao')
-        for i in range(self.NumberofUser):
-            UserID=int(self.response_json_all_user[i]['UserID'])
+        for i in range(len(self.Catalog['UserList'])):
+            UserID=int(self.Catalog['UserList'][i]['UserID'])
             if topic==self.topic_Btemp_completed[i]:
                 payload=json.loads(msg)
                 self.Btemp[i]=payload['e'][0]['v']
@@ -69,11 +81,18 @@ class StateControl(MyPublisher):
                 payload=json.loads(msg)
                 self.digital_button[i]=payload['e'][0]['v']
                 print(f'the value of the presence of the vehicle of the UserID {UserID} is {self.digital_button[i]}')
-            
+            elif topic==self.topic_daily_completed[i]:
+                payload=json.loads(msg)
+                self.daily[i]=payload['e'][0]['v']
+                print(f'the value of the battery percentage usage today by the userID {UserID} will be {self.daily[i]}')
+            elif topic==self.topic_flag[i]:
+                payload=json.loads(msg)
+                self.flag[i]=payload['e'][0]['v']
+                print(f'the value of the flag of the userID {UserID} is changed: Flag = {self.flag[i]}')
+    
     def control_strategy(self):
         for i in range(self.NumberofUser):
-            print('ciao')
-            UserID=self.response_json_all_user[i]['UserID']
+            UserID=self.Catalog['UserList'][i]['UserID']
             
             alert=0
             # temperature of the battery too high 
@@ -135,21 +154,25 @@ class StateControl(MyPublisher):
             self.client.myPublish(topic, message)
             #print(self.output[i])
 
+                
 
-if __name__ == '__main__':
+
+if __name__=="__main__":
+    Settings=json.load(open("../settings.json"))
+    base_url=Settings['Catalog_url_Anna']
+    Docker_url=Settings['DockerIP']
+    broker=Settings['broker']['IPAddress']
+    port=Settings['broker']['port']
+    base_topic=Settings['baseTopic']
+    topic_Btemp='/sensor/Btemperature'
+    topic_battery='/sensor/battery'
+    topic_presence='/sensor/presence'
+    topic_photon='/sensor/photon'
+    topic_daily='/sensor/daily'
+    topic_alert='/statecontrol/AlertSMS'
+    Contr=Controller('Geraci1901321',broker,base_topic,topic_Btemp, topic_battery, topic_presence, topic_alert, topic_daily, base_url,Docker_url)
+    Contr.StartOperation()
+    # infinite loop to keep the script running 
     while True:
-        settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Anna']
-        DockerIP=settings['DockerIP']
-        broker=settings['broker']['IPAddress']
-        port=settings['broker']['port']
-        base_topic=settings['baseTopic']
-        topic_alert='/statecontrol/AlertSMS'
-        topic_Btemp='/sensor/Btemperature' 
-        topic_battery='/sensor/battery'
-        topic_presence='/sensor/presence'
-        state=StateControl('Geraci15273627', broker, port, base_topic, topic_alert,BaseUrl, DockerIP, topic_Btemp, topic_battery,topic_presence)
-        state.start()
-        while True:
-            time.sleep(30)
-            state.control_strategy()
+        time.sleep(30)
+        Contr.control_strategy()

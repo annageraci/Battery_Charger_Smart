@@ -25,6 +25,7 @@ class MyMQTT:
     # !!! NEW take the object and by this choose  
     def myOnMessageReceived(self, paho_mqtt, userdata, msg):
         # A new message is received
+        print('ciao')
         self.notifier.notify(msg.topic, msg.payload)
 
     def myPublish(self, topic, msg):

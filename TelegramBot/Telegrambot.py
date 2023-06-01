@@ -134,7 +134,6 @@ class BatteryBot:
                 
                 elif message=='/AgendaFriday':
                     output=''
-                    catalog=
                     for appointment in currentUser['Agenda']['Friday']:
                         output=output+f' {appointment} \n'
                     self.bot.sendMessage(chat_ID, text=f'Your Agenda on Friday is that: \n {output}')
@@ -307,7 +306,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url_Carlo"]
+    base_url = conf["Catalog_url_Anna"]
     sb=BatteryBot(token,broker,port,topic_base, base_url)
 
     while True:

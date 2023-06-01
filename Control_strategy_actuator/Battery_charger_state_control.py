@@ -176,7 +176,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url_Carlo']
+    base_url=Settings['Catalog_url_Anna']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
@@ -186,7 +186,7 @@ if __name__=="__main__":
     topic_presence='/sensor/presence'
     topic_photon='/sensor/photon'
     topic_daily='/sensor/daily'
-    Contr=Controller('Geraci12232211321',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
+    Contr=Controller('Geraci799921131',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
     Contr.StartOperation()
     # infinite loop to keep the script running 
     while True:
