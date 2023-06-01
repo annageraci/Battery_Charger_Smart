@@ -117,10 +117,10 @@ class Controller:
                         if (daily_appointment>100):
                             print('probably you have to charge the car during the usage in another charge station')
                         if (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
-                            print(f'percentage of battery sufficient, more than {daily_appointment}')
+                            print(f'percentage of battery sufficient, more than {daily_appointment}+15 (safe state)')
                             self.actuator_command[i]=0
                         elif (self.battery_percentage[i]-15<daily_appointment and int(daily_appointment)!=-1):
-                            print(f'percentage of battery insufficient, less than {daily_appointment}')
+                            print(f'percentage of battery insufficient, less than {daily_appointment} + 15 (safe state)')
                             self.actuator_command[i]=1
                     if (self.actuator_command[i]==-1):
                         print('All the previous check down')
