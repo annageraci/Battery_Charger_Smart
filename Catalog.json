@@ -14,204 +14,7 @@
     "API_keys": "YJPIP47T25RRGBYX",
     "ChannelID": "2105394"
   },
-  "DeviceList": [
-    {
-      "deviceName": "Temperature_Sensor",
-      "DeviceID": "1",
-      "UserAssociationID": "1",
-      "MeasureType": "Temperature",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
-      },
-      "value": "",
-      "lastUpDate": 1681996193
-    },
-    {
-      "deviceName": "Photon_Sensor",
-      "DeviceID": "2",
-      "UserAssociationID": "1",
-      "MeasureType": "Photoni",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
-      },
-      "value": "",
-      "lastUpDate": 1683897222
-    },
-    {
-      "deviceName": "Digital_Button",
-      "DeviceID": "3",
-      "UserAssociationID": "1",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
-      },
-      "value": 0,
-      "lastUpDate": 1679060935
-    },
-    {
-      "deviceName": "Battery_Detector",
-      "DeviceID": "4",
-      "UserAssociationID": "1",
-      "MeasureType": "Percentage",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
-      },
-      "value": "14",
-      "lastUpDate": 1679160126
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "5",
-      "UserAssociationID": "1",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/actuator"
-      },
-      "value": 1,
-      "lastUpDate": 1679060549
-    },
-    {
-      "deviceName": "Temperature_Sensor",
-      "DeviceID": "6",
-      "UserAssociationID": "2",
-      "MeasureType": "Temperature",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
-      },
-      "value": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Digital_Button",
-      "DeviceID": "7",
-      "UserAssociationID": "2",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
-      },
-      "value": 0,
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Battery_Detector",
-      "DeviceID": "8",
-      "UserAssociationID": "2",
-      "MeasureType": "Percentage",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
-      },
-      "value": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "9",
-      "UserAssociationID": "2",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/actuator"
-      },
-      "value": 1,
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Temperature_Sensor",
-      "DeviceID": "10",
-      "UserAssociationID": "4",
-      "MeasureType": "Temperature",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
-      },
-      "value": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Photon_Sensor",
-      "DeviceID": "22",
-      "UserAssociationID": "2",
-      "MeasureType": "Photoni",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/photon"
-      },
-      "value": "",
-      "lastUpDate": 1683897222
-    },
-    {
-      "deviceName": "Digital_Button",
-      "DeviceID": "11",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/presence"
-      },
-      "value": "",
-      "lastUpDate": 1681996186
-    },
-    {
-      "deviceName": "Photon_Sensor",
-      "DeviceID": "27",
-      "UserAssociationID": "4",
-      "MeasureType": "Photoni",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/photon"
-      },
-      "value": "",
-      "lastUpDate": 1683897222
-    },
-    {
-      "deviceName": "Battery_Detector",
-      "DeviceID": "12",
-      "UserAssociationID": "4",
-      "MeasureType": "Percentage",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
-      },
-      "status": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "13",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119,
-      "value": 1
-    }
-  ],
+  "DeviceList": [],
   "UserList": [
     {
       "UserID": "1",
@@ -221,33 +24,7 @@
       "Consumption_km/kwh": 6,
       "ChatID": "740346462",
       "ThingSpeakKey": "2141952",
-      "ConnectedDevices": [
-        {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "1"
-        },
-        {
-          "measure": "Photoni",
-          "DeviceName": "Photon_sensor",
-          "DeviceID": "2"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "3"
-        },
-        {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "4"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "5"
-        }
-      ],
+      "ConnectedDevices": [],
       "Agenda": {
         "Monday": [
           {
@@ -312,33 +89,7 @@
       "Consumption_km/kwh": 6,
       "ChatID": "51065691",
       "ThingSpeakKey": "2141957",
-      "ConnectedDevices": [
-        {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "6"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "7"
-        },
-        {
-          "measure": "Photoni",
-          "DeviceName": "Photon_sensor",
-          "DeviceID": "22"
-        },
-        {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "8"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "9"
-        }
-      ],
+      "ConnectedDevices": [],
       "Agenda": {
         "Monday": [
           {
@@ -402,33 +153,7 @@
       "Consumption_km/kwh": 5,
       "ChatID": "153123772",
       "ThingSpeakKey": "2141962",
-      "ConnectedDevices": [
-        {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "10"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "11"
-        },
-        {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "12"
-        },
-        {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "13"
-        },
-        {
-          "measure": "Photoni",
-          "DeviceName": "Photon_sensor",
-          "DeviceID": "27"
-        }
-      ],
+      "ConnectedDevices": [],
       "Agenda": {
         "Monday": [
           {

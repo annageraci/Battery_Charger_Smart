@@ -25,13 +25,13 @@ class CheckUpdate():
         response= requests.get(self.url+'/catalog')
         catalog = response.json()
         catalog['DeviceList']=self.RemainDevice
-        json.dump(catalog, open('../CatalogFake.json', 'w'), indent=2)
-        #json.dump(catalog, open('../Catalog.json', 'w'), indent=2)
+        #json.dump(catalog, open('../CatalogFake.json', 'w'), indent=2)
+        json.dump(catalog, open('../Catalog.json', 'w'), indent=2)
 
 if __name__ == '__main__':
     while True:
         Catalog=json.load(open('../settings.json'))
-        URL=Catalog['Catalog_url']
+        URL=Catalog['Catalog_url_Carlo']
         #URL=Catalog['DockerIP']
         daily=CheckUpdate(URL)
         daily.makerequest()
