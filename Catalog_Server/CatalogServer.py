@@ -72,27 +72,27 @@ class Catalog(object):
     def POST(self, *uri):
         if uri[0]=='Device':
             pass
-            bodyAsString=cherrypy.request.body.read() 
-            bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('../Catalog.json'))
-            ListOfDevice=Catalog['DeviceList']
-            UserList=Catalog['UserList']
-            for currentDevice in ListOfDevice:
-               if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
-                   return 'this device is already present in the list \n'
-           # else is new so we can update the device list
-            #Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
-            Catalog['DeviceList'].append(bodyAsDictionary)
-            for i in range(len(UserList)):
-                if UserList[i]['UserID']==bodyAsDictionary['UserAssociationID']:
-                    body={
-                       "MeasureType": bodyAsDictionary['MeasureType'],
-                       "DeviceName": bodyAsDictionary['deviceName'],
-                       "DeviceID": bodyAsDictionary['DeviceID']
-                    }
-                    Catalog['UserList'][i]['ConnectedDevices'].append(body)
-            json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
-            return json.dumps(Catalog)
+        #     bodyAsString=cherrypy.request.body.read() 
+        #     bodyAsDictionary=json.loads(bodyAsString)
+        #     Catalog=json.load(open('../Catalog.json'))
+        #     ListOfDevice=Catalog['DeviceList']
+        #     UserList=Catalog['UserList']
+        #     for currentDevice in ListOfDevice:
+        #        if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
+        #            return 'this device is already present in the list \n'
+        #    # else is new so we can update the device list
+        #     #Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
+        #     Catalog['DeviceList'].append(bodyAsDictionary)
+        #     for i in range(len(UserList)):
+        #         if UserList[i]['UserID']==bodyAsDictionary['UserAssociationID']:
+        #             body={
+        #                "MeasureType": bodyAsDictionary['MeasureType'],
+        #                "DeviceName": bodyAsDictionary['deviceName'],
+        #                "DeviceID": bodyAsDictionary['DeviceID']
+        #             }
+        #             Catalog['UserList'][i]['ConnectedDevices'].append(body)
+        #     json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
+        #     return json.dumps(Catalog)
         
         if uri[0]=='User':
             bodyAsString=cherrypy.request.body.read() 
@@ -135,21 +135,22 @@ class Catalog(object):
         
     def PUT(self,*uri):
         if uri[0]=='Device':
+            pass
             # body {
             #   "DeviceID":13,
             #   "value":23,
             #   "time":time.time()
             # }
-            bodyAsString=cherrypy.request.body.read() 
-            bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('../Catalog.json'))
-            ListOfDevice=Catalog['DeviceList']
-            for currentDevice in ListOfDevice:
-                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
-                    currentDevice['lastUpDate']=bodyAsDictionary["time"]
-                    currentDevice['value']=bodyAsDictionary['value']
-                    json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
-                    return json.dumps(Catalog)
+            # bodyAsString=cherrypy.request.body.read() 
+            # bodyAsDictionary=json.loads(bodyAsString)
+            # Catalog=json.load(open('../Catalog.json'))
+            # ListOfDevice=Catalog['DeviceList']
+            # for currentDevice in ListOfDevice:
+            #     if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
+            #         currentDevice['lastUpDate']=bodyAsDictionary["time"]
+            #         currentDevice['value']=bodyAsDictionary['value']
+            #         json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
+            #         return json.dumps(Catalog)
         
         if uri[0]=='User':
             # body {
