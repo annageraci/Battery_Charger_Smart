@@ -78,18 +78,19 @@ class Catalog(object):
             ListOfDevice=Catalog['DeviceList']
             UserList=Catalog['UserList']
             for currentDevice in ListOfDevice:
-                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
-                    return 'this device is already present in the list \n'
-            # else is new so we can update the device list
-            Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
+               if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
+                   return 'this device is already present in the list \n'
+           # else is new so we can update the device list
+            #Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
+            Catalog['DeviceList'].append(bodyAsDictionary)
             for i in range(len(UserList)):
                 if UserList[i]['UserID']==bodyAsDictionary['UserAssociationID']:
                     body={
-                       "measure": bodyAsDictionary['MeasureType'],
-                       "DeviceName": bodyAsDictionary['DeviceName'],
+                       "MeasureType": bodyAsDictionary['MeasureType'],
+                       "DeviceName": bodyAsDictionary['deviceName'],
                        "DeviceID": bodyAsDictionary['DeviceID']
                     }
-                    Catalog['UserList'][i]['ConnectedDevices'].insert(len(Catalog['UserList'][i]['ConnectedDevices']), body)
+                    Catalog['UserList'][i]['ConnectedDevices'].append(body)
             json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
         

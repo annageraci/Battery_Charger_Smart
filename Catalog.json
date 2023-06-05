@@ -14,7 +14,147 @@
     "API_keys": "YJPIP47T25RRGBYX",
     "ChannelID": "2105394"
   },
-  "DeviceList": [],
+  "DeviceList": [
+    {
+      "deviceName": "BatteryChargeSimulator2",
+      "DeviceID": "121",
+      "UserAssociationID": "2",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1685985713.8865135,
+      "value": 30.285572082719444
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "113",
+      "UserAssociationID": "1",
+      "MeasureType": "Voltage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1685985714.2550795,
+      "value": 3.7894624349655626
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "114",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1685985709.1145406,
+      "value": 1
+    },
+    {
+      "deviceName": "BatteryChargeSimulator4",
+      "DeviceID": "141",
+      "UserAssociationID": "4",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1685985713.9554489,
+      "value": 79.99647171744759
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "123",
+      "UserAssociationID": "2",
+      "MeasureType": "Voltage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1685985709.1693976,
+      "value": 1.4946591891180145
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "124",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1685985714.3002973,
+      "value": 1
+    },
+    {
+      "deviceName": "PhotonSimulator4",
+      "DeviceID": "143",
+      "UserAssociationID": "4",
+      "MeasureType": "Voltage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1685985704.0242622,
+      "value": 1.4974700372944716
+    },
+    {
+      "deviceName": "PhotonSimulator4",
+      "DeviceID": "144",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1685985709.2179382,
+      "value": 1
+    },
+    {
+      "deviceName": "Actuator1",
+      "DeviceID": "Battery/IoT/project/UserID/1/actuator",
+      "UserAssociationID": "1",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "5"
+      },
+      "status": "",
+      "lastUpDate": 1685985697.0967863
+    },
+    {
+      "deviceName": "Actuator1",
+      "DeviceID": "111",
+      "UserAssociationID": "1",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1685985713.0493484,
+      "value": null
+    }
+  ],
   "UserList": [
     {
       "UserID": "1",
@@ -24,7 +164,28 @@
       "Consumption_km/kwh": 6,
       "ChatID": "740346462",
       "ThingSpeakKey": "2141952",
-      "ConnectedDevices": [],
+      "ConnectedDevices": [
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator1",
+          "DeviceID": "113"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "PhotonSimulator1",
+          "DeviceID": "114"
+        },
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
+        },
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "111"
+        }
+      ],
       "Agenda": {
         "Monday": [
           {
@@ -89,7 +250,23 @@
       "Consumption_km/kwh": 6,
       "ChatID": "51065691",
       "ThingSpeakKey": "2141957",
-      "ConnectedDevices": [],
+      "ConnectedDevices": [
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator2",
+          "DeviceID": "121"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator2",
+          "DeviceID": "123"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "PhotonSimulator2",
+          "DeviceID": "124"
+        }
+      ],
       "Agenda": {
         "Monday": [
           {
@@ -119,7 +296,7 @@
           {
             "Type": "sport",
             "StartTimeSlot": 19,
-            "NumberOfTotalKilometers": 15
+            "NumberOfTotalKilometers": 1
           }
         ],
         "Thursday": [
@@ -153,7 +330,23 @@
       "Consumption_km/kwh": 5,
       "ChatID": "153123772",
       "ThingSpeakKey": "2141962",
-      "ConnectedDevices": [],
+      "ConnectedDevices": [
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator4",
+          "DeviceID": "141"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator4",
+          "DeviceID": "143"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "PhotonSimulator4",
+          "DeviceID": "144"
+        }
+      ],
       "Agenda": {
         "Monday": [
           {
