@@ -25,7 +25,6 @@ class CheckUpdate():
         response= requests.get(self.url+'/catalog')
         catalog = response.json()
         catalog['DeviceList']=self.RemainDevice
-        #json.dump(catalog, open('../CatalogFake.json', 'w'), indent=2)
         json.dump(catalog, open('../Catalog.json', 'w'), indent=2)
 
 if __name__ == '__main__':
