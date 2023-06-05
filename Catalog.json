@@ -26,8 +26,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1685986892.4837558,
-      "value": 30.205240080335937
+      "lastUpDate": 1685986914.4173307,
+      "value": 30.38100261944708
     },
     {
       "deviceName": "PhotonSimulator1",
@@ -54,7 +54,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1685986892.5731668,
+      "lastUpDate": 1685986914.4613173,
       "value": 1
     },
     {
@@ -68,8 +68,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1685986892.5357342,
-      "value": 79.99804614252176
+      "lastUpDate": 1685986914.5045857,
+      "value": 79.99655272752386
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -96,7 +96,7 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1685986887.4500566,
+      "lastUpDate": 1685986914.5899365,
       "value": 1
     },
     {
@@ -124,7 +124,7 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1685986887.4940467,
+      "lastUpDate": 1685986914.6402624,
       "value": 1
     },
     {
@@ -165,8 +165,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/temperatureB"
       },
       "status": "",
-      "lastUpDate": 1685986892.5807862,
-      "value": 39.588647705180925
+      "lastUpDate": 1685986903.6059284,
+      "value": 39.85725264009034
     },
     {
       "deviceName": "TemperatureSimulator2",
@@ -179,8 +179,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/temperatureB"
       },
       "status": "",
-      "lastUpDate": 1685986892.6160197,
-      "value": 24.44861729281499
+      "lastUpDate": 1685986903.639494,
+      "value": 24.42518505706753
     },
     {
       "deviceName": "TemperatureSimulator4",
@@ -193,8 +193,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/temperatureB"
       },
       "status": "",
-      "lastUpDate": 1685986887.543531,
-      "value": 23.72509918086107
+      "lastUpDate": 1685986909.4614294,
+      "value": 24.756775974290836
     }
   ],
   "UserList": [
@@ -469,4 +469,4 @@
       }
     }
   ]
-}}
+}
