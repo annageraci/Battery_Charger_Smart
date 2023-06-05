@@ -54,9 +54,10 @@ class BatteryDailyUsage(MyPublisher):
             
             today_num=datetime.today().weekday()
             week_day=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            today=week_day[today_num]
+            #today=week_day[today_num]
+            today='Tuesday'
 
-            capacity=self.response_json_all_user[i]['CapacityBattery'] # capacità della batteria in KWh
+            capacity=self.response_json_all_user[i]['CapacityBattery'] # capacità della batteria in KWh   ## 15-20 kW/h
             km_kWh=self.response_json_all_user[i]['Consumption_km/kwh'] # consumo in km/KWh
             max_autonomy=km_kWh*capacity
             Km=0
@@ -85,7 +86,7 @@ class BatteryDailyUsage(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Anna']
+        BaseUrl=settings['Catalog_url_Carlo']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
