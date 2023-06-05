@@ -179,26 +179,7 @@ class Catalog(object):
                     return json.dumps(Catalog)
                 
         if uri[0]=='Actuator':
-            # body {"UserID": "1/2/4" 
-            #        "value": 0/1
-            #       }
-            bodyAsString=cherrypy.request.body.read()
-            bodyAsDictionary=json.loads(bodyAsString)
-            value=bodyAsDictionary['value']
-            Catalog=json.load(open('../Catalog.json'))
-            ListOfUser=Catalog['UserList']
-            for currentUser in ListOfUser:
-                for currentDevice in currentUser['ConnectedDevices']:
-                    if (currentDevice['DeviceName']=='Actuator' and int(currentUser['UserID'])==int(bodyAsDictionary['UserID'])):
-                        DeviceID=currentDevice["DeviceID"]
-            for currentDevice in Catalog['DeviceList']:
-                if currentDevice['DeviceID']==DeviceID:
-                    if value==0 or value==1:
-                        currentDevice['value']=value
-                    else:
-                        return 'The value is not valid '+ json.dumps(Catalog)
-            json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
-            return json.dumps(Catalog)
+            pass
         
         if uri[0]=='AgendaUpdate':
             #{

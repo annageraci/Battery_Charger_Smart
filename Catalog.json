@@ -26,8 +26,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1685985713.8865135,
-      "value": 30.285572082719444
+      "lastUpDate": 1685986892.4837558,
+      "value": 30.205240080335937
     },
     {
       "deviceName": "PhotonSimulator1",
@@ -40,8 +40,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1685985714.2550795,
-      "value": 3.7894624349655626
+      "lastUpDate": 1685985972.603662,
+      "value": 3.8028881700336705
     },
     {
       "deviceName": "PhotonSimulator1",
@@ -54,7 +54,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1685985709.1145406,
+      "lastUpDate": 1685986892.5731668,
       "value": 1
     },
     {
@@ -68,8 +68,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1685985713.9554489,
-      "value": 79.99647171744759
+      "lastUpDate": 1685986892.5357342,
+      "value": 79.99804614252176
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -82,8 +82,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1685985709.1693976,
-      "value": 1.4946591891180145
+      "lastUpDate": 1685985972.6379497,
+      "value": 1.4991034437417317
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -96,7 +96,7 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1685985714.3002973,
+      "lastUpDate": 1685986887.4500566,
       "value": 1
     },
     {
@@ -110,8 +110,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1685985704.0242622,
-      "value": 1.4974700372944716
+      "lastUpDate": 1685985972.6753144,
+      "value": 1.5048829213019186
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -124,7 +124,7 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1685985709.2179382,
+      "lastUpDate": 1685986887.4940467,
       "value": 1
     },
     {
@@ -151,8 +151,50 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1685985713.0493484,
+      "lastUpDate": 1685985766.6932416,
       "value": null
+    },
+    {
+      "deviceName": "TemperatureSimulator1",
+      "DeviceID": "110",
+      "UserAssociationID": "1",
+      "MeasureType": "TemperatureB",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/temperatureB"
+      },
+      "status": "",
+      "lastUpDate": 1685986892.5807862,
+      "value": 39.588647705180925
+    },
+    {
+      "deviceName": "TemperatureSimulator2",
+      "DeviceID": "120",
+      "UserAssociationID": "2",
+      "MeasureType": "TemperatureB",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/temperatureB"
+      },
+      "status": "",
+      "lastUpDate": 1685986892.6160197,
+      "value": 24.44861729281499
+    },
+    {
+      "deviceName": "TemperatureSimulator4",
+      "DeviceID": "140",
+      "UserAssociationID": "4",
+      "MeasureType": "TemperatureB",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/temperatureB"
+      },
+      "status": "",
+      "lastUpDate": 1685986887.543531,
+      "value": 23.72509918086107
     }
   ],
   "UserList": [
@@ -163,7 +205,10 @@
       "CapacityBattery": 50,
       "Consumption_km/kwh": 6,
       "ChatID": "740346462",
-      "ThingSpeakKey": "2141952",
+      "ThingSpeakKey": {
+        "APIKeyRead": "EUWUGU3WMLEZ6U88",
+        "APIKeyWrite": "W59PRQKYXG7AF4CA"
+      },
       "ConnectedDevices": [
         {
           "MeasureType": "Voltage",
@@ -184,6 +229,11 @@
           "MeasureType": "Percentage",
           "DeviceName": "Actuator1",
           "DeviceID": "111"
+        },
+        {
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator1",
+          "DeviceID": "110"
         }
       ],
       "Agenda": {
@@ -249,7 +299,10 @@
       "CapacityBattery": 30,
       "Consumption_km/kwh": 6,
       "ChatID": "51065691",
-      "ThingSpeakKey": "2141957",
+      "ThingSpeakKey": {
+        "APIKeyRead": "YBW43BVJKR1G742E",
+        "APIKeyWrite": "7PN1S352CT0D5SRE"
+      },
       "ConnectedDevices": [
         {
           "MeasureType": "Percentage",
@@ -265,6 +318,11 @@
           "MeasureType": "Boolean",
           "DeviceName": "PhotonSimulator2",
           "DeviceID": "124"
+        },
+        {
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator2",
+          "DeviceID": "120"
         }
       ],
       "Agenda": {
@@ -329,7 +387,10 @@
       "CapacityBattery": 30,
       "Consumption_km/kwh": 5,
       "ChatID": "153123772",
-      "ThingSpeakKey": "2141962",
+      "ThingSpeakKey": {
+        "APIKeyRead": "TILVO0S7Z1LN2FPN",
+        "APIKeyWrite": "WHV15SKZ8THKM8V6"
+      },
       "ConnectedDevices": [
         {
           "MeasureType": "Percentage",
@@ -345,6 +406,11 @@
           "MeasureType": "Boolean",
           "DeviceName": "PhotonSimulator4",
           "DeviceID": "144"
+        },
+        {
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator4",
+          "DeviceID": "140"
         }
       ],
       "Agenda": {
@@ -383,7 +449,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 50
+            "NumberOffTotalKilometers": 50
           }
         ],
         "Friday": [
@@ -403,4 +469,4 @@
       }
     }
   ]
-}
+}}
