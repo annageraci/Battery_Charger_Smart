@@ -54,8 +54,8 @@ class BatteryDailyUsage(MyPublisher):
             
             today_num=datetime.today().weekday()
             week_day=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-            #today=week_day[today_num]
-            today='Tuesday'
+            today=week_day[today_num]
+            
 
             capacity=self.response_json_all_user[i]['CapacityBattery'] # capacità della batteria in KWh   ## 15-20 kW/h
             km_kWh=self.response_json_all_user[i]['Consumption_km/kwh'] # consumo in km/KWh

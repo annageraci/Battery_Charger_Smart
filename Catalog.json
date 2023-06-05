@@ -192,6 +192,7 @@
       "CapacityBattery": 50,
       "Consumption_km/kwh": 6,
       "ChatID": "740346462",
+      "ChannelID":"2141952",
       "ThingSpeakKey": {
         "APIKeyRead": "W59PRQKYXG7AF4CA",
         "APIKeyWrite": "EUWUGU3WMLEZ6U88"
@@ -290,6 +291,11 @@
             "Type": "Hollyday",
             "StartTimeSlot": 8,
             "NumberOfTotalKilometers": 7
+          },
+          {
+            "Type": "",
+            "StartTimeSlot": [],
+            "NumberOfTotalKilometers": 20
           }
         ]
       }
@@ -301,6 +307,7 @@
       "CapacityBattery": 30,
       "Consumption_km/kwh": 6,
       "ChatID": "51065691",
+      "ChannelID":"2141957",
       "ThingSpeakKey": {
         "APIKeyWrite": "YBW43BVJKR1G742E",
         "APIKeyRead": "7PN1S352CT0D5SRE"
@@ -394,6 +401,7 @@
       "CapacityBattery": 30,
       "Consumption_km/kwh": 5,
       "ChatID": "153123772",
+      "ChannelID":"2141962",
       "ThingSpeakKey": {
         "APIKeyWrite": "TILVO0S7Z1LN2FPN",
         "APIKeyRead": "WHV15SKZ8THKM8V6"

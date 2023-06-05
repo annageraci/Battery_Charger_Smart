@@ -81,7 +81,6 @@ class Catalog(object):
         #        if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
         #            return 'this device is already present in the list \n'
         #    # else is new so we can update the device list
-        #     #Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
         #     Catalog['DeviceList'].append(bodyAsDictionary)
         #     for i in range(len(UserList)):
         #         if UserList[i]['UserID']==bodyAsDictionary['UserAssociationID']:
@@ -179,8 +178,6 @@ class Catalog(object):
                     json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                     return json.dumps(Catalog)
                 
-        if uri[0]=='Actuator':
-            pass
         
         if uri[0]=='AgendaUpdate':
             #{

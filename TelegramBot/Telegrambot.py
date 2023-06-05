@@ -208,7 +208,7 @@ class BatteryBot:
 
 
                 elif message=='/ViewGraphs':
-                   channelID=currentUser['ThingSpeakKey']
+                   channelID=currentUser['ChannelID']
                    if channelID=='':
                        self.bot.sendMessage(chat_ID, text=f'No ThingSpeak feature available')
                    else: 
@@ -306,7 +306,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url_Anna"]
+    base_url = conf["Catalog_url_Carlo"]
     sb=BatteryBot(token,broker,port,topic_base, base_url)
 
     while True:
