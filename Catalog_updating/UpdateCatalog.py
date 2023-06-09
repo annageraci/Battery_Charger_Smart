@@ -19,7 +19,7 @@ class CheckUpdate():
             dif=int(time.time()-lastUpDate)
             if dif<120:
                 self.RemainDevice.append(currentDevice)
-        print('the new device list is '+json.dumps(self.RemainDevice))
+        print('the new device list is: '+json.dumps(self.RemainDevice))
 
         # aggiornare il catalogo 
         response= requests.get(self.url+'/catalog')
