@@ -54,7 +54,6 @@ class StateControl(MyPublisher):
             self.client.mySubscribe(self.topic_battery_completed[i])
 
     def notify(self,topic,msg):
-        print('ciao')
         for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
             if topic==self.topic_Btemp_completed[i]:
@@ -72,7 +71,6 @@ class StateControl(MyPublisher):
             
     def control_strategy(self):
         for i in range(self.NumberofUser):
-            print('ciao')
             UserID=self.response_json_all_user[i]['UserID']
             
             alert=0
