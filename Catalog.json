@@ -44,46 +44,7 @@
         "APIKeyWrite": "EUWUGU3WMLEZ6U88"
       },
       "ConnectedDevices": [
-        {
-          "MeasureType": "Voltage",
-          "DeviceName": "PhotonSimulator1",
-          "DeviceID": "113"
-        },
-        {
-          "MeasureType": "Boolean",
-          "DeviceName": "PhotonSimulator1",
-          "DeviceID": "114"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "111"
-        },
-        {
-          "MeasureType": "TemperatureB",
-          "DeviceName": "TemperatureSimulator1",
-          "DeviceID": "110"
-        },
-        {
-          "MeasureType": "Voltage",
-          "DeviceName": "PhotonSimulator1",
-          "DeviceID": "113"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "111"
-        }
+        
       ],
       "Agenda": {
         "Monday": [
