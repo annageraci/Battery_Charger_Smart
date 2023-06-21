@@ -1,7 +1,7 @@
 {
     "Catalog_url_ubuntu_IP": "http://172.20.228.53:8080",
     "Catalog_url_Anna": "http://172.20.10.3:8080",
-    "Catalog_url_Carlo": "http://192.168.72.122:8080",
+    "Catalog_url_Carlo": "http://192.168.150.122:8080",
     "Catalog_url": "http://192.168.1.18:8080",
     "DockerIP": "http://172.17.0.1:8080",
     "baseTopic": "Battery/IoT/project/UserID/",
