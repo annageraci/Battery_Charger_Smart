@@ -1,11 +1,8 @@
-from ArduinoPiConnector import ArduinoPiConnector
-import paho.mqtt.client as pahoMQTT
 import json
 import time
-from OnConnectionCatalogUpdater import CatalogUpdater
 from ActuatorSubscriber import ActuatorSubscriber
 from Sensors import BatteryChargeSensor
-from SimPublisher import SimSensorPublisher
+from Publishers import SensorPublisher
 
 if __name__ == "__main__":
     settings_file_path = 'settings.json'
@@ -18,9 +15,9 @@ if __name__ == "__main__":
     userAssociationID = "1"
     baseTopic += userAssociationID
     sensorName = "BatteryChargeSimulator1"
-    sensor = BatteryChargeSensor(publisherID, sensorName, userAssociationID, baseTopic+"/sensor", True)
+    sensor = BatteryChargeSensor(publisherID, sensorName, userAssociationID, baseTopic+"/sensor", True, 30)
     sensorTopic = sensor.getMQTTtopic()
-    subscriberID = "101"
+    subscriberID = "5"
     userAssociationID = "1"
     deviceName = "Actuator1"
     catalogURL = settingsDict["Catalog_url_Carlo"]
@@ -28,19 +25,20 @@ if __name__ == "__main__":
     port = settingsDict["broker"]["port"]
     
 
-    subscriber = ActuatorSubscriber("csim48rPiActuator" + subscriberID + "sub", subscriberID, deviceName, userAssociationID, broker, port, baseTopic, catalogURL)
+    subscriber = ActuatorSubscriber("csim48rPiActuator" + subscriberID + "sub", subscriberID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, baseTopic, catalogURL)
     subscriber.startOperation()
 
-    publisher = SimSensorPublisher("csim48rPisensor" + publisherID, publisherID, deviceName, userAssociationID, broker, port, sensorTopic, catalogURL)
+    publisher = SensorPublisher("csim48rPisensor" + publisherID, publisherID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, sensorTopic, catalogURL)
     publisher.startOperation()
 
     actuatorTopic = subscriber.getMQTTtopic()
     subscriber.actuator_subscribe(actuatorTopic, 2)
 
     errorCode = 0
-    while not errorCode:
-        time.sleep(1)
-        sensor.setBatteryParams((subscriber.getCurrentState(),None,None))
-        publisher.rPi_publish(sensorTopic, sensor.sensor_update(), 2)
-        publisher.sendLastUpdateToCatalog()
-        errorCode = subscriber.arduinoConnector.errorCheck()
+    while True:
+        time.sleep(5)
+        sensor.setBatteryParams((subscriber.getCurrentState(),None,0.0005))
+        if not errorCode:
+            publisher.rPi_publish(sensor.sensor_update(), 2)
+            publisher.sendLastUpdateToCatalog()
+            errorCode = subscriber.arduinoConnector.errorCheck()

@@ -1,6 +1,6 @@
 import time
 from Sensors import *
-from SimPublisher import SimSensorPublisher
+from Publishers import SensorPublisher
 import json
 
 if __name__ == "__main__":
@@ -13,14 +13,14 @@ if __name__ == "__main__":
     deviceID = "114"
     userAssociationID = "1"
     baseTopic += userAssociationID + "/sensor"
-    deviceName = "PhotonSimulator1"
+    deviceName = "PresenceSimulator1"
     catalogURL = settingsDict["Catalog_url_Carlo"]
-    sensor = PresenceSensor(deviceID, deviceName, userAssociationID, baseTopic, True,15,0)
+    sensor = PresenceSensor(deviceID, deviceName, userAssociationID, baseTopic, True,meanDuration=15,meanWait=0)
     topic = sensor.getMQTTtopic()
 
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
-    publisher = SimSensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
+    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:

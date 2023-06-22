@@ -3,7 +3,7 @@ import datetime as dt
 import math
 import numpy as np
 
-class TemperatureSimulator():
+class OutsideTemperatureSimulator():
 
     def __init__(self, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, minTemp=8, maxTemp=23):
         self.longitude = 7 + 40/60 + 32.52/3600
@@ -48,7 +48,32 @@ class TemperatureSimulator():
 
         return temp
     
-class DigitalSimulator():
+class BatteryTemperatureSimulator():
+    def __init__(self, running = True, initVal = None, minOutTemp=8, maxOutTemp=23):
+        self.running = running
+        self.outsideSimulator = OutsideTemperatureSimulator(minTemp=minOutTemp, maxTemp=maxOutTemp)
+        if initVal != None:
+            self.value = initVal
+        elif running:
+            self.value = 35 + 3 * random.randn()
+        else:
+            self.value = self.outsideSimulator.generateNewVal(dt.datetime.now(), None)
+        
+
+    def generateNewVal(self, currTime, prevVal = None):
+        if prevVal == None:
+            prevVal = self.value
+        if self.running:
+            mul = random.randn()
+            self.value += mul*np.where(mul * (prevVal-25) > 0 and prevVal < 55, 0.1, 1)
+        else:
+            self.value = self.outsideSimulator.generateNewVal(currTime, prevVal)
+        return self.value
+
+    def setRunningState(self, newState):
+        self.running = newState
+    
+class BinarySimulator():
     def __init__(self, meanDuration = 8, meanWait = 15):
         self.meanDuration = meanDuration #in number of events
         self.meanWait = meanWait
@@ -64,6 +89,7 @@ class DigitalSimulator():
     
     def generateNewVal(self):
         self.presentSince += 1
+        self.prevVal = self.value
         if self.meanWait == 0:
             newVal = 1
         elif self.meanDuration == 0:
@@ -77,8 +103,8 @@ class DigitalSimulator():
             newVal = 1-self.prevVal
         else:
             newVal = self.prevVal
+        self.value = newVal
         
-        self.prevVal = newVal
         return newVal
     
 class BatterySimulator():
@@ -130,7 +156,9 @@ class HumiditySimulator():
 
 
 class PhotonSimulator():
-    def __init__(self, initVal = None, initState = 0, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, illumValue = 50, darkValue = 1000):
+    def __init__(self, initVal = None, initState = 0, fixed = False, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, illumValue = 900, darkValue = 100):
+        self.fixed = fixed
+        self.initVal = initVal
         self.longitude = 7 + 40/60 + 32.52/3600
         self.timeShift = 3600*(1 + (15-self.longitude)/15)
         self.dawnTime = dawnTime
@@ -142,34 +170,56 @@ class PhotonSimulator():
             self.weatherState = initState # 0:clear 1:cloudy
         else:
             self.weatherState = random.binomial(1, 0.3)
-        self.cloudCovering = self.weatherState*(0.5+random.rand())
+        self.cloudCovering = self.weatherState*min((0.5+random.rand()), 0)
         self.duration = 3600*min(0.5, random.exponential(2))
         self.presentSince = math.floor(random.rand()*self.duration)
         self.realNoon = 12*3600 + self.timeShift
         self.lamp = 0
-        if initVal != None:
-            self.value = initVal
+        if self.initVal != None:
+            self.value = self.initVal
 
     
     def generateNewVal(self, currTime = None):
-        self.presentSince += 1
-        if self.presentSince > self.duration:
-            self.presentSince = 0
-            self.duration = 3600*min(0.5, random.exponential(2))
-            self.weatherState = random.binomial(1, 0.3) # Probability of cloudy weather is 0.3
-        if currTime == None:
-            currTime = dt.datetime.now()
-        currSec = currTime.hour * 3600 + currTime.minute * 60 + currTime.second
-        if currSec > self.duskTime + 3600 or currSec < self.dawnTime - 3600: # night time
-            newVal = self.darkValue/(1+self.lamp)
-        else: # daytime, dawn and dusk
-            newBaseVal = np.where(currSec < self.realNoon,
-                                  self.darkValue+(self.illumValue-self.darkValue)/(self.realNoon-self.dawnTime+3600)*(currSec-self.dawnTime+3600),
-                                  self.darkValue+(self.illumValue-self.darkValue)/(self.duskTime+3600-self.realNoon)*(self.duskTime+3600-currSec)
-                                 )
-            newBaseVal += self.weatherState * self.cloudyFactor*self.cloudCovering
-            print((newBaseVal, self.weatherState))
-            newVal = int(min(newBaseVal + random.randn(), self.darkValue)/(1+self.lamp))
+        if self.fixed:
+            newVal = min(5, max(0, (self.initVal + random.randn()*5.0/1023)))
+        else:
+            self.presentSince += 1
+            if self.presentSince > self.duration:
+                self.presentSince = 0
+                self.duration = 3600*min(0.5, random.exponential(2))
+                self.weatherState = random.binomial(1, 0.3) # Probability of cloudy weather is 0.3
+            if currTime == None:
+                currTime = dt.datetime.now()
+            currSec = currTime.hour * 3600 + currTime.minute * 60 + currTime.second
+            if currSec > self.duskTime + 3600 or currSec < self.dawnTime - 3600: # night time
+                newVal = self.darkValue*(1+self.lamp) * 5.0/1023
+            else: # daytime, dawn and dusk
+                newBaseVal = np.where(currSec < self.realNoon,
+                                    self.darkValue+(self.illumValue-self.darkValue)/(self.realNoon-self.dawnTime+3600)*(currSec-self.dawnTime+3600),
+                                    self.darkValue+(self.illumValue-self.darkValue)/(self.duskTime+3600-self.realNoon)*(self.duskTime+3600-currSec)
+                                    )
+                newBaseVal -= self.weatherState*self.cloudyFactor*self.cloudCovering
+                newVal = max(newBaseVal + random.randn(), self.darkValue)*(1+self.lamp) * 5.0 / 1023
         
         self.prevVal = newVal
-        return newVal
+        return self.prevVal
+    
+class ThreeWaySimulator():
+    def __init__(self, mean0duration, mean1duration, mean2duration):
+        self.durations = [float(mean0duration), float(mean1duration), float(mean2duration)]
+        self.probs = [i/(mean0duration+mean1duration+mean2duration) for i in self.durations]
+        self.value = int(np.where(random.multinomial(1, self.probs))[0][0])
+        self.prevVal = self.value
+        self.currStay = math.floor(max([0, self.durations[self.value] * (1 + random.randn()/8)]))
+        self.presentSince = math.floor(random.rand()*self.currStay)
+        print (f"Previous value: {self.prevVal}\nExpected stay: {self.currStay-self.presentSince}")
+
+    def generateNewVal(self):
+        self.presentSince += 1
+        self.prevVal = self.value
+        if self.presentSince > self.currStay:
+            self.presentSince = 0
+            while self.value == self.prevVal:
+                self.value = int(np.where(random.multinomial(1, self.probs))[0][0])
+            self.currStay = max([1, self.durations[self.value] * (1 + random.randn()/8)])
+        return self.value

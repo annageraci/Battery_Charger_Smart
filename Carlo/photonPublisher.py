@@ -1,6 +1,6 @@
 import time
 from Sensors import *
-from SimPublisher import SimSensorPublisher
+from Publishers import SensorPublisher
 import json
 
 if __name__ == "__main__":
@@ -17,14 +17,17 @@ if __name__ == "__main__":
     catalogURL = settingsDict["Catalog_url_Carlo"]
     sensor = PhotonSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
     topic = sensor.getMQTTtopic()
-
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
-    publisher = SimSensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
+    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:
-        print(topic)
-        publisher.rPi_publish(topic, sensor.sensor_update(), 2)
-        publisher.sendLastUpdateToCatalog()
+        publisher.rPi_publish(sensor.sensor_update(), 2)
+        publisher.sendLastUpdateToCatalog(sensor.getValue())
         time.sleep(5)
+
+    simulator = PhotonSimulator()
+    while True:
+        print(simulator.generateNewVal())
+        time.sleep(1)
