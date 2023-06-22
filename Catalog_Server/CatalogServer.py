@@ -1,9 +1,13 @@
 import json 
 import cherrypy
 import time
+import threading
 
 class Catalog(object):
     exposed=True
+
+    def __init__(self):
+        self.lock = threading.Lock()
 
     def GET(self, *uri, **params):
         if len(uri)>0:
@@ -71,17 +75,9 @@ class Catalog(object):
 
     def POST(self, *uri):
         if uri[0]=='Device':
-            bodyAsString=cherrypy.request.body.read() 
-            bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('../Catalog.json'))
-            ListOfDevice=Catalog['DeviceList']
-            for currentDevice in ListOfDevice:
-                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
-                    return 'this device is already present in the list \n'
-            # else is new so we can update the device list
-            Catalog['DeviceList'].insert(len(Catalog['DeviceList']), bodyAsDictionary)
-            json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
-            return json.dumps(Catalog)
+            t=threading.Thread(target=self.process_device_request_post, args=(cherrypy.request.body,))
+            t.start()
+            return 'Device request is being processed in the background'
         
         if uri[0]=='User':
             bodyAsString=cherrypy.request.body.read() 
@@ -120,25 +116,38 @@ class Catalog(object):
                                 json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                                 return json.dumps(Catalog)
                 return 'Does not exist this day'
+        
+    def process_device_request_post(self,body):
+        print(body)
+        bodyAsString=body.read() 
+        bodyAsDictionary=json.loads(bodyAsString)
+        with self.lock:
+            Catalog=json.load(open('../Catalog.json'))
+            ListOfDevice=Catalog['DeviceList']
+            UserList=Catalog['UserList']
+            for currentDevice in ListOfDevice:
+                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
+                    return 'this device is already present in the list \n'
+            # else is new so we can update the device list
+            Catalog['DeviceList'].append(bodyAsDictionary)
+            for i in range(len(UserList)):
+                if UserList[i]['UserID']==bodyAsDictionary['UserAssociationID']:
+                    body={
+                        "MeasureType": bodyAsDictionary['MeasureType'],
+                        "DeviceName": bodyAsDictionary['deviceName'],
+                        "DeviceID": bodyAsDictionary['DeviceID']
+                    }
+            Catalog['UserList'][i]['ConnectedDevices'].append(body)
+            json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
+            return json.dumps(Catalog)
                 
         
     def PUT(self,*uri):
         if uri[0]=='Device':
-            # body {
-            #   "DeviceID":13,
-            #   "value":23,
-            #   "time":time.time()
-            # }
-            bodyAsString=cherrypy.request.body.read() 
-            bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('../Catalog.json'))
-            ListOfDevice=Catalog['DeviceList']
-            for currentDevice in ListOfDevice:
-                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
-                    Catalog['DeviceList'][i]['lastUpDate']=bodyAsDictionary["time"]
-                    Catalog['DeviceList'][i]['value']=bodyAsDictionary['value']
-                    json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
-                    return json.dumps(Catalog)
+            t = threading.Thread(target=self.process_device_request_put, args=(cherrypy.request.body,))
+            t.start()
+            return 'Device request is being processed in the background'
+            
         
         if uri[0]=='User':
             # body {
@@ -158,36 +167,15 @@ class Catalog(object):
             ListOfUser=Catalog['UserList']
             for currentUser in ListOfUser:
                 if currentUser['UserID']==bodyAsDictionary['UserID']:
-                    Catalog['UserList'][i]['CapacityBattery']=bodyAsDictionary['CapacityBattery']
-                    Catalog['UserList'][i]["Consuption_km/kwh"]=bodyAsDictionary["Consuption_km/kwh"]
+                    currentUser['CapacityBattery']=bodyAsDictionary['CapacityBattery']
+                    currentUser["Consuption_km/kwh"]=bodyAsDictionary["Consuption_km/kwh"]
                     for currentDevice in Catalog['UserList'][i]["ConnectedDevices"]:
                         if currentDevice['DeviceID']==bodyAsDictionary['ConnectedDevices']['DeviceID']:
                             return 'The Device is already present in the list but the other parameter are updated' + json.dumps(Catalog)
-                    Catalog['UserList'][i]["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
+                    currentUser["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
                     json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                     return json.dumps(Catalog)
                 
-        if uri[0]=='Actuator':
-            # body {"UserID": "1/2/4" 
-            #        "value": 0/1
-            #       }
-            bodyAsString=cherrypy.request.body.read()
-            bodyAsDictionary=json.loads(bodyAsString)
-            value=bodyAsDictionary['value']
-            Catalog=json.load(open('../Catalog.json'))
-            ListOfUser=Catalog['UserList']
-            for currentUser in ListOfUser:
-                for currentDevice in currentUser['ConnectedDevices']:
-                    if (currentDevice['DeviceName']=='Actuator' and int(currentUser['UserID'])==int(bodyAsDictionary['UserID'])):
-                        DeviceID=currentDevice["DeviceID"]
-            for currentDevice in Catalog['DeviceList']:
-                if currentDevice['DeviceID']==DeviceID:
-                    if value==0 or value==1:
-                        currentDevice['value']=value
-                    else:
-                        return 'The value is not valid '+ json.dumps(Catalog)
-            json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
-            return json.dumps(Catalog)
         
         if uri[0]=='AgendaUpdate':
             #{
@@ -244,6 +232,25 @@ class Catalog(object):
                                     json.dump(Catalog,open('../Catalog.json', 'w'),indent=2)
                                     return json.dumps(Catalog)
             return 'Does not exist this appointment in your Agenda'
+        
+    def process_device_request_put(self, body):
+        #body = {
+        #    "DeviceID":13,
+        #    "value":23,
+        #    "time":time.time()
+        #}
+        bodyAsString=body.read() 
+        bodyAsDictionary=json.loads(bodyAsString)
+        with self.lock:
+            Catalog=json.load(open('../Catalog.json'))
+            ListOfDevice=Catalog['DeviceList']
+            for currentDevice in ListOfDevice:
+                if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
+                    currentDevice['lastUpDate']=bodyAsDictionary["time"]
+                    currentDevice['value']=bodyAsDictionary['value']
+                    json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
+                    print(Catalog)
+                    return json.dumps(Catalog)
                         
 if __name__=="__main__":
     conf={

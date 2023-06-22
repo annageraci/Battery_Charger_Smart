@@ -46,7 +46,6 @@ class Controller:
         self.client.start() #connect to the broker and start the loop
         time.sleep(6) # asyncronous so we want exaclty ordered
         for i in range(len(self.Catalog['UserList'])):
-            print('INITIALIZING')
             UserID=int(self.Catalog['UserList'][i]['UserID'])
             self.topic_temp_completed.insert(i,self.base_topic +str(UserID)+ self.topic_temp)       
             self.client.mySubscribe(self.topic_temp_completed[i])
@@ -90,7 +89,7 @@ class Controller:
                 print(f'the value of the flag of the userID {UserID} is changed: Flag = {self.flag[i]}')
     
     def control_strategy(self):
-        soglia_photon=500 # eV energy of the photon 
+        soglia_photon=3.5 # Voltage produced by the photon 
         for i in range(self.NumberofUser):
             UserID=self.Catalog['UserList'][i]['UserID']
             if self.flag[i]==2:
@@ -102,7 +101,7 @@ class Controller:
                     if (self.digital_button[i]==-1):
                         print('WARNING: The sensor of presence does not work')
                     # 2* step has the photovoltaic panel? Enought enegy in this moment?
-                    if self.photon[i]<=soglia_photon and self.photon[i]!=-1:
+                    if self.photon[i]>=soglia_photon and self.photon[i]!=-1:
                         # self.photon=-1 means no solar pannel 
                         print(f'Solar panel produce enough energy, energy: {self.photon[i]}')
                         self.actuator_command[i]=1
@@ -118,10 +117,10 @@ class Controller:
                         if (daily_appointment>100):
                             print('probably you have to charge the car during the usage in another charge station')
                         if (self.battery_percentage[i]-15>daily_appointment and int(daily_appointment)!=-1):
-                            print(f'percentage of battery sufficient, more than {daily_appointment}')
+                            print(f'percentage of battery sufficient, more than {daily_appointment}+15 (safe state)')
                             self.actuator_command[i]=0
                         elif (self.battery_percentage[i]-15<daily_appointment and int(daily_appointment)!=-1):
-                            print(f'percentage of battery insufficient, less than {daily_appointment}')
+                            print(f'percentage of battery insufficient, less than {daily_appointment} + 15 (safe state)')
                             self.actuator_command[i]=1
                     if (self.actuator_command[i]==-1):
                         print('All the previous check down')
@@ -177,7 +176,7 @@ class Controller:
 
 if __name__=="__main__":
     Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url']
+    base_url=Settings['Catalog_url_Carlo']
     Docker_url=Settings['DockerIP']
     broker=Settings['broker']['IPAddress']
     port=Settings['broker']['port']
@@ -187,7 +186,7 @@ if __name__=="__main__":
     topic_presence='/sensor/presence'
     topic_photon='/sensor/photon'
     topic_daily='/sensor/daily'
-    Contr=Controller('Geraci12232211321',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
+    Contr=Controller('Geraci799921131',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
     Contr.StartOperation()
     # infinite loop to keep the script running 
     while True:

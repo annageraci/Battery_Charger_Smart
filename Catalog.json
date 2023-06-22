@@ -1,7 +1,7 @@
 {
   "Catalog_url_ubuntu_IP": "http://172.20.228.53:8080",
   "Catalog_url_Anna": "http://172.20.10.3:8080",
-  "Catalog_url_Carlo": "http://192.168.72.122:8080",
+  "Catalog_url_Carlo": "http://192.168.72.220:8080",
   "Catalog_url": "http://192.168.1.11:8080",
   "DockerIP": "http://172.17.0.1:8080",
   "baseTopic": "Battery/IoT/project/UserID/",
@@ -16,47 +16,8 @@
   },
   "DeviceList": [
     {
-      "deviceName": "Temperature_Sensor",
-      "DeviceID": "1",
-      "UserAssociationID": "1",
-      "MeasureType": "Temperature",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
-      },
-      "value": "",
-      "lastUpDate": 1681996193
-    },
-    {
-      "deviceName": "Photon_Sensor",
-      "DeviceID": "2",
-      "UserAssociationID": "1",
-      "MeasureType": "Photoni",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
-      },
-      "value": "",
-      "lastUpDate": 1683897222
-    },
-    {
-      "deviceName": "Digital_Button",
-      "DeviceID": "3",
-      "UserAssociationID": "1",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
-      },
-      "value": 0,
-      "lastUpDate": 1679060935
-    },
-    {
-      "deviceName": "Battery_Detector",
-      "DeviceID": "4",
+      "deviceName": "Actuator1",
+      "DeviceID": "111",
       "UserAssociationID": "1",
       "MeasureType": "Percentage",
       "availableServices": "MQTT",
@@ -64,166 +25,9 @@
         "ServiceType": "MQTT",
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
-      "value": "14",
-      "lastUpDate": 1679160126
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "5",
-      "UserAssociationID": "1",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/actuator"
-      },
-      "value": 0,
-      "lastUpDate": 1679060549
-    },
-    {
-      "deviceName": "Temperature_Sensor",
-      "DeviceID": "6",
-      "UserAssociationID": "2",
-      "MeasureType": "Temperature",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
-      },
-      "value": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Digital_Button",
-      "DeviceID": "7",
-      "UserAssociationID": "2",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
-      },
-      "value": 0,
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Battery_Detector",
-      "DeviceID": "8",
-      "UserAssociationID": "2",
-      "MeasureType": "Percentage",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
-      },
-      "value": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "9",
-      "UserAssociationID": "2",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/actuator"
-      },
-      "value": 0,
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Temperature_Sensor",
-      "DeviceID": "10",
-      "UserAssociationID": "4",
-      "MeasureType": "Temperature",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
-      },
-      "value": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Digital_Button",
-      "DeviceID": "11",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/presence"
-      },
-      "value": "",
-      "lastUpDate": 1681996186
-    },
-    {
-      "deviceName": "Battery_Detector",
-      "DeviceID": "12",
-      "UserAssociationID": "4",
-      "MeasureType": "Percentage",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
-      },
       "status": "",
-      "lastUpDate": 1679059744
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "13",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119,
-      "value": 0
-    },
-    {
-      "deviceName": "Actuator",
-      "DeviceID": "17",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119
-    },
-    {
-      "deviceName": "PhotonSimulator2",
-      "DeviceID": "124",
-      "UserAssociationID": "2",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
-      },
-      "status": "",
-      "lastUpDate": 1684523512.8731525,
-      "value": 1
-    },
-    {
-      "deviceName": "PhotonSimulator1",
-      "DeviceID": "114",
-      "UserAssociationID": "1",
-      "MeasureType": "",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
-      },
-      "status": "",
-      "lastUpDate": 1684582792.756245
+      "lastUpDate": 1685988379.0767217,
+      "value": null
     }
   ],
   "UserList": [
@@ -234,32 +38,51 @@
       "CapacityBattery": 50,
       "Consumption_km/kwh": 6,
       "ChatID": "740346462",
-      "ThingSpeakKey": "2141952",
+      "ChannelID": "2141952",
+      "ThingSpeakKey": {
+        "APIKeyRead": "W59PRQKYXG7AF4CA",
+        "APIKeyWrite": "EUWUGU3WMLEZ6U88"
+      },
       "ConnectedDevices": [
         {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "1"
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator1",
+          "DeviceID": "113"
         },
         {
-          "measure": "Photoni",
-          "DeviceName": "Photon_sensor",
-          "DeviceID": "2"
+          "MeasureType": "Boolean",
+          "DeviceName": "PhotonSimulator1",
+          "DeviceID": "114"
         },
         {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "3"
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
         },
         {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "4"
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "111"
         },
         {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "5"
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator1",
+          "DeviceID": "110"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator1",
+          "DeviceID": "113"
+        },
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
+        },
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "111"
         }
       ],
       "Agenda": {
@@ -293,7 +116,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 22
+            "NumberOfTotalKilometers": 1
           }
         ],
         "Friday": [
@@ -314,6 +137,11 @@
             "Type": "Hollyday",
             "StartTimeSlot": 8,
             "NumberOfTotalKilometers": 7
+          },
+          {
+            "Type": "",
+            "StartTimeSlot": [],
+            "NumberOfTotalKilometers": 20
           }
         ]
       }
@@ -325,27 +153,36 @@
       "CapacityBattery": 30,
       "Consumption_km/kwh": 6,
       "ChatID": "51065691",
-      "ThingSpeakKey": "2141957",
+      "ChannelID": "2141957",
+      "ThingSpeakKey": {
+        "APIKeyWrite": "YBW43BVJKR1G742E",
+        "APIKeyRead": "7PN1S352CT0D5SRE"
+      },
       "ConnectedDevices": [
         {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "6"
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator2",
+          "DeviceID": "121"
         },
         {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "7"
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator2",
+          "DeviceID": "123"
         },
         {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "8"
+          "MeasureType": "Boolean",
+          "DeviceName": "PhotonSimulator2",
+          "DeviceID": "124"
         },
         {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "9"
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator2",
+          "DeviceID": "120"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator2",
+          "DeviceID": "123"
         }
       ],
       "Agenda": {
@@ -377,7 +214,7 @@
           {
             "Type": "sport",
             "StartTimeSlot": 19,
-            "NumberOfTotalKilometers": 15
+            "NumberOfTotalKilometers": 1
           }
         ],
         "Thursday": [
@@ -410,27 +247,36 @@
       "CapacityBattery": 30,
       "Consumption_km/kwh": 5,
       "ChatID": "153123772",
-      "ThingSpeakKey": "2141962",
+      "ChannelID": "2141962",
+      "ThingSpeakKey": {
+        "APIKeyWrite": "TILVO0S7Z1LN2FPN",
+        "APIKeyRead": "WHV15SKZ8THKM8V6"
+      },
       "ConnectedDevices": [
         {
-          "measure": "Temperature",
-          "DeviceName": "Temperature_sensor",
-          "DeviceID": "10"
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator4",
+          "DeviceID": "141"
         },
         {
-          "measure": "Boolean",
-          "DeviceName": "Digital_Button",
-          "DeviceID": "11"
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator4",
+          "DeviceID": "143"
         },
         {
-          "measure": "Percentage",
-          "DeviceName": "Battery_Detector",
-          "DeviceID": "12"
+          "MeasureType": "Boolean",
+          "DeviceName": "PhotonSimulator4",
+          "DeviceID": "144"
         },
         {
-          "measure": "Boolean",
-          "DeviceName": "Actuator",
-          "DeviceID": "13"
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator4",
+          "DeviceID": "140"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator4",
+          "DeviceID": "143"
         }
       ],
       "Agenda": {
@@ -469,7 +315,7 @@
           {
             "Type": "work",
             "StartTimeSlot": 8,
-            "NumberOfTotalKilometers": 50
+            "NumberOffTotalKilometers": 50
           }
         ],
         "Friday": [

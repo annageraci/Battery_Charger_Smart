@@ -40,8 +40,8 @@ class BatteryBot:
         MessageLoop(self.bot, {'chat': self.on_chat_message,
                                'callback_query': self.on_callback_query}).run_as_thread()
         
-        urlToContact=self.base_url+'/AllUsers'
-        response= requests.get(urlToContact)
+        self.urlToContact=self.base_url+'/AllUsers'
+        response= requests.get(self.urlToContact)
         self.ListOfAllUser_json = response.json()
         self.topic_presence=[]
         self.UserID=-1
@@ -66,7 +66,7 @@ class BatteryBot:
         
         if topic==self.topic_presence:
             payload=json.loads(msg)
-            self.output=payload['e'][0]['value']
+            self.output=payload['e'][0]['v']
             #print(f'the value of the presence of the vehicle of the UserID {self.UserID} is {self.output}')
 
         if topic==self.topic_StateControl:
@@ -208,7 +208,7 @@ class BatteryBot:
 
 
                 elif message=='/ViewGraphs':
-                   channelID=currentUser['ThingSpeakKey']
+                   channelID=currentUser['ChannelID']
                    if channelID=='':
                        self.bot.sendMessage(chat_ID, text=f'No ThingSpeak feature available')
                    else: 
@@ -306,7 +306,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url"]
+    base_url = conf["Catalog_url_Carlo"]
     sb=BatteryBot(token,broker,port,topic_base, base_url)
 
     while True:

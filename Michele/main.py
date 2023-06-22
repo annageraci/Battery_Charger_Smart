@@ -1,26 +1,28 @@
 from catalogAdapter import CatalogAdapter
-from deviceSubscriber import DeviceSubscriber
+from deviceSubscriber  import DeviceSubscriber
 import time
+import json
 
-catalog = CatalogAdapter("http://192.168.72.220:8080") #avviato da Anna (pc-lavoro)
+catalog = CatalogAdapter("http://172.25.224.1:8080") #avviato da Carlo (hot-spot)
 deviceList = catalog.get_devices()
 
+Settings=json.load(open("../settings.json"))
 
+broker=Settings['broker']['IPAddress']
 clientSubID = "dataAnalysisAsSubscriber"
-broker = "mqtt.eclipseprojects.io"
-port = 1883
+port =['broker']['port']
     
-for item in deviceList:
-    subscriber = DeviceSubscriber(clientSubID, broker, port, device=item)
-    subscriber.start()
-    #CONTROLLARE SE THINGSPEAK VUOLE VALORI INTERI OPPURE STRINGHE
-    #subscriber.stop()
-    #subscribedDevices.append(subscriber)
-    time.sleep(5) #in modo tale da permettere al publisher di pubblicare
 
-
+subscriber = DeviceSubscriber(clientSubID, broker, port, deviceList)
+subscriber.start()
+#CONTROLLARE SE THINGSPEAK VUOLE VALORI INTERI OPPURE STRINGHE
+#subscriber.stop()
+#subscribedDevices.append(subscriber)
+time.sleep(5) #in modo tale da permettere al publisher di pubblicare
 while True:
     continue
+
+
 
 # implementare:
 # - (Da fare passo passo mentre completi i punti successivi) classe Device in modo da avere al suo interno delle
