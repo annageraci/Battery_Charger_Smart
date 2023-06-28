@@ -14,22 +14,7 @@
     "API_keys": "YJPIP47T25RRGBYX",
     "ChannelID": "2105394"
   },
-  "DeviceList": [
-    {
-      "deviceName": "Actuator1",
-      "DeviceID": "111",
-      "UserAssociationID": "1",
-      "MeasureType": "Percentage",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
-      },
-      "status": "",
-      "lastUpDate": 1685988379.0767217,
-      "value": null
-    }
-  ],
+  "DeviceList": [],
   "UserList": [
     {
       "UserID": "1",
