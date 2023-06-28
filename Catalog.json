@@ -45,21 +45,6 @@
       },
       "ConnectedDevices": [
         {
-          "MeasureType": "Voltage",
-          "DeviceName": "PhotonSimulator1",
-          "DeviceID": "113"
-        },
-        {
-          "MeasureType": "Boolean",
-          "DeviceName": "PhotonSimulator1",
-          "DeviceID": "114"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
-        },
-        {
           "MeasureType": "Percentage",
           "DeviceName": "Actuator1",
           "DeviceID": "111"
@@ -73,16 +58,6 @@
           "MeasureType": "Voltage",
           "DeviceName": "PhotonSimulator1",
           "DeviceID": "113"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
-        },
-        {
-          "MeasureType": "Percentage",
-          "DeviceName": "Actuator1",
-          "DeviceID": "111"
         }
       ],
       "Agenda": {
@@ -178,11 +153,6 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator2",
           "DeviceID": "120"
-        },
-        {
-          "MeasureType": "Voltage",
-          "DeviceName": "PhotonSimulator2",
-          "DeviceID": "123"
         }
       ],
       "Agenda": {
@@ -272,11 +242,6 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator4",
           "DeviceID": "140"
-        },
-        {
-          "MeasureType": "Voltage",
-          "DeviceName": "PhotonSimulator4",
-          "DeviceID": "143"
         }
       ],
       "Agenda": {
