@@ -196,6 +196,19 @@
       "status": "",
       "lastUpDate": 1687418767.9794002,
       "value": 79.92590129828662
+    },
+    {
+      "deviceName": "Actuator4",
+      "DeviceID": "147",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
     }
   ],
   "UserList": [
@@ -214,7 +227,7 @@
       "ConnectedDevices": [
         {
           "MeasureType": "Percentage",
-          "DeviceName": "BatteryChargeSimulator1", 
+          "DeviceName": "BatteryChargeSimulator1",
           "DeviceID": "121"
         },
         {
@@ -415,6 +428,11 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator4",
           "DeviceID": "140"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator4",
+          "DeviceID": "147"
         }
       ],
       "Agenda": {
