@@ -137,7 +137,7 @@ class Catalog(object):
                         "DeviceName": bodyAsDictionary['deviceName'],
                         "DeviceID": bodyAsDictionary['DeviceID']
                     }
-            Catalog['UserList'][i]['ConnectedDevices'].append(body)
+                    Catalog['UserList'][i]['ConnectedDevices'].append(body)
             json.dump(Catalog,open('../Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
                 
