@@ -209,6 +209,32 @@
       },
       "status": 0,
       "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "Actuator1",
+      "DeviceID": "117",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "Actuator2",
+      "DeviceID": "127",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
     }
   ],
   "UserList": [
@@ -244,6 +270,11 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator1",
           "DeviceID": "110"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator1",
+          "DeviceID": "117"
         }
       ],
       "Agenda": {
@@ -339,6 +370,11 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator2",
           "DeviceID": "120"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator2",
+          "DeviceID": "127"
         }
       ],
       "Agenda": {
