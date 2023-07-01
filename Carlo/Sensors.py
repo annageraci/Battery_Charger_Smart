@@ -193,7 +193,7 @@ class PhotonSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self, dawnTime=6*3600+47*60, duskTime=20*3600+13*60):
-        self.simulator = PhotonSimulator(self.value, None, True, dawnTime, duskTime)
+        self.simulator = PhotonSimulator(self.value, None, 2, dawnTime, duskTime)
         self.value = self.simulator.generateNewVal(dt.datetime.now())
 
     def sensor_update(self):

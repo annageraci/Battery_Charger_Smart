@@ -2,6 +2,7 @@ from ArduinoPiConnectorForRpi import ArduinoPiConnector
 import paho.mqtt.client as pahoMQTT
 import json
 import time
+from datetime import datetime as dt
 from OnConnectionCatalogUpdater import CatalogUpdater
 
 class ActuatorSubscriber():
@@ -39,16 +40,16 @@ class ActuatorSubscriber():
 
     def actuator_onMsgRec(self, client, userdata, msg):
         self.msg = json.loads(msg.payload)
-        if self.msg['bn'] == self.deviceID:
-            newValue = self.msg['e'][0]['v']
-            self.lastUpdate = self.msg['e'][0]['t']
-            self.arduinoConnector.updateCurrentState(newValue)
-            self.currentState = self.arduinoConnector.getCurrentState()
-            print (f"Output state updated to \"{newValue}\" at time {self.lastUpdate}")
-            self.catalogUpdater.generateMessage(self.currentState)
-            self.catalogUpdater.sendMessage()
-            return newValue
-    
+        newValue = self.msg['e'][0]['v']
+        self.lastUpdate = self.msg['e'][0]['t']
+        self.arduinoConnector.updateCurrentState(newValue)
+        self.currentState = self.arduinoConnector.getCurrentState()
+        dateTimeStr = dt.fromtimestamp(self.lastUpdate).strftime('%d-%m-%Y')
+        print (f"Output state updated to \"{newValue}\" on {dt.fromtimestamp(self.lastUpdate)} (Epoch time {self.lastUpdate})")
+        self.catalogUpdater.generateMessage(self.currentState)
+        self.catalogUpdater.sendMessage()
+        return newValue
+
     def getLastUpdate(self):
         return self.lastUpdate
     
@@ -57,7 +58,9 @@ class ActuatorSubscriber():
     
     def getCurrentState(self):
         return self.currentState
-    
+
+
+
 class ActuatorExtSubscriber():
     def __init__(self, clientID, deviceID, userID, broker, port, baseTopic, initState = None, notifier=None):
         self.client = pahoMQTT.Client(clientID, True)
@@ -86,12 +89,11 @@ class ActuatorExtSubscriber():
 
     def actuator_onMsgRec(self, client, userdata, msg):
         self.msg = json.loads(msg.payload)
-        if self.msg['bn'] == self.deviceID:
-            newValue = self.msg['e'][0]['v']
-            self.lastUpdate = self.msg['e'][0]['t']
-            print (f"Output state updated to \"{newValue}\" at time {self.lastUpdate}")
-            self.currentState = bool(newValue)
-            return newValue
+        newValue = self.msg['e'][0]['v']
+        self.lastUpdate = self.msg['e'][0]['t']
+        print (f"Output state updated to \"{newValue}\" at time {self.lastUpdate}")
+        self.currentState = bool(newValue)
+        return newValue
     
     def getLastUpdate(self):
         return self.lastUpdate

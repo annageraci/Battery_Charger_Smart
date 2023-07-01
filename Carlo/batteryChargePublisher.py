@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     broker = "mqtt.eclipseprojects.io" # to be updated with the relative reference
     port = 1883 # same
-    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType() broker, port, topic, catalogURL)
+    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:

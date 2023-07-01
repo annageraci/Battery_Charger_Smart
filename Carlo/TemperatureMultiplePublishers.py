@@ -31,7 +31,7 @@ if __name__ == "__main__":
         baseTopic = settingsDict["baseTopic"] + userAssociationID + "/sensor"
         deviceID = str(100+10*users[i])
         deviceName = "TemperatureSimulator"+str(users[i])
-        sensors.append(TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True, 1, 35 + 30*int(i == 0)))
+        sensors.append(TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True, 1, 35 + 30*int(i == 1)))
         topic = sensors[i].getMQTTtopic()
         publishers.append(SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensors[i].getMeasureType(), broker, port, topic, catalogURL))
         publishers[i].startOperation()

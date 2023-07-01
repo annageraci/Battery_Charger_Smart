@@ -15,7 +15,7 @@ if __name__ == "__main__":
     baseTopic += userAssociationID + "/sensor"
     deviceName = "PhotonSimulator1"
     catalogURL = settingsDict["Catalog_url_Carlo"]
-    sensor = PhotonSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
+    sensor = PhotonSensor(deviceID, deviceName, userAssociationID, baseTopic, True, 3.45)
     topic = sensor.getMQTTtopic()
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
