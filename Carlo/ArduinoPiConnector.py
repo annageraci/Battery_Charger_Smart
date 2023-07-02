@@ -1,6 +1,4 @@
 import pyfirmata
-import paho.mqtt.client as pahoMQTT
-import requests
 import time
 
 class ArduinoPiConnector():
@@ -22,7 +20,7 @@ class ArduinoPiConnector():
     def startInput(self):
         self.arduinoInputIterator.start()
         self.feedbackPin.mode = pyfirmata.INPUT
-        
+        self.relayPin.mode = pyfirmata.OUTPUT
 
     def updateCurrentState(self, newState):
         oldState = self.currentState

@@ -1,4 +1,3 @@
-import cherrypy
 import time
 import json
 import requests
@@ -7,11 +6,12 @@ class CatalogUpdater():
 
     exposed = True
 
-    def __init__(self, uri, MQTTtopic, deviceID, deviceName="", userID="1"):
+    def __init__(self, uri, MQTTtopic, deviceID, deviceName="", userID="1", measureType = ""):
         self.uri = uri
         self.deviceID = deviceID
         self.deviceName = deviceName
         self.userID = userID
+        self.measureType = measureType
         self.updateTime = time.time()
         self.joined = False
         self.MQTTtopic = MQTTtopic
@@ -29,7 +29,7 @@ class CatalogUpdater():
             "deviceName": self.deviceName,
             "DeviceID": self.deviceID,
             "UserAssociationID": self.userID,
-            "MeasureType": "",
+            "MeasureType": self.measureType,
             "availableServices": "MQTT",
             "ServiceDetails": {
                 "ServiceType": "MQTT",
@@ -38,23 +38,47 @@ class CatalogUpdater():
             "status": "",
             "lastUpDate": self.updateTime
         }
-        requests.post(self.uri+"/Device", json.dumps(self.deviceDict, indent=2))
+
+        ok = 0
+        while not ok:
+            try:
+                response = requests.post(self.uri+"/Device", json.dumps(self.deviceDict, indent=2))
+                ok = response.ok
+            except:
+                print("Error: server unreachable.")
+                time.sleep(3)
         self.joined = True
 
     def setUpdateTime(self, newTime):
         self.updateTime = newTime
 
     def generateMessage(self, value):
-        self.messageAsDict = {"DeviceID": self.deviceID, "time": self.updateTime, "value": value}
+        self.messageAsDict = {"UserID": self.userID, "DeviceID": self.deviceID, "time": self.updateTime, "value": value}
         self.messageAsStr = json.dumps(self.messageAsDict, indent=2)
         return self.messageAsStr
 
     def sendMessage(self, URIarg="Device"):
-        requests.put(self.uri + "/" + URIarg, self.generateMessage())
-    
+        ok = 0
+        while not ok:
+            try:
+                response = requests.put(self.uri + "/" + URIarg, self.messageAsStr)
+                ok = response.ok
+            except:
+                print("Error: server unreachable.")
+
     def checkCatalog(self):
-        devices = requests.get(self.uri+"/AllDevices")
-        return devices.json()
+        ok = 0
+        while not ok:
+            ok = 1
+            try:
+                devices = requests.get(self.uri+"/AllDevices")
+                # print(devices.content)
+                return devices.json()
+            except:
+                print("Error: server unreachable")
+                ok = 0
+        
+        
 
 # For testing purposes only
 

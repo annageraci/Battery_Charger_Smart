@@ -1,6 +1,4 @@
 import time
-import datetime as dt
-import math
 
 class Sensor():
     def __init__(self, ID, name = "", userID = "1", baseTopic = "", simulated = True, currVal = None):
@@ -17,13 +15,17 @@ class Sensor():
         self.unit = None
         self.value = currVal
         self.MQTTtopic = baseTopic
+        self.measureType = ""
 
     def start_simulator(self):
         pass
 
     def getValue(self):
         return self.value
-
+    
+    def getMeasureType(self):
+        return self.measureType
+    
     def sensor_update(self):
         self.prevValue = self.value
         if self.simulated:

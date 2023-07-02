@@ -3,20 +3,21 @@ from Simulators import *
 from Sensor import Sensor
 import time
 import datetime as dt
-import paho.mqtt.client as pahoMQTT
 import board
 import adafruit_dht
 import RPi.GPIO as gpio
 
 class TemperatureSensor(Sensor):
-    def __init__(self, ID, name = "", userID = "1", baseTopic = "", simulated = True, currTemp = None):
+    def __init__(self, ID, name = "", userID = "1", baseTopic = "", simulated = True, location = 0, currTemp = None):
         Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
         self.unit = "Cel"
-        self.quantity = "temperature"
+        self.location = location
+        # 0: outside, 1: battery
+        self.quantity = "temperature" + "B" * self.location
         if self.simulated:
-            self.simulator = TemperatureSimulator()
+            self.start_simulator()
             if currTemp != None:
-                self.value = self.simulator.generateNewVal(dt.datetime.now(), self.prevValue) 
+                self.value = self.simulator.generateNewVal(dt.datetime.now(), self.prevValue)
         
         else:
             # instructions related to RPi
@@ -26,8 +27,11 @@ class TemperatureSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, minTemp=8, maxTemp=23):
-        self.simulator = TemperatureSimulator(dawnTime, duskTime, minTemp, maxTemp)
-        self.value = self.simulator.generateNewVal(dt.datetime.now(), self.prevValue)
+        if self.location == 0:
+            self.simulator = OutsideTemperatureSimulator(dawnTime, duskTime, minTemp, maxTemp)
+            self.value = self.simulator.generateNewVal(dt.datetime.now(), self.prevValue)
+        else:
+            self.simulator = BatteryTemperatureSimulator(True)
 
             
     def sensor_update(self):
@@ -68,11 +72,13 @@ class TemperatureSensor(Sensor):
 
 
 class PresenceSensor(Sensor):
-    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, meanDuration=8, meanWait=15):
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, URIarg = "Digital_Button", meanDuration=8, meanWait=15):
         Sensor.__init__(self, ID, name, userID, baseTopic, simulated)
         self.unit = ""
         self.quantity = "presence"
         if self.simulated:
+            self.meanDuration = meanDuration
+            self.meanWait = meanWait
             self.start_simulator()
         
         else:
@@ -83,23 +89,8 @@ class PresenceSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self):
-        self.simulator = DigitalSimulator(15, 0)
+        self.simulator = BinarySimulator(self.meanDuration, self.meanWait)
         self.value = self.simulator.generateNewVal()
-
-            
-    # def sensor_update(self):
-    #     prevVal = self.prevValue
-    #     prevTime = self.time_last_update
-    #     self.prevValue = self.value
-    #     if self.simulated:
-    #         self.value = self.simulator.generateNewVal(dt.datetime.now(), prevVal)
-    #     else:
-    #         pass
-
-    #     self.time_last_update = time.time()
-    #     self.dict["e"][0]["t"] = self.time_last_update
-    #     self.dict["e"][0]["v"] = self.value
-    #     return self.dict
         
 
     def errorCheck(self):
@@ -164,7 +155,7 @@ class TempHumSensor(Sensor):
         self.value = [None,None]
         self.prevValue = [None, None]
         if self.simulated:
-            self.tempSimulator = TemperatureSimulator()
+            self.tempSimulator = OutsideTemperatureSimulator()
             self.humSimulator = HumiditySimulator(currHum, humChangingSpeed)
             if currTemp != None:
                 self.value[0] = currTemp
@@ -180,7 +171,7 @@ class TempHumSensor(Sensor):
                 # Errors happen fairly often, DHT's are hard to read, just             #        keep going
                 print(error.args[0])
 
-        self.MQTTtopic += "/temphum"
+        self.MQTTtopic += "/temperature"
         self.dict = {"bn": self.ID,
                      "e": 
                         [{"n": self.quantity[0], "u": self.unit[0], "t": self.time_last_update, "v": self.value[0]},
@@ -214,8 +205,8 @@ class TempHumSensor(Sensor):
 class PhotonSensor(Sensor):
     def __init__(self, ID, name = "", userID = "1", baseTopic = "", simulated = True, currLight = None):
         Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currLight)
-        self.unit = ""
-        self.quantity = "light_intensity"
+        self.unit = "V"
+        self.quantity = "photon"
         if self.simulated:
             self.start_simulator()
         
@@ -226,12 +217,11 @@ class PhotonSensor(Sensor):
         self.MQTTtopic += "/" + self.quantity
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
-    def start_simulator(self, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, minTemp=8, maxTemp=23):
-        self.simulator = PhotonSimulator(None, None, dawnTime, duskTime)
+    def start_simulator(self, dawnTime=6*3600+47*60, duskTime=20*3600+13*60):
+        self.simulator = PhotonSimulator(self.value, None, True, dawnTime, duskTime)
         self.value = self.simulator.generateNewVal(dt.datetime.now())
 
     def sensor_update(self):
-        prevVal = self.prevValue
         prevTime = self.time_last_update
         self.prevValue = self.value
         if self.simulated:
@@ -243,10 +233,11 @@ class PhotonSensor(Sensor):
         self.dict["e"][0]["t"] = self.time_last_update
         self.dict["e"][0]["v"] = self.value
         return self.dict
-
+    
+    
 class SwitchSensor(Sensor):
-    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currTemp = None):
-        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currTemp)
+    def __init__(self, ID, name = "", userID = "1", baseTopic="", simulated = True, currVal = None):
+        Sensor.__init__(self, ID, name, userID, baseTopic, simulated, currVal)
         self.unit = ""
         self.quantity = "switch"
         if self.simulated:
@@ -260,5 +251,5 @@ class SwitchSensor(Sensor):
         self.dict = {"bn": self.ID, "e": [{"n": self.quantity, "u": self.unit, "t": self.time_last_update, "v": self.value}]}
 
     def start_simulator(self):
-        self.simulator = DigitalSimulator()
+        self.simulator = BinarySimulator()
         self.value = self.simulator.generateNewVal()

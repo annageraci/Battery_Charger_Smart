@@ -1,6 +1,6 @@
 import time
 from RPiSensors import *
-from SimPublisher import SimSensorPublisher
+from Publishers import SensorPublisher
 import json
 
 if __name__ == "__main__":
@@ -20,10 +20,10 @@ if __name__ == "__main__":
 
     broker = settingsDict["broker"]["IPAddress"] # to be updated with the relative reference
     port = settingsDict["broker"]["port"] # same
-    publisher = SimSensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
+    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:
         publisher.rPi_publish(topic, sensor.sensor_update(), 2)
-        publisher.sendLastUpdateToCatalog(sensor.getValue())
+        publisher.sendLastUpdateToCatalog(sensor.getValue(), sensor.getURIarg())
         time.sleep(5)
