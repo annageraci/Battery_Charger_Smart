@@ -196,45 +196,6 @@
       "status": "",
       "lastUpDate": 1687418767.9794002,
       "value": 79.92590129828662
-    },
-    {
-      "deviceName": "Actuator4",
-      "DeviceID": "147",
-      "UserAssociationID": "4",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/4/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119
-    },
-    {
-      "deviceName": "Actuator1",
-      "DeviceID": "117",
-      "UserAssociationID": "1",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/1/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119
-    },
-    {
-      "deviceName": "Actuator2",
-      "DeviceID": "127",
-      "UserAssociationID": "2",
-      "MeasureType": "Boolean",
-      "availableServices": "MQTT",
-      "ServiceDetails": {
-        "ServiceType": "MQTT",
-        "topic": "Battery/IoT/project/UserID/2/actuator"
-      },
-      "status": 0,
-      "lastUpDate": 1679160119
     }
   ],
   "UserList": [
@@ -253,7 +214,7 @@
       "ConnectedDevices": [
         {
           "MeasureType": "Percentage",
-          "DeviceName": "BatteryChargeSimulator1",
+          "DeviceName": "BatteryChargeSimulator1", 
           "DeviceID": "121"
         },
         {
@@ -270,11 +231,6 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator1",
           "DeviceID": "110"
-        },
-        {
-          "MeasureType": "Boolean",
-          "DeviceName": "Actuator1",
-          "DeviceID": "117"
         }
       ],
       "Agenda": {
@@ -370,11 +326,6 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator2",
           "DeviceID": "120"
-        },
-        {
-          "MeasureType": "Boolean",
-          "DeviceName": "Actuator2",
-          "DeviceID": "127"
         }
       ],
       "Agenda": {
@@ -464,11 +415,6 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator4",
           "DeviceID": "140"
-        },
-        {
-          "MeasureType": "Boolean",
-          "DeviceName": "Actuator4",
-          "DeviceID": "147"
         }
       ],
       "Agenda": {
