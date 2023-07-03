@@ -1,11 +1,13 @@
 import time
+import os
 from Sensors import *
 from Publishers import SensorPublisher
 from ActuatorSubscriber import ActuatorExtSubscriber
 import json
 
 if __name__ == "__main__":
-    settings_file_path = 'settings.json'
+    currDir = os.path.dirname(os.path.abspath(__file__))
+    settings_file_path = os.path.join(currDir,'..','settings.json')
 
     settingsFile = open(settings_file_path)
     settingsDict = json.load(settingsFile)

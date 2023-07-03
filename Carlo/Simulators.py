@@ -156,8 +156,16 @@ class HumiditySimulator():
 
 
 class PhotonSimulator():
-    def __init__(self, initVal = None, initState = 0, fixed = False, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, illumValue = 900, darkValue = 100):
-        self.fixed = fixed
+    def __init__(self, initVal = None, initState = 0, trend = 0, dawnTime=6*3600+47*60, duskTime=20*3600+13*60, illumValue = 900, darkValue = 100):
+        """ Trend:
+        0 = (almost) constant lighting
+        1 = exponential growth toward 5 V
+        -1 = exponential decrease toward 0 V
+        2 = linear growth
+        -2 = linear decrease
+        3 = \"natural\" behavior"""
+        
+        self.trend = trend
         self.initVal = initVal
         self.longitude = 7 + 40/60 + 32.52/3600
         self.timeShift = 3600*(1 + (15-self.longitude)/15)
@@ -180,8 +188,14 @@ class PhotonSimulator():
 
     
     def generateNewVal(self, currTime = None):
-        if self.fixed:
+        if self.trend == 0:
             newVal = min(5, max(0, (self.initVal + random.randn()*5.0/1023)))
+        elif self.trend == 1:
+            newVal = self.value + (5-self.value)/2
+        elif self.trend == -1:
+            newVal = self.value/2
+        elif abs(self.trend) == 2:
+            newVal = max(0, min(5, self.value + self.trend*0.002) + random.randn()*5.0/1023)
         else:
             self.presentSince += 1
             if self.presentSince > self.duration:
@@ -201,8 +215,8 @@ class PhotonSimulator():
                 newBaseVal -= self.weatherState*self.cloudyFactor*self.cloudCovering
                 newVal = max(newBaseVal + random.randn(), self.darkValue)*(1+self.lamp) * 5.0 / 1023
         
-        self.prevVal = newVal
-        return self.prevVal
+        self.value = newVal
+        return self.value
     
 class ThreeWaySimulator():
     def __init__(self, mean0duration, mean1duration, mean2duration):

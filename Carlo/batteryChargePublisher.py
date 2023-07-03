@@ -1,10 +1,12 @@
 import time
+import os
 from Sensors import *
 from Publishers import SensorPublisher
 import json
 
 if __name__ == "__main__":
-    settings_file_path = 'settings.json'
+    currDir = os.path.dirname(os.path.abspath(__file__))
+    settings_file_path = os.path.join(currDir,'..','settings.json')
 
     settingsFile = open(settings_file_path)
     settingsDict = json.load(settingsFile)
@@ -20,7 +22,7 @@ if __name__ == "__main__":
 
     broker = "mqtt.eclipseprojects.io" # to be updated with the relative reference
     port = 1883 # same
-    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType() broker, port, topic, catalogURL)
+    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:

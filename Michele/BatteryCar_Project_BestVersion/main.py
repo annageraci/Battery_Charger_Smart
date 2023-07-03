@@ -1,4 +1,4 @@
-from catalogAdapter import CatalogAdapter
+from Michele.catalogAdapter import CatalogAdapter
 from deviceSubscriber   import DeviceSubscriber
 import time
 import json

@@ -21,6 +21,7 @@ if __name__ == "__main__":
     userAssociationID = "1"
     deviceName = "Actuator1"
     catalogURL = settingsDict["Catalog_url_Carlo"]
+    print (catalogURL)
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
     

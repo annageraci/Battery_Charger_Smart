@@ -26,7 +26,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/battery"
       },
       "status": "",
-      "lastUpDate": 1685988379.0767217,
+      "lastUpDate": 1688214584.8945155,
       "value": null
     },
     {
@@ -40,8 +40,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1687418766.5030262,
-      "value": 3.806258173642253
+      "lastUpDate": 1688370850.4955058,
+      "value": 3.815214862956559
     },
     {
       "deviceName": "PhotonSimulator2",
@@ -54,8 +54,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1687418766.5078583,
-      "value": 1.501515101955968
+      "lastUpDate": 1688370850.5042577,
+      "value": 1.5450298861029006
     },
     {
       "deviceName": "PhotonSimulator4",
@@ -68,8 +68,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/photon"
       },
       "status": "",
-      "lastUpDate": 1687418766.5129664,
-      "value": 1.5011893008760582
+      "lastUpDate": 1688370850.5196407,
+      "value": 1.5665785197515532
     },
     {
       "deviceName": "PresenceSimulator1",
@@ -82,7 +82,7 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1687418769.7459083,
+      "lastUpDate": 1688220154.3761816,
       "value": 1
     },
     {
@@ -96,7 +96,7 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1687418769.7530208,
+      "lastUpDate": 1688220154.383898,
       "value": 1
     },
     {
@@ -110,7 +110,7 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/presence"
       },
       "status": "",
-      "lastUpDate": 1687418769.7596269,
+      "lastUpDate": 1688220154.3999715,
       "value": 1
     },
     {
@@ -124,8 +124,8 @@
         "topic": "Battery/IoT/project/UserID/1/sensor/temperatureB"
       },
       "status": "",
-      "lastUpDate": 1687418767.6384134,
-      "value": 25.2189413517845
+      "lastUpDate": 1688220154.5499983,
+      "value": 24.106883251196493
     },
     {
       "deviceName": "TemperatureSimulator2",
@@ -138,8 +138,8 @@
         "topic": "Battery/IoT/project/UserID/2/sensor/temperatureB"
       },
       "status": "",
-      "lastUpDate": 1687418767.6443954,
-      "value": 24.04073148617213
+      "lastUpDate": 1688220154.5611362,
+      "value": 23.79118321428787
     },
     {
       "deviceName": "TemperatureSimulator4",
@@ -152,8 +152,8 @@
         "topic": "Battery/IoT/project/UserID/4/sensor/temperatureB"
       },
       "status": "",
-      "lastUpDate": 1687418767.6528413,
-      "value": 22.959841079790635
+      "lastUpDate": 1688220154.5796745,
+      "value": 23.800093754234165
     },
     {
       "deviceName": "BatteryChargeSimulator1",
@@ -196,6 +196,59 @@
       "status": "",
       "lastUpDate": 1687418767.9794002,
       "value": 79.92590129828662
+    },
+    {
+      "deviceName": "Actuator4",
+      "DeviceID": "147",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "Actuator1",
+      "DeviceID": "117",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "Actuator2",
+      "DeviceID": "127",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/actuator"
+      },
+      "status": 0,
+      "lastUpDate": 1679160119
+    },
+    {
+      "deviceName": "Actuator1",
+      "DeviceID": "Battery/IoT/project/UserID/1/actuator",
+      "UserAssociationID": "1",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "5"
+      },
+      "status": "",
+      "lastUpDate": 1688214125.0186348,
+      "value": 1
     }
   ],
   "UserList": [
@@ -214,7 +267,7 @@
       "ConnectedDevices": [
         {
           "MeasureType": "Percentage",
-          "DeviceName": "BatteryChargeSimulator1", 
+          "DeviceName": "BatteryChargeSimulator1",
           "DeviceID": "121"
         },
         {
@@ -231,6 +284,16 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator1",
           "DeviceID": "110"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator1",
+          "DeviceID": "117"
+        },
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "Actuator1",
+          "DeviceID": "Battery/IoT/project/UserID/1/actuator"
         }
       ],
       "Agenda": {
@@ -415,6 +478,11 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator4",
           "DeviceID": "140"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator4",
+          "DeviceID": "147"
         }
       ],
       "Agenda": {
