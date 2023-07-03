@@ -12,27 +12,27 @@ class Catalog(object):
     def GET(self, *uri, **params):
         if len(uri)>0:
             if uri[0]=="MessageBroker":
-                device=json.load(open('/Catalog.json'))
+                device=json.load(open('Catalog.json'))
                 Broker=device["broker"]
                 return json.dumps(Broker,indent=2)
             
             elif uri[0]=="TelegramToken":
-                device=json.load(open('/Catalog.json'))
+                device=json.load(open('Catalog.json'))
                 token=device["TelegramToken"]
                 return json.dumps(token,indent=2)
             
             elif uri[0]=="catalog":
-                catalog=json.load(open('/Catalog.json'))
+                catalog=json.load(open('Catalog.json'))
                 return json.dumps(catalog, indent=2)        
 
             elif uri[0]=='AllDevices':
-                catalog=json.load(open('/Catalog.json'))
+                catalog=json.load(open('Catalog.json'))
                 devices=catalog["DeviceList"]
                 return json.dumps(devices, indent=2)
 
             elif uri[0]=='DeviceID':
                 ID=uri[1]
-                Catalog=json.load(open('/Catalog.json'))
+                Catalog=json.load(open('Catalog.json'))
                 ListOfDevice=Catalog['DeviceList']
                 output=''
                 for currentDevice in ListOfDevice:
@@ -41,13 +41,13 @@ class Catalog(object):
                 return json.dumps(output, indent=2)
 
             elif uri[0]=='AllUsers':
-                catalog=json.load(open('/Catalog.json'))
+                catalog=json.load(open('Catalog.json'))
                 users=catalog["UserList"]
                 return json.dumps(users, indent=2)
 
             elif uri[0]=='UserID':
                 ID=uri[1]
-                Catalog=json.load(open('/Catalog.json'))
+                Catalog=json.load(open('Catalog.json'))
                 ListOfUsers=Catalog['UserList']
                 output=''
                 for currentUser in ListOfUsers:
@@ -56,7 +56,7 @@ class Catalog(object):
                 return json.dumps(output, indent=2)
             elif uri[0]=='Agenda':
                 ID=uri[1]
-                Catalog=json.load(open('/Catalog.json'))
+                Catalog=json.load(open('Catalog.json'))
                 ListOfUsers=Catalog['UserList']
                 output=''
                 for currentUser in ListOfUsers:
@@ -82,14 +82,14 @@ class Catalog(object):
         if uri[0]=='User':
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfUser=Catalog['UserList']
             for currentUser in ListOfUser:
                 if currentUser['UserID']==bodyAsDictionary['UserID']:
                     return 'this user is already present in the list \n'
             # else is new so we can update the user list
             Catalog['UserList'].insert(len(Catalog['UserList']), bodyAsDictionary)
-            json.dump(Catalog,open('/Catalog.json', 'w'), indent=2)
+            json.dump(Catalog,open('Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
 
         if uri[0]=='Agenda':
@@ -105,7 +105,7 @@ class Catalog(object):
             #}
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfUser=Catalog['UserList']
             Week=['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
             for currentUser in ListOfUser:
@@ -113,7 +113,7 @@ class Catalog(object):
                     for day in Week:
                            if bodyAsDictionary['Day']==day:
                                 currentUser['Agenda'][day].append(bodyAsDictionary['Date'])
-                                json.dump(Catalog,open('/Catalog.json', 'w'),indent=2)
+                                json.dump(Catalog,open('Catalog.json', 'w'),indent=2)
                                 return json.dumps(Catalog)
                 return 'Does not exist this day'
         
@@ -122,7 +122,7 @@ class Catalog(object):
         bodyAsString=body.read() 
         bodyAsDictionary=json.loads(bodyAsString)
         with self.lock:
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
             UserList=Catalog['UserList']
             for currentDevice in ListOfDevice:
@@ -138,7 +138,7 @@ class Catalog(object):
                         "DeviceID": bodyAsDictionary['DeviceID']
                     }
                     Catalog['UserList'][i]['ConnectedDevices'].append(body)
-            json.dump(Catalog,open('/Catalog.json', 'w'), indent=2)
+            json.dump(Catalog,open('Catalog.json', 'w'), indent=2)
             return json.dumps(Catalog)
                 
         
@@ -163,7 +163,7 @@ class Catalog(object):
             # }
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfUser=Catalog['UserList']
             for currentUser in ListOfUser:
                 if currentUser['UserID']==bodyAsDictionary['UserID']:
@@ -173,7 +173,7 @@ class Catalog(object):
                         if currentDevice['DeviceID']==bodyAsDictionary['ConnectedDevices']['DeviceID']:
                             return 'The Device is already present in the list but the other parameter are updated' + json.dumps(Catalog)
                     currentUser["ConnectedDevices"].append(bodyAsDictionary['ConnectedDevices'])
-                    json.dump(Catalog,open('/Catalog.json', 'w'),indent=2)
+                    json.dump(Catalog,open('Catalog.json', 'w'),indent=2)
                     return json.dumps(Catalog)
                 
         
@@ -189,7 +189,7 @@ class Catalog(object):
             #      }
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfUser=Catalog['UserList']
             Week=['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
             for currentUser in ListOfUser:
@@ -200,7 +200,7 @@ class Catalog(object):
                                 if appointment['Type']==bodyAsDictionary['Date']['Type']:
                                     appointment['StartTimeSlot']=bodyAsDictionary['Date']['StartTimeSlot']
                                     appointment['NumberOfTotalKilometers']=bodyAsDictionary['Date']['NumberOfTotalKilometers']
-                                    json.dump(Catalog,open('/Catalog.json', 'w'),indent=2)
+                                    json.dump(Catalog,open('Catalog.json', 'w'),indent=2)
                                     return json.dumps(Catalog)
                         return 'no corrispondence in your agenda'
             return 'no user associated'
@@ -218,7 +218,7 @@ class Catalog(object):
             #}
             bodyAsString=cherrypy.request.body.read() 
             bodyAsDictionary=json.loads(bodyAsString)
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfUser=Catalog['UserList']
             ElemToRemove=bodyAsDictionary['Date']
             Week=['Monday','Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -229,7 +229,7 @@ class Catalog(object):
                             for appointment in currentUser['Agenda'][Day]:
                                 if ElemToRemove==appointment:
                                     currentUser['Agenda'][Day].remove(appointment)
-                                    json.dump(Catalog,open('/Catalog.json', 'w'),indent=2)
+                                    json.dump(Catalog,open('Catalog.json', 'w'),indent=2)
                                     return json.dumps(Catalog)
             return 'Does not exist this appointment in your Agenda'
         
@@ -242,13 +242,13 @@ class Catalog(object):
         bodyAsString=body.read() 
         bodyAsDictionary=json.loads(bodyAsString)
         with self.lock:
-            Catalog=json.load(open('/Catalog.json'))
+            Catalog=json.load(open('Catalog.json'))
             ListOfDevice=Catalog['DeviceList']
             for currentDevice in ListOfDevice:
                 if currentDevice['DeviceID']==bodyAsDictionary['DeviceID']:
                     currentDevice['lastUpDate']=bodyAsDictionary["time"]
                     currentDevice['value']=bodyAsDictionary['value']
-                    json.dump(Catalog,open('/Catalog.json', 'w'), indent=2)
+                    json.dump(Catalog,open('Catalog.json', 'w'), indent=2)
                     print(Catalog)
                     return json.dumps(Catalog)
                         
