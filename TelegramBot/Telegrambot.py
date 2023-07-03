@@ -11,9 +11,10 @@ import requests
 
 
 class BatteryBot:
-    def __init__(self, token, broker, port, topic,base_url):
+    def __init__(self, token, broker, port, topic,base_url, DockerIP):
         # Local token
         self.tokenBot = token
+        self.DockerIP=DockerIP
         # Catalog token
         self.base_url=base_url
         # self.tokenBot=requests.get("http://catalogIP/telegram_token").json()["telegramToken"]
@@ -41,6 +42,10 @@ class BatteryBot:
                                'callback_query': self.on_callback_query}).run_as_thread()
         
         self.urlToContact=self.base_url+'/AllUsers'
+
+        #DOCKER 
+        #self.urlToContact=self.DockerIP+'/AllUsers'
+    
         response= requests.get(self.urlToContact)
         self.ListOfAllUser_json = response.json()
         self.topic_presence=[]
@@ -297,17 +302,25 @@ class BatteryBot:
             elif (query_data=='3' or query_data=='7' or query_data=='11' or query_data=='15' or query_data=='19' or query_data=='23' or query_data=='27'):
                 payload['Date']['NumberOfTotalKilometers']=80
             response = requests.post(self.base_url+'/Agenda', json.dumps(payload))
+            #DOCKER 
+            #response = requests.post(self.DockerIP+'/Agenda', json.dumps(payload))
             self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID} \n Day: {day} \n Kilometers: {payload['Date']['NumberOfTotalKilometers']}")
 
 
 if __name__ == "__main__":
     conf = json.load(open('../settings.json'))
+    
+    # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+    # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings telegrambot
+    # conf=json.load(open('/app/Settings/settings.json'))
+    
     token = conf["TelegramToken"]
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
     base_url = conf["Catalog_url"]
-    sb=BatteryBot(token,broker,port,topic_base, base_url)
+    DockerIP=conf['DockerIP']
+    sb=BatteryBot(token,broker,port,topic_base, base_url,DockerIP)
 
     while True:
         time.sleep(3)

@@ -24,7 +24,9 @@ class StateControl(MyPublisher):
         self.DockerIP=DockerIP
 
         # compute the number of the user
+        #DOCKER 
         #url=self.DockerIP+'/AllUsers'
+        
         url=self.BaseUrl+'/AllUsers'
         response= requests.get(url)
         self.response_json_all_user =response.json()
@@ -137,6 +139,11 @@ class StateControl(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
+
+        # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+        # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings statecontrol
+        #settings=json.load(open('/app/Settings/settings.json'))
+        
         BaseUrl=settings['Catalog_url_Carlo']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']

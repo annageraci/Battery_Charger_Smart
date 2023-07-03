@@ -40,10 +40,18 @@ class CheckUpdate():
 
 if __name__ == '__main__':
     while True:
-        Catalog=json.load(open('../settings.json'))
-        URL=Catalog['Catalog_url_Anna']
-        URL='http://127.0.0.1:8080'
-        #URL=Catalog['DockerIP']
+
+        settings=json.load(open('../settings.json'))
+
+        # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+        # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings catalogupdating
+        #settings=json.load(open('/app/Settings/settings.json'))
+
+        URL=settings['Catalog_url_Anna']
+        
+        # DOCKER 
+        # URL=settings['DockerIP']
+        
         daily=CheckUpdate(URL)
         daily.makerequest()
         time.sleep(60)

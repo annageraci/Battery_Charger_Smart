@@ -389,11 +389,6 @@
           "MeasureType": "TemperatureB",
           "DeviceName": "TemperatureSimulator2",
           "DeviceID": "120"
-        },
-        {
-          "MeasureType": "Boolean",
-          "DeviceName": "Actuator2",
-          "DeviceID": "127"
         }
       ],
       "Agenda": {
