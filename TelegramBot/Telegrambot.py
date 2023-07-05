@@ -11,10 +11,11 @@ import requests
 
 
 class BatteryBot:
-    def __init__(self, token, broker, port, topic,base_url, DockerIP):
+    def __init__(self, token, broker, port, topic,base_url, DockerIP, ThingSpeakurl):
         # Local token
         self.tokenBot = token
         self.DockerIP=DockerIP
+        self.ThingSpeakurl=ThingSpeakurl
         # Catalog token
         self.base_url=base_url
         # self.tokenBot=requests.get("http://catalogIP/telegram_token").json()["telegramToken"]
@@ -217,7 +218,7 @@ class BatteryBot:
                    if channelID=='':
                        self.bot.sendMessage(chat_ID, text=f'No ThingSpeak feature available')
                    else: 
-                        url=f'https://api.thingspeak.com/channels/{channelID}'
+                        url=f'{self.ThingSpeakurl}{channelID}'
                         self.bot.sendMessage(chat_ID, text=f'Your graphs will be available here: \n {url}')  #get request
                    self.client.stop()
 
@@ -320,7 +321,8 @@ if __name__ == "__main__":
     topic_base = conf["baseTopic"]
     base_url = conf["Catalog_url"]
     DockerIP=conf['DockerIP']
-    sb=BatteryBot(token,broker,port,topic_base, base_url,DockerIP)
+    ThingSpeak=conf['ThingSpeak']['urlThingSpeak']
+    sb=BatteryBot(token,broker,port,topic_base, base_url,DockerIP, ThingSpeak)
 
     while True:
         time.sleep(3)
