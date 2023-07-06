@@ -18,6 +18,6 @@ To access to the catalog, if the CatalogServer is run in a Docker container:
    a) from Docker Desktop: it is necessary to declare the Battery_Charger_Smart folder path as 'host path', and '/app/settings' as 'container path'
    b) from command line: docker run -v [path of Battery_Charger_Smart]:/app/settings imageName
 
-Each folder corresponds to an application, and contain a DockerFile
+Each folder corresponds to an application, and contain a DockerFile that is used to run a container. 
 
 
