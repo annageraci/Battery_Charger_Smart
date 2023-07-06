@@ -47,7 +47,7 @@ if __name__ == '__main__':
         # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings catalogupdating
         #settings=json.load(open('/app/Settings/settings.json'))
 
-        URL=settings['Catalog_url_Anna']
+        URL=settings['Catalog_url']
         
         # DOCKER 
         # URL=settings['DockerIP']

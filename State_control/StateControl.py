@@ -144,7 +144,7 @@ if __name__ == '__main__':
         # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings statecontrol
         #settings=json.load(open('/app/Settings/settings.json'))
         
-        BaseUrl=settings['Catalog_url_Carlo']
+        BaseUrl=settings['Catalog_url']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
