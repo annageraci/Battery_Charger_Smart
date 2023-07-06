@@ -18,7 +18,6 @@ class BatteryBot:
         self.ThingSpeakurl=ThingSpeakurl
         # Catalog token
         self.base_url=base_url
-        # self.tokenBot=requests.get("http://catalogIP/telegram_token").json()["telegramToken"]
         self.bot = telepot.Bot(self.tokenBot)
         self.client = MyMQTT("telegramBot21389", broker, port, self)
         self.client.start()
