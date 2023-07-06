@@ -1,7 +1,5 @@
 import json
-import random
 import time
-import cherrypy
 import requests
 
 class CheckUpdate():

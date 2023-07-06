@@ -3,7 +3,6 @@ import time
 from datetime import datetime
 from MyMQTT import MyMQTT
 from simplePublisher import MyPublisher
-import cherrypy
 import requests
 
 class BatteryDailyUsage(MyPublisher):

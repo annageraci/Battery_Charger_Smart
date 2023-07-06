@@ -1,8 +1,6 @@
-import paho.mqtt.client as PahoMQTT
 import json
 from MyMQTT import *
 import time
-import cherrypy
 import requests
 
 class Controller:

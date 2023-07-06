@@ -3,7 +3,6 @@ import time
 from datetime import datetime
 from MyMQTT import *
 from simplePublisher import MyPublisher
-import cherrypy
 import requests
 
 class StateControl(MyPublisher):

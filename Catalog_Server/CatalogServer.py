@@ -1,6 +1,5 @@
 import json 
 import cherrypy
-import time
 import threading
 
 class Catalog(object):
