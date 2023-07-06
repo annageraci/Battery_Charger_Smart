@@ -2,11 +2,9 @@ import telepot
 from telepot.loop import MessageLoop
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 import time
-import paho.mqtt.client as PahoMQTT
 import json
 from MyMQTT import *
 import time
-import cherrypy
 import requests
 
 
