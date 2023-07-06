@@ -18,13 +18,13 @@ if __name__ == "__main__":
     userAssociationID = "1"
     baseTopic += userAssociationID + "/sensor"
     deviceName = "PresenceSimulator1"
-    catalogURL = settingsDict["Catalog_url_Carlo"]
+    catalogURL = settingsDict["Catalog_url"]
     sensor = PresenceSensor(deviceID, deviceName, userAssociationID, baseTopic, True,meanDuration=15,meanWait=0)
     topic = sensor.getMQTTtopic()
 
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
-    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, topic, catalogURL)
+    publisher = SensorPublisher(settingsDict["MQTTdeviceprefix"] + "sensor" + deviceID, deviceID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:

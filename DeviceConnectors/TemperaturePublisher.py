@@ -18,13 +18,13 @@ if __name__ == "__main__":
     userAssociationID = "1"
     baseTopic += userAssociationID + "/sensor"
     deviceName = "TemperatureSimulator1"
-    catalogURL = settingsDict["Catalog_url_Carlo"]
+    catalogURL = settingsDict["Catalog_url"]
     sensor = TemperatureSensor(deviceID, deviceName, userAssociationID, baseTopic, True)
     topic = sensor.getMQTTtopic()
 
     broker = settingsDict["broker"]["IPAddress"] # to be updated with the relative reference
     port = settingsDict["broker"]["port"] # same
-    publisher = SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
+    publisher = SensorPublisher(settingsDict["MQTTdevicePrefix"]+ "sensor" + deviceID, deviceID, deviceName, userAssociationID, broker, port, topic, catalogURL)
     publisher.startOperation()
 
     while True:

@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
-    publisher = ManualFlagPublisher("csim48rPiManualFlag", userAssociationID, broker, port, topic)
+    publisher = ManualFlagPublisher(settingsDict["MQTTdeviceprefix"]+"ManualFlag", userAssociationID, broker, port, topic)
     publisher.startOperation()
 
     while True:

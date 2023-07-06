@@ -15,7 +15,7 @@ if __name__ == "__main__":
     settingsDict = json.load(settingsFile)
     settingsFile.close()
     baseTopic = settingsDict["baseTopic"]
-    catalogURL = settingsDict["Catalog_url_Carlo"]
+    catalogURL = settingsDict["Catalog_url"]
     # sensor = PresenceSensor(deviceID, deviceName, userAssociationID, baseTopic, True,meanDuration=15,meanWait=0)
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
@@ -32,7 +32,7 @@ if __name__ == "__main__":
         deviceName = "PresenceSimulator"+str(users[i])
         sensors.append(PresenceSensor(deviceID, deviceName, userAssociationID, baseTopic, True,meanDuration=15,meanWait=0))
         topic = sensors[i].getMQTTtopic()
-        publishers.append(SensorPublisher("csim48rPisensor" + deviceID, deviceID, deviceName, userAssociationID, sensors[i].getMeasureType(), broker, port, topic, catalogURL))
+        publishers.append(SensorPublisher(settingsDict["MQTTdeviceprefix"] + "sensor" + deviceID, deviceID, deviceName, userAssociationID, sensors[i].getMeasureType(), broker, port, topic, catalogURL))
         publishers[i].startOperation()
     while True:
         for i in range(len(users)):

@@ -20,16 +20,16 @@ if __name__ == "__main__":
     subscriberID = "5"
     userAssociationID = "1"
     deviceName = "Actuator1"
-    catalogURL = settingsDict["Catalog_url_Carlo"]
+    catalogURL = settingsDict["Catalog_url"]
     print (catalogURL)
     broker = settingsDict["broker"]["IPAddress"]
     port = settingsDict["broker"]["port"]
     
 
-    subscriber = ActuatorSubscriber("csim48rPiActuator" + subscriberID + "sub", subscriberID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, baseTopic, catalogURL)
+    subscriber = ActuatorSubscriber(settingsDict["MQTTdeviceprefix"]+ "actuator" + subscriberID + "sub", subscriberID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, baseTopic, catalogURL)
     subscriber.startOperation()
 
-    publisher = SensorPublisher("csim48rPisensor" + publisherID, publisherID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, sensorTopic, catalogURL)
+    publisher = SensorPublisher(settingsDict["MQTTdeviceprefix"] + "sensor" + publisherID, publisherID, deviceName, userAssociationID, sensor.getMeasureType(), broker, port, sensorTopic, catalogURL)
     publisher.startOperation()
 
     actuatorTopic = subscriber.getMQTTtopic()
