@@ -53,6 +53,7 @@ class Catalog(object):
                     if  currentUser['UserID']==ID:
                         output=currentUser
                 return json.dumps(output, indent=2)
+            
             elif uri[0]=='Agenda':
                 ID=uri[1]
                 Catalog=json.load(open('Catalog.json'))
@@ -69,10 +70,12 @@ class Catalog(object):
             else: 
                 output='Add a valid uri parameters according to your request'
                 return json.dumps(output,indent=2)
+            
         else: 
             return 'No information about your request in the uri'
 
     def POST(self, *uri):
+
         if uri[0]=='Device':
             t=threading.Thread(target=self.process_device_request_post, args=(cherrypy.request.body,))
             t.start()
@@ -117,7 +120,6 @@ class Catalog(object):
                 return 'Does not exist this day'
         
     def process_device_request_post(self,body):
-        print(body)
         bodyAsString=body.read() 
         bodyAsDictionary=json.loads(bodyAsString)
         with self.lock:

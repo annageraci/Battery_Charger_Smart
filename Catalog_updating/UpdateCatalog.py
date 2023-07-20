@@ -19,13 +19,11 @@ class CheckUpdate():
             dif=int(time.time()-lastUpDate)
             if dif>120:
                 self.response_json_alldevices.remove(currentDevice)
-            else:
                 for currentUser in self.response_json_allusers:
                     if currentDevice['UserAssociationID']==currentUser['UserID']:
                         for currentDeviceOfTheUser in currentUser['ConnectedDevices']:
                             if currentDevice['DeviceID']==currentDeviceOfTheUser['DeviceID']:
                                 currentUser['ConnectedDevices'].remove(currentDeviceOfTheUser)
-
 
         print('the new device list is: '+json.dumps(self.response_json_alldevices))
 
