@@ -93,7 +93,7 @@ class StateControl(MyPublisher):
                     topic=self.base_topic+UserID+'/manualFlag'
                     print(f'Published to {topic}')
                     message={"bn": 'manualFlag', "e": [{"n": 'Flag', "u": 'boolean', "t": [], "v": []}]}
-                    message['e'][0]['v'] = 0
+                    message['e'][0]['v'] = 2
                     message['e'][0]['t'] = str(time.time())
                     self.client.myPublish(topic, message)
                     alert=0
