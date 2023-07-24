@@ -187,25 +187,25 @@ class Controller:
 
 
 if __name__=="__main__":
-    Settings=json.load(open("../settings.json"))
-
-    # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
-    # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings control_strategy
-    #Settings=json.load(open('/app/Settings/settings.json'))
-
-    base_url=Settings['Catalog_url']
-    Docker_url=Settings['DockerIP']
-    broker=Settings['broker']['IPAddress']
-    port=Settings['broker']['port']
-    base_topic=Settings['baseTopic']
-    topic_temp='/sensor/temperature'
-    topic_battery='/sensor/battery'
-    topic_presence='/sensor/presence'
-    topic_photon='/sensor/photon'
-    topic_daily='/sensor/daily'
-    Contr=Controller('Geraci799921131',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
-    Contr.StartOperation()
-    # infinite loop to keep the script running 
     while True:
+        Settings=json.load(open("../settings.json"))
+
+        # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+        # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings control_strategy
+        #Settings=json.load(open('/app/Settings/settings.json'))
+
+        base_url=Settings['Catalog_url']
+        Docker_url=Settings['DockerIP']
+        broker=Settings['broker']['IPAddress']
+        port=Settings['broker']['port']
+        base_topic=Settings['baseTopic']
+        topic_temp='/sensor/temperature'
+        topic_battery='/sensor/battery'
+        topic_presence='/sensor/presence'
+        topic_photon='/sensor/photon'
+        topic_daily='/sensor/daily'
+        Contr=Controller('Geraci799921131',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
+        Contr.StartOperation()
+        # infinite loop to keep the script running 
         time.sleep(30)
         Contr.control_strategy()

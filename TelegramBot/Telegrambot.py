@@ -306,20 +306,19 @@ class BatteryBot:
 
 
 if __name__ == "__main__":
-    conf = json.load(open('../settings.json'))
-    
-    # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
-    # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings telegrambot
-    # conf=json.load(open('/app/Settings/settings.json'))
-    
-    token = conf["TelegramToken"]
-    broker = conf["broker"]['IPAddress']
-    port = conf["broker"]['port']
-    topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url"]
-    DockerIP=conf['DockerIP']
-    ThingSpeak=conf['ThingSpeak']['urlThingSpeak']
-    sb=BatteryBot(token,broker,port,topic_base, base_url,DockerIP, ThingSpeak)
-
     while True:
-        time.sleep(3)
+        conf = json.load(open('../settings.json'))
+        
+        # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+        # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings telegrambot
+        # conf=json.load(open('/app/Settings/settings.json'))
+        
+        token = conf["TelegramToken"]
+        broker = conf["broker"]['IPAddress']
+        port = conf["broker"]['port']
+        topic_base = conf["baseTopic"]
+        base_url = conf["Catalog_url"]
+        DockerIP=conf['DockerIP']
+        ThingSpeak=conf['ThingSpeak']['urlThingSpeak']
+        sb=BatteryBot(token,broker,port,topic_base, base_url,DockerIP, ThingSpeak)
+        time.sleep(5)

@@ -32,14 +32,3 @@ class MyPublisher:
 
 
 
-if __name__ == "__main__":
-	test = MyPublisher("mypubtestpubIOT","orlando/iot/1",'localhost')
-	test.start()
-
-	a = 0
-	while (a < 30):
-		a += 1
-		test.myPublish(str(a))
-		time.sleep(1)
-
-	test.stop()

@@ -154,6 +154,6 @@ if __name__ == '__main__':
         topic_presence='/sensor/presence'
         state=StateControl('Geraci15273627', broker, port, base_topic, topic_alert,BaseUrl, DockerIP, topic_Btemp, topic_battery,topic_presence)
         state.start()
-        while True:
-            time.sleep(30)
-            state.control_strategy()
+        
+        time.sleep(30)
+        state.control_strategy()

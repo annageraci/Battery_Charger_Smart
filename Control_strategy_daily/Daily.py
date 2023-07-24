@@ -99,8 +99,7 @@ if __name__ == '__main__':
         base_topic=settings['baseTopic']
         topic_daily='/sensor/daily'
         daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
-        while True:
-            daily.makerequest()
-            daily.start()
-            daily.sendData()
-            time.sleep(15)
+        daily.makerequest()
+        daily.start()
+        daily.sendData()
+        time.sleep(15)
