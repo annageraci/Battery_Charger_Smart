@@ -1,8 +1,6 @@
-import paho.mqtt.client as PahoMQTT
 import json
 from MyMQTT import *
 import time
-import cherrypy
 import requests
 
 class Controller:
@@ -19,7 +17,10 @@ class Controller:
         self.topic_daily=topic_daily
         # the notifier is the Sensor itself
         url=self.base_url+'/catalog'
-        #url=self.DockerIP+'/catalog'
+        
+        # DOCKER 
+        # url=self.DockerIP+'/catalog'
+        
         response=requests.get(url)
         self.Catalog=response.json()
         self.NumberofUser=len(self.Catalog['UserList'])
@@ -137,6 +138,10 @@ class Controller:
                 self.client.myPublish(topic, msg)
                 dict_to_post={"UserID": UserID,"value": int(self.actuator_command[i])}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
+                
+                # DOCKER
+                #response = requests.put(self.DockerIP+'/Actuator', json.dumps(dict_to_post))
+
                 self.actuator_command[i]=-1
                 self.temperature[i]=-1
                 self.battery_percentage[i]=-1
@@ -157,6 +162,10 @@ class Controller:
                 print(f'{topic} Published {msg["e"][0]["v"]} from manual activation \n')
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
+                
+                # DOCKER
+                #response = requests.put(self.DockerIP+'/Actuator', json.dumps(dict_to_post))
+
             elif self.flag[i]==0:
                 topic=self.base_topic+UserID+'/actuator'
                 msg= {
@@ -171,24 +180,32 @@ class Controller:
                 dict_to_post={"UserID": UserID,"value": msg["e"][0]["v"]}
                 response = requests.put(self.base_url+'/Actuator', json.dumps(dict_to_post))
 
+                # DOCKER
+                #response = requests.put(self.DockerIP+'/Actuator', json.dumps(dict_to_post))
+
                 
 
 
 if __name__=="__main__":
-    Settings=json.load(open("../settings.json"))
-    base_url=Settings['Catalog_url_Carlo']
-    Docker_url=Settings['DockerIP']
-    broker=Settings['broker']['IPAddress']
-    port=Settings['broker']['port']
-    base_topic=Settings['baseTopic']
-    topic_temp='/sensor/temperature'
-    topic_battery='/sensor/battery'
-    topic_presence='/sensor/presence'
-    topic_photon='/sensor/photon'
-    topic_daily='/sensor/daily'
-    Contr=Controller('Geraci799921131',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
-    Contr.StartOperation()
-    # infinite loop to keep the script running 
     while True:
+        Settings=json.load(open("../settings.json"))
+
+        # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+        # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings control_strategy
+        #Settings=json.load(open('/app/Settings/settings.json'))
+
+        base_url=Settings['Catalog_url']
+        Docker_url=Settings['DockerIP']
+        broker=Settings['broker']['IPAddress']
+        port=Settings['broker']['port']
+        base_topic=Settings['baseTopic']
+        topic_temp='/sensor/temperature'
+        topic_battery='/sensor/battery'
+        topic_presence='/sensor/presence'
+        topic_photon='/sensor/photon'
+        topic_daily='/sensor/daily'
+        Contr=Controller('Geraci799921131',broker,base_topic,topic_temp, topic_battery, topic_presence, topic_photon, topic_daily, base_url,Docker_url)
+        Contr.StartOperation()
+        # infinite loop to keep the script running 
         time.sleep(30)
         Contr.control_strategy()

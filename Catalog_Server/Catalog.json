@@ -1,0 +1,572 @@
+{
+  "Catalog_url_ubuntu_IP": "http://172.20.228.53:8080",
+  "Catalog_url_Anna": "http://172.20.10.3:8080",
+  "Catalog_url_Carlo": "http://192.168.72.220:8080",
+  "Catalog_url": "http://192.168.1.11:8080",
+  "DockerIP": "http://172.17.0.1:8080",
+  "baseTopic": "Battery/IoT/project/UserID/",
+  "broker": {
+    "IPAddress": "mqtt.eclipseprojects.io",
+    "port": 1883
+  },
+  "TelegramToken": "6070663189:AAHZLYq48SonviXpxb5fuCnA2mKmoZP_PxE",
+  "DeviceList": [
+    {
+      "deviceName": "Actuator1",
+      "DeviceID": "111",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1685988379.0767217,
+      "value": 1
+    },
+    {
+      "deviceName": "Actuator2",
+      "DeviceID": "121",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1685988379.0767217,
+      "value": 1
+    },
+    {
+      "deviceName": "Actuator4",
+      "DeviceID": "141",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1685988379.0767217,
+      "value": 1
+    },
+    {
+      "deviceName": "PhotonSimulator1",
+      "DeviceID": "113",
+      "UserAssociationID": "1",
+      "MeasureType": "Voltage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1687418766.5030262,
+      "value": 3.806258173642253
+    },
+    {
+      "deviceName": "PhotonSimulator2",
+      "DeviceID": "123",
+      "UserAssociationID": "2",
+      "MeasureType": "Voltage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1687418766.5078583,
+      "value": 1.501515101955968
+    },
+    {
+      "deviceName": "PhotonSimulator4",
+      "DeviceID": "143",
+      "UserAssociationID": "4",
+      "MeasureType": "Voltage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/photon"
+      },
+      "status": "",
+      "lastUpDate": 1687418766.5129664,
+      "value": 1.5011893008760582
+    },
+    {
+      "deviceName": "PresenceSimulator1",
+      "DeviceID": "114",
+      "UserAssociationID": "1",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1687418769.7459083,
+      "value": 1
+    },
+    {
+      "deviceName": "PresenceSimulator2",
+      "DeviceID": "124",
+      "UserAssociationID": "2",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1687418769.7530208,
+      "value": 1
+    },
+    {
+      "deviceName": "PresenceSimulator4",
+      "DeviceID": "144",
+      "UserAssociationID": "4",
+      "MeasureType": "Boolean",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/presence"
+      },
+      "status": "",
+      "lastUpDate": 1687418769.7596269,
+      "value": 1
+    },
+    {
+      "deviceName": "TemperatureSimulator1",
+      "DeviceID": "110",
+      "UserAssociationID": "1",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/temperature"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.6384134,
+      "value": 25.2189413517845
+    },
+    {
+      "deviceName": "TemperatureSimulator2",
+      "DeviceID": "120",
+      "UserAssociationID": "2",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/temperature"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.6443954,
+      "value": 24.04073148617213
+    },
+    {
+      "deviceName": "TemperatureSimulator4",
+      "DeviceID": "140",
+      "UserAssociationID": "4",
+      "MeasureType": "Temperature",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/temperature"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.6528413,
+      "value": 22.959841079790635
+    },
+    {
+      "deviceName": "BatteryChargeSimulator1",
+      "DeviceID": "111",
+      "UserAssociationID": "1",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.9744139,
+      "value": 37.1948747208573
+    },
+    {
+      "deviceName": "BatteryChargeSimulator2",
+      "DeviceID": "121",
+      "UserAssociationID": "2",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.9744139,
+      "value": 37.1948747208573
+    },
+    {
+      "deviceName": "BatteryChargeSimulator4",
+      "DeviceID": "141",
+      "UserAssociationID": "4",
+      "MeasureType": "Percentage",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/battery"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.9794002,
+      "value": 79.92590129828662
+    },
+    {
+      "deviceName": "TemperatureBSimulator1",
+      "DeviceID": "117",
+      "UserAssociationID": "1",
+      "MeasureType": "TemperatureB",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/1/sensor/temperatureB"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.6384134,
+      "value": 25.2189413517845
+    },
+    {
+      "deviceName": "TemperatureBSimulator2",
+      "DeviceID": "127",
+      "UserAssociationID": "2",
+      "MeasureType": "TemperatureB",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/2/sensor/temperatureB"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.6443954,
+      "value": 24.04073148617213
+    },
+    {
+      "deviceName": "TemperatureBSimulator4",
+      "DeviceID": "147",
+      "UserAssociationID": "4",
+      "MeasureType": "TemperatureB",
+      "availableServices": "MQTT",
+      "ServiceDetails": {
+        "ServiceType": "MQTT",
+        "topic": "Battery/IoT/project/UserID/4/sensor/temperatureB"
+      },
+      "status": "",
+      "lastUpDate": 1687418767.6528413,
+      "value": 22.959841079790635
+    }
+  ],
+  "UserList": [
+    {
+      "UserID": "1",
+      "UserName": "Mario",
+      "UserSurname": "Rossi",
+      "CapacityBattery": 50,
+      "Consumption_km/kwh": 6,
+      "ChatID": "740346462",
+      "ChannelID": "2141952",
+      "ThingSpeakKey": {
+        "APIKeyRead": "W59PRQKYXG7AF4CA",
+        "APIKeyWrite": "EUWUGU3WMLEZ6U88"
+      },
+      "ConnectedDevices": [
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator1", 
+          "DeviceID": "111"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator1",
+          "DeviceID": "113"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "PresenceSimulator1",
+          "DeviceID": "114"
+        },
+        {
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureSimulator1",
+          "DeviceID": "117"
+        },
+        {
+          "MeasureType": "Temperature",
+          "DeviceName": "TemperatureSimulator1",
+          "DeviceID": "110"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator1",
+          "DeviceID": "111"
+        }
+      ],
+      "Agenda": {
+        "Monday": [
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 15
+          }
+        ],
+        "Tuesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 43
+          }
+        ],
+        "Wednesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 15
+          }
+        ],
+        "Thursday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 1
+          }
+        ],
+        "Friday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "Friends",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 30
+          }
+        ],
+        "Saturday": [],
+        "Sunday": [
+          {
+            "Type": "Hollyday",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 7
+          },
+          {
+            "Type": "",
+            "StartTimeSlot": [],
+            "NumberOfTotalKilometers": 20
+          }
+        ]
+      }
+    },
+    {
+      "UserID": "2",
+      "UserName": "Maria",
+      "UserSurname": "Bianchi",
+      "CapacityBattery": 30,
+      "Consumption_km/kwh": 6,
+      "ChatID": "51065691",
+      "ChannelID": "2141957",
+      "ThingSpeakKey": {
+        "APIKeyWrite": "YBW43BVJKR1G742E",
+        "APIKeyRead": "7PN1S352CT0D5SRE"
+      },
+      "ConnectedDevices": [
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator2",
+          "DeviceID": "121"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator2",
+          "DeviceID": "123"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "PreseceSimulator2",
+          "DeviceID": "124"
+        },
+        {
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureBSimulator2",
+          "DeviceID": "127"
+        }, 
+        {
+          "MeasureType": "Temperature",
+          "DeviceName": "TemperatureSimulator2",
+          "DeviceID": "120"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator2",
+          "DeviceID": "121"
+        }
+      ],
+      "Agenda": {
+        "Monday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 18
+          }
+        ],
+        "Tuesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Wednesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 1
+          }
+        ],
+        "Thursday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Friday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "Friends",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 30
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      }
+    },
+    {
+      "UserID": "4",
+      "UserName": "Ciro",
+      "UserSurname": "Esposito",
+      "CapacityBattery": 30,
+      "Consumption_km/kwh": 5,
+      "ChatID": "153123772",
+      "ChannelID": "2141962",
+      "ThingSpeakKey": {
+        "APIKeyWrite": "TILVO0S7Z1LN2FPN",
+        "APIKeyRead": "WHV15SKZ8THKM8V6"
+      },
+      "ConnectedDevices": [
+        {
+          "MeasureType": "Percentage",
+          "DeviceName": "BatteryChargeSimulator4",
+          "DeviceID": "141"
+        },
+        {
+          "MeasureType": "Voltage",
+          "DeviceName": "PhotonSimulator4",
+          "DeviceID": "143"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "PresenceSimulator4",
+          "DeviceID": "144"
+        },
+        {
+          "MeasureType": "TemperatureB",
+          "DeviceName": "TemperatureBSimulator4",
+          "DeviceID": "147"
+        }, 
+        {
+          "MeasureType": "Temperature",
+          "DeviceName": "TemperatureSimulator4",
+          "DeviceID": "140"
+        },
+        {
+          "MeasureType": "Boolean",
+          "DeviceName": "Actuator4",
+          "DeviceID": "141"
+        }
+      ],
+      "Agenda": {
+        "Monday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 20
+          }
+        ],
+        "Tuesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          }
+        ],
+        "Wednesday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 50
+          },
+          {
+            "Type": "sport",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 30
+          }
+        ],
+        "Thursday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOffTotalKilometers": 50
+          }
+        ],
+        "Friday": [
+          {
+            "Type": "work",
+            "StartTimeSlot": 8,
+            "NumberOfTotalKilometers": 22
+          },
+          {
+            "Type": "Friends",
+            "StartTimeSlot": 19,
+            "NumberOfTotalKilometers": 70
+          }
+        ],
+        "Saturday": [],
+        "Sunday": []
+      }
+    }
+  ]
+}

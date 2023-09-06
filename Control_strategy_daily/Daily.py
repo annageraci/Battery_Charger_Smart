@@ -3,7 +3,6 @@ import time
 from datetime import datetime
 from MyMQTT import MyMQTT
 from simplePublisher import MyPublisher
-import cherrypy
 import requests
 
 class BatteryDailyUsage(MyPublisher):
@@ -23,6 +22,7 @@ class BatteryDailyUsage(MyPublisher):
         self.DockerIP=DockerIP
 
         # compute the number of the user
+        #DOCKER 
         #url=self.DockerIP+'/AllUsers'
         url=self.BaseUrl+'/AllUsers'
         response= requests.get(url)
@@ -48,7 +48,8 @@ class BatteryDailyUsage(MyPublisher):
         for i in range(self.NumberofUser):
             UserID=int(self.response_json_all_user[i]['UserID'])
             url=self.BaseUrl+'/UserID/'+'/'+str(UserID)+'/Agenda'
-            #url=self.DockerIP+'/UserID/'+'/'+str(UserID)+'/Agenda'
+            # DOCKER container
+            # url=self.DockerIP+'/UserID/'+'/'+str(UserID)+'/Agenda'
             response= requests.get(url)
             response_json_Agenda = response.json()
             
@@ -86,15 +87,19 @@ class BatteryDailyUsage(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url_Carlo']
+
+        # Comando per runnare Docker da prompt : docker run -v *absolute_path_of_setting.json_file":/app/Settings *nome_dell_image*
+        # docker run -v C:/Users/an.geraci/Desktop/Battery_Charger_Smart:/app/Settings daily
+        # settings=json.load(open('/app/Settings/settings.json'))
+
+        BaseUrl=settings['Catalog_url']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
         base_topic=settings['baseTopic']
         topic_daily='/sensor/daily'
         daily=BatteryDailyUsage('Geraci15273627', broker, port, base_topic, topic_daily,BaseUrl, DockerIP)
-        while True:
-            daily.makerequest()
-            daily.start()
-            daily.sendData()
-            time.sleep(15)
+        daily.makerequest()
+        daily.start()
+        daily.sendData()
+        time.sleep(15)
