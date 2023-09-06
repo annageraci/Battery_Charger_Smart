@@ -2,21 +2,20 @@ import telepot
 from telepot.loop import MessageLoop
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 import time
-import paho.mqtt.client as PahoMQTT
 import json
 from MyMQTT import *
 import time
-import cherrypy
 import requests
 
 
 class BatteryBot:
-    def __init__(self, token, broker, port, topic,base_url):
+    def __init__(self, token, broker, port, topic,base_url, DockerIP, ThingSpeakurl):
         # Local token
         self.tokenBot = token
+        self.DockerIP=DockerIP
+        self.ThingSpeakurl=ThingSpeakurl
         # Catalog token
         self.base_url=base_url
-        # self.tokenBot=requests.get("http://catalogIP/telegram_token").json()["telegramToken"]
         self.bot = telepot.Bot(self.tokenBot)
         self.client = MyMQTT("telegramBot21389", broker, port, self)
         self.client.start()
@@ -41,6 +40,10 @@ class BatteryBot:
                                'callback_query': self.on_callback_query}).run_as_thread()
         
         self.urlToContact=self.base_url+'/AllUsers'
+
+        #DOCKER 
+        #self.urlToContact=self.DockerIP+'/AllUsers'
+    
         response= requests.get(self.urlToContact)
         self.ListOfAllUser_json = response.json()
         self.topic_presence=[]
@@ -212,7 +215,7 @@ class BatteryBot:
                    if channelID=='':
                        self.bot.sendMessage(chat_ID, text=f'No ThingSpeak feature available')
                    else: 
-                        url=f'https://api.thingspeak.com/channels/{channelID}'
+                        url=f'{self.ThingSpeakurl}{channelID}'
                         self.bot.sendMessage(chat_ID, text=f'Your graphs will be available here: \n {url}')  #get request
                    self.client.stop()
 
@@ -297,6 +300,8 @@ class BatteryBot:
             elif (query_data=='3' or query_data=='7' or query_data=='11' or query_data=='15' or query_data=='19' or query_data=='23' or query_data=='27'):
                 payload['Date']['NumberOfTotalKilometers']=80
             response = requests.post(self.base_url+'/Agenda', json.dumps(payload))
+            #DOCKER 
+            #response = requests.post(self.DockerIP+'/Agenda', json.dumps(payload))
             self.bot.sendMessage(chat_ID, text=f"Successfully added to the agenda of the User {self.UserID} \n Day: {day} \n Kilometers: {payload['Date']['NumberOfTotalKilometers']}")
 
 
@@ -306,8 +311,7 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url"]
-
+    base_url = conf["Catalog_url_Carlo"]
     sb=BatteryBot(token,broker,port,topic_base, base_url)
 
     while True:

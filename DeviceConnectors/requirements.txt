@@ -1,0 +1,5 @@
+CherryPy==18.8.0
+numpy==1.24.3
+paho_mqtt==1.6.1
+pyFirmata==1.1.0
+Requests==2.31.0

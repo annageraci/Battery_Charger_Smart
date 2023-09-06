@@ -3,7 +3,6 @@ import time
 from datetime import datetime
 from MyMQTT import *
 from simplePublisher import MyPublisher
-import cherrypy
 import requests
 
 class StateControl(MyPublisher):
@@ -24,7 +23,9 @@ class StateControl(MyPublisher):
         self.DockerIP=DockerIP
 
         # compute the number of the user
+        #DOCKER 
         #url=self.DockerIP+'/AllUsers'
+        
         url=self.BaseUrl+'/AllUsers'
         response= requests.get(url)
         self.response_json_all_user =response.json()
@@ -92,7 +93,7 @@ class StateControl(MyPublisher):
                     topic=self.base_topic+UserID+'/manualFlag'
                     print(f'Published to {topic}')
                     message={"bn": 'manualFlag', "e": [{"n": 'Flag', "u": 'boolean', "t": [], "v": []}]}
-                    message['e'][0]['v'] = 0
+                    message['e'][0]['v'] = 2
                     message['e'][0]['t'] = str(time.time())
                     self.client.myPublish(topic, message)
                     alert=0
@@ -137,7 +138,7 @@ class StateControl(MyPublisher):
 if __name__ == '__main__':
     while True:
         settings=json.load(open('../settings.json'))
-        BaseUrl=settings['Catalog_url']
+        BaseUrl=settings['Catalog_url_Carlo']
         DockerIP=settings['DockerIP']
         broker=settings['broker']['IPAddress']
         port=settings['broker']['port']
@@ -148,6 +149,6 @@ if __name__ == '__main__':
         topic_presence='/sensor/presence'
         state=StateControl('Geraci15273627', broker, port, base_topic, topic_alert,BaseUrl, DockerIP, topic_Btemp, topic_battery,topic_presence)
         state.start()
-        while True:
-            time.sleep(30)
-            state.control_strategy()
+        
+        time.sleep(30)
+        state.control_strategy()

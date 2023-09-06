@@ -372,7 +372,7 @@
         "type": "mqtt in",
         "z": "ea22f9ccf8be5234",
         "name": "Temperature sensor 1",
-        "topic": "Battery/IoT/project/UserID/1/sensor/temperature",
+        "topic": "Battery/IoT/project/UserID/1/sensor/temperatureB",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "02376e029d38c6fc",
@@ -394,7 +394,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 13",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -432,7 +432,7 @@
         "type": "mqtt in",
         "z": "ea22f9ccf8be5234",
         "name": "Temperature sensor 2",
-        "topic": "Battery/IoT/project/UserID/2/sensor/temperature",
+        "topic": "Battery/IoT/project/UserID/2/sensor/temperatureB",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "02376e029d38c6fc",
@@ -454,7 +454,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 15",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -492,7 +492,7 @@
         "type": "mqtt in",
         "z": "ea22f9ccf8be5234",
         "name": "Temperature sensor 4",
-        "topic": "Battery/IoT/project/UserID/4/sensor/temperature",
+        "topic": "Battery/IoT/project/UserID/4/sensor/temperatureB",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "02376e029d38c6fc",
@@ -514,7 +514,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 17",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -574,7 +574,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 19",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -584,7 +584,8 @@
         "y": 1560,
         "wires": [
             [
-                "2f6cd79cd91e1b4b"
+                "2f6cd79cd91e1b4b",
+                "028aa2c3e16688d3"
             ]
         ]
     },
@@ -634,7 +635,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 21",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -644,7 +645,8 @@
         "y": 1720,
         "wires": [
             [
-                "80e22f2c92c9aa01"
+                "80e22f2c92c9aa01",
+                "81e4da37ec73742e"
             ]
         ]
     },
@@ -694,7 +696,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 23",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -704,7 +706,8 @@
         "y": 1880,
         "wires": [
             [
-                "e07916dcf3f660b0"
+                "e07916dcf3f660b0",
+                "b6698bef327b0ee4"
             ]
         ]
     },
@@ -745,7 +748,8 @@
         "wires": [
             [
                 "039febeec226fa13",
-                "8c9a7c4ba6f20879"
+                "8c9a7c4ba6f20879",
+                "242a137abbaf6615"
             ]
         ]
     },
@@ -761,7 +765,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 2040,
+        "y": 2080,
         "wires": [
             [
                 "b9719878e820c027"
@@ -780,7 +784,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 1980,
+        "y": 1960,
         "wires": [
             [
                 "6aa86f0bccb033dd"
@@ -805,7 +809,8 @@
         "wires": [
             [
                 "bc8f2daa66f6bce2",
-                "0c943ebc329aa843"
+                "0c943ebc329aa843",
+                "6bd61fa974f63bba"
             ]
         ]
     },
@@ -821,7 +826,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 2180,
+        "y": 2200,
         "wires": [
             [
                 "183386a6ac7a6080"
@@ -865,7 +870,8 @@
         "wires": [
             [
                 "2ba93b5e2e03ec49",
-                "9be7cc2051a2db9f"
+                "9be7cc2051a2db9f",
+                "86e5fe13a833bc98"
             ]
         ]
     },
@@ -881,7 +887,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 2320,
+        "y": 2360,
         "wires": [
             [
                 "891f8129bc909ff6"
@@ -934,7 +940,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 31",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -953,7 +959,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 32",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v'] };\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']+15 };\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -994,7 +1000,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 33",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1013,7 +1019,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 34",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v'] };\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']+15 };\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1054,7 +1060,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 35",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']};\n\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': Math.round(msg.payload['e'][0]['v'])};\n\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1073,7 +1079,7 @@
         "type": "function",
         "z": "ea22f9ccf8be5234",
         "name": "function 36",
-        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v'] };\nreturn newMsg;\n",
+        "func": "var newMsg = { 'payload': msg.payload['e'][0]['v']+15 };\nreturn newMsg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1254,7 +1260,7 @@
         "type": "ui_text_input",
         "z": "ea22f9ccf8be5234",
         "name": "temperature sensor 1",
-        "label": "The temperature of the User ID 1 is",
+        "label": "The temperature of the battery the User ID 1 is",
         "tooltip": "",
         "group": "40f669179ff39b2e",
         "order": 10,
@@ -1278,7 +1284,7 @@
         "type": "ui_text_input",
         "z": "ea22f9ccf8be5234",
         "name": "temperature sensor 2",
-        "label": "The temperature of the User ID 2 is",
+        "label": "The temperature of the battery of the User ID 2 is",
         "tooltip": "",
         "group": "40f669179ff39b2e",
         "order": 11,
@@ -1302,7 +1308,7 @@
         "type": "ui_text_input",
         "z": "ea22f9ccf8be5234",
         "name": "temperature sensor 4",
-        "label": "The temperature of the User ID 4 is",
+        "label": "The temperature of the battery of the User ID 4 is",
         "tooltip": "",
         "group": "40f669179ff39b2e",
         "order": 12,
@@ -1412,7 +1418,7 @@
         "className": "",
         "topicType": "msg",
         "x": 650,
-        "y": 2040,
+        "y": 2080,
         "wires": [
             []
         ]
@@ -1436,7 +1442,7 @@
         "className": "",
         "topicType": "msg",
         "x": 650,
-        "y": 2180,
+        "y": 2200,
         "wires": [
             []
         ]
@@ -1460,7 +1466,7 @@
         "className": "",
         "topicType": "msg",
         "x": 650,
-        "y": 2320,
+        "y": 2360,
         "wires": [
             []
         ]
@@ -1603,7 +1609,7 @@
         "width": 5,
         "height": 5,
         "gtype": "donut",
-        "title": "Percentage Battery Need",
+        "title": "Percentage Battery Necessary",
         "label": "%",
         "format": "User 1",
         "min": 0,
@@ -1631,7 +1637,7 @@
         "width": 5,
         "height": 5,
         "gtype": "donut",
-        "title": "Percentage Battery Need",
+        "title": "Percentage Battery Necessary",
         "label": "%",
         "format": "User 2",
         "min": 0,
@@ -1659,7 +1665,7 @@
         "width": 5,
         "height": 5,
         "gtype": "donut",
-        "title": "Percentage Battery Need",
+        "title": "Percentage Battery Necessary",
         "label": "%",
         "format": "User 4",
         "min": 0,
@@ -1717,7 +1723,7 @@
         "label": "Actuator 1",
         "chartType": "line",
         "legend": "true",
-        "xformat": "HH:mm:ss",
+        "xformat": "Y-M-D",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
@@ -1805,7 +1811,7 @@
         "label": "Presence Sensor 1",
         "chartType": "line",
         "legend": "false",
-        "xformat": "HH:mm:ss",
+        "xformat": "Y-M-D",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
@@ -1934,10 +1940,10 @@
         "order": 4,
         "width": 5,
         "height": 5,
-        "label": "Temperature sensor  1",
+        "label": "Temperature Battery sensor  1",
         "chartType": "line",
         "legend": "false",
-        "xformat": "HH:mm:ss",
+        "xformat": "Y-M-D",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
@@ -1975,10 +1981,10 @@
         "z": "ea22f9ccf8be5234",
         "name": "temperature sensor ",
         "group": "960fc61e4bea28b2",
-        "order": 3,
+        "order": 4,
         "width": 5,
         "height": 5,
-        "label": "Temperature sensor 2",
+        "label": "Temperature Battery sensor 2",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -2019,10 +2025,10 @@
         "z": "ea22f9ccf8be5234",
         "name": "temperature sensor ",
         "group": "bd833f3d5a3ef447",
-        "order": 3,
+        "order": 4,
         "width": 5,
         "height": 5,
-        "label": "Temperature sensor 4",
+        "label": "Temperature Battery sensor 4",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
@@ -2069,7 +2075,7 @@
         "label": "Photon sensor 1",
         "chartType": "line",
         "legend": "false",
-        "xformat": "HH:mm:ss",
+        "xformat": "Y-M-D",
         "interpolate": "linear",
         "nodata": "",
         "dot": false,
@@ -2096,7 +2102,7 @@
         "useDifferentColor": false,
         "className": "",
         "x": 840,
-        "y": 1980,
+        "y": 1960,
         "wires": [
             []
         ]
@@ -2107,7 +2113,7 @@
         "z": "ea22f9ccf8be5234",
         "name": "Photon sensor",
         "group": "960fc61e4bea28b2",
-        "order": 4,
+        "order": 3,
         "width": 5,
         "height": 5,
         "label": "Photon sensor User ID 2",
@@ -2151,7 +2157,7 @@
         "z": "ea22f9ccf8be5234",
         "name": "Photon sensor",
         "group": "bd833f3d5a3ef447",
-        "order": 4,
+        "order": 3,
         "width": 5,
         "height": 5,
         "label": "Photon sensor User ID 4",
@@ -2257,8 +2263,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator OFF",
         "group": "95e378d3f90482eb",
-        "order": 8,
-        "width": 6,
+        "order": 9,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "ACTUATOR OFF",
@@ -2323,8 +2329,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator ON",
         "group": "95e378d3f90482eb",
-        "order": 11,
-        "width": 6,
+        "order": 10,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "ACTUATOR ON",
@@ -2351,8 +2357,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator Control Strategy",
         "group": "95e378d3f90482eb",
-        "order": 14,
-        "width": 6,
+        "order": 11,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "Actuator Control Strategy",
@@ -2490,8 +2496,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator OFF",
         "group": "960fc61e4bea28b2",
-        "order": 8,
-        "width": 6,
+        "order": 9,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "ACTUATOR OFF",
@@ -2556,8 +2562,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator ON",
         "group": "960fc61e4bea28b2",
-        "order": 11,
-        "width": 6,
+        "order": 10,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "ACTUATOR ON",
@@ -2584,8 +2590,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator Control Strategy",
         "group": "960fc61e4bea28b2",
-        "order": 14,
-        "width": 6,
+        "order": 11,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "Actuator Control Strategy",
@@ -2723,8 +2729,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator OFF",
         "group": "bd833f3d5a3ef447",
-        "order": 8,
-        "width": 6,
+        "order": 9,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "ACTUATOR OFF",
@@ -2789,8 +2795,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator ON",
         "group": "bd833f3d5a3ef447",
-        "order": 11,
-        "width": 6,
+        "order": 10,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "ACTUATOR ON",
@@ -2817,8 +2823,8 @@
         "z": "ea22f9ccf8be5234",
         "name": "Actuator Control Strategy",
         "group": "bd833f3d5a3ef447",
-        "order": 14,
-        "width": 6,
+        "order": 11,
+        "width": 5,
         "height": 1,
         "passthru": false,
         "label": "Actuator Control Strategy",
@@ -2915,183 +2921,294 @@
         ]
     },
     {
-        "id": "7d611c4b9354386e",
-        "type": "ui_spacer",
+        "id": "81e4da37ec73742e",
+        "type": "ui_text_input",
         "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "bd833f3d5a3ef447",
-        "order": 7,
-        "width": 2,
-        "height": 1
+        "name": "Battery percentage 2",
+        "label": "Battery percentage:",
+        "tooltip": "",
+        "group": "960fc61e4bea28b2",
+        "order": 8,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 660,
+        "y": 1760,
+        "wires": [
+            []
+        ]
     },
     {
-        "id": "19e75c8c3721af13",
-        "type": "ui_spacer",
+        "id": "028aa2c3e16688d3",
+        "type": "ui_text_input",
         "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "bd833f3d5a3ef447",
-        "order": 9,
-        "width": 2,
-        "height": 1
+        "name": "Battery percentage 1",
+        "label": "Battery percentage",
+        "tooltip": "",
+        "group": "95e378d3f90482eb",
+        "order": 8,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 660,
+        "y": 1600,
+        "wires": [
+            []
+        ]
     },
     {
-        "id": "9f8b924ba7386a1e",
-        "type": "ui_spacer",
+        "id": "b6698bef327b0ee4",
+        "type": "ui_text_input",
         "z": "ea22f9ccf8be5234",
-        "name": "spacer",
+        "name": "Battery percentage 4",
+        "label": "Battery percentage:",
+        "tooltip": "",
         "group": "bd833f3d5a3ef447",
-        "order": 10,
-        "width": 2,
-        "height": 1
+        "order": 8,
+        "width": 5,
+        "height": 1,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 660,
+        "y": 1920,
+        "wires": [
+            []
+        ]
     },
     {
-        "id": "4e95e97a4c547e97",
-        "type": "ui_spacer",
+        "id": "242a137abbaf6615",
+        "type": "function",
         "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "bd833f3d5a3ef447",
-        "order": 12,
-        "width": 2,
-        "height": 1
+        "name": "function 54",
+        "func": "var newMsg = { 'payload': 0 };\nif ((msg.payload['e'][0]['v'])>3)\n{\n    var newMsg = { 'payload': 1 };\n}\nelse\n{\n    var newMsg = { 'payload': 0 };\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 2000,
+        "wires": [
+            [
+                "b5dae3db6e495cd4"
+            ]
+        ]
     },
     {
-        "id": "eae574bccc2e1587",
-        "type": "ui_spacer",
+        "id": "b5dae3db6e495cd4",
+        "type": "ui_chart",
         "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "bd833f3d5a3ef447",
-        "order": 13,
-        "width": 2,
-        "height": 1
+        "name": "Photon sensor",
+        "group": "4dd662f47307febb",
+        "order": 3,
+        "width": 5,
+        "height": 5,
+        "label": "Photon sensor 1",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 2000,
+        "wires": [
+            []
+        ]
     },
     {
-        "id": "cdf336c4ad2c11b2",
-        "type": "ui_spacer",
+        "id": "6bd61fa974f63bba",
+        "type": "function",
         "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "bd833f3d5a3ef447",
-        "order": 15,
-        "width": 2,
-        "height": 1
+        "name": "function 55",
+        "func": "var newMsg = { 'payload': 0 };\nif (msg.payload['e'][0]['v']>3)\n{\n    var newMsg = { 'payload': 1 };\n}\nelse\n{\n    var newMsg = { 'payload': 0 };\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 2160,
+        "wires": [
+            [
+                "fe1cbdae6d88e009"
+            ]
+        ]
     },
     {
-        "id": "14c0227cb21eecd4",
+        "id": "fe1cbdae6d88e009",
+        "type": "ui_chart",
+        "z": "ea22f9ccf8be5234",
+        "name": "Photon sensor",
+        "group": "4dd662f47307febb",
+        "order": 3,
+        "width": 5,
+        "height": 5,
+        "label": "Photon sensor 2",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": true,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 2160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "86e5fe13a833bc98",
+        "type": "function",
+        "z": "ea22f9ccf8be5234",
+        "name": "function 56",
+        "func": "var newMsg = { 'payload': 0 };\nif (msg.payload['e'][0]['v']>3.3)\n{\n    var newMsg = { 'payload': 1 };\n}\nelse\n{\n    var newMsg = { 'payload': 0 };\n}\nreturn newMsg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 2300,
+        "wires": [
+            [
+                "ba0dc9b2b9433467"
+            ]
+        ]
+    },
+    {
+        "id": "ba0dc9b2b9433467",
+        "type": "ui_chart",
+        "z": "ea22f9ccf8be5234",
+        "name": "Photon sensor",
+        "group": "4dd662f47307febb",
+        "order": 3,
+        "width": 5,
+        "height": 5,
+        "label": "Photon sensor 1",
+        "chartType": "bar",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 840,
+        "y": 2300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b081b410aadba04",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "960fc61e4bea28b2",
         "order": 7,
-        "width": 2,
+        "width": 10,
         "height": 1
     },
     {
-        "id": "dd72254244be7824",
+        "id": "0a2e36b690dae10e",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
-        "group": "960fc61e4bea28b2",
-        "order": 9,
-        "width": 2,
+        "group": "bd833f3d5a3ef447",
+        "order": 7,
+        "width": 10,
         "height": 1
     },
     {
-        "id": "a20ab53e858086fe",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "960fc61e4bea28b2",
-        "order": 10,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "1426d91329e227ae",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "960fc61e4bea28b2",
-        "order": 12,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "86b5382db98e0476",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "960fc61e4bea28b2",
-        "order": 13,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "4aa47f8901cba39e",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "960fc61e4bea28b2",
-        "order": 15,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "32d507e4f33983d1",
+        "id": "0feb6ea1dee448d5",
         "type": "ui_spacer",
         "z": "ea22f9ccf8be5234",
         "name": "spacer",
         "group": "95e378d3f90482eb",
         "order": 7,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "afca40ae3e4556c7",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 9,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "d9b08734df491e97",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 10,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "93e701c05f639d87",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 12,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "aac6c78f244ffd4a",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 13,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "ef98d57b67a21929",
-        "type": "ui_spacer",
-        "z": "ea22f9ccf8be5234",
-        "name": "spacer",
-        "group": "95e378d3f90482eb",
-        "order": 15,
-        "width": 2,
+        "width": 10,
         "height": 1
     },
     {
@@ -3139,7 +3256,7 @@
         "tab": "c6a2d304c1468326",
         "order": 2,
         "disp": true,
-        "width": 10,
+        "width": 15,
         "collapse": false,
         "className": ""
     },
@@ -3150,7 +3267,7 @@
         "tab": "469c4650e3cf1e4c",
         "order": 1,
         "disp": true,
-        "width": 10,
+        "width": 15,
         "collapse": false,
         "className": ""
     },
@@ -3161,7 +3278,18 @@
         "tab": "16aee7ded59d95f5",
         "order": 1,
         "disp": true,
-        "width": 10,
+        "width": "15",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4dd662f47307febb",
+        "type": "ui_group",
+        "name": "Energy",
+        "tab": "280208b2da5d8772",
+        "order": 1,
+        "disp": true,
+        "width": "6",
         "collapse": false,
         "className": ""
     },
@@ -3193,6 +3321,14 @@
         "id": "16aee7ded59d95f5",
         "type": "ui_tab",
         "name": "User 1",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "280208b2da5d8772",
+        "type": "ui_tab",
+        "name": "Energy",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
