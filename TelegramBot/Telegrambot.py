@@ -306,7 +306,8 @@ if __name__ == "__main__":
     broker = conf["broker"]['IPAddress']
     port = conf["broker"]['port']
     topic_base = conf["baseTopic"]
-    base_url = conf["Catalog_url_Carlo"]
+    base_url = conf["Catalog_url"]
+
     sb=BatteryBot(token,broker,port,topic_base, base_url)
 
     while True:
