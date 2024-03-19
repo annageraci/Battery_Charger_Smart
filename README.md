@@ -1,6 +1,6 @@
-"# Battery_Charger_Smart" 
+### Battery_Charger_Smart" 
 
-DOCKER instruction: 
+## DOCKER instruction: 
 To run the scripts inside Docker containers:
 1) uncomment the line of code correspondent to the access to the file setting.json: settings=json.load(open('/app/settings/settings.json'))
 2) build the image as usual
